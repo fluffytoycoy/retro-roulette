@@ -1,0 +1,47 @@
+{
+  "name": "retro-roulette",
+  "version": "1.0.0",
+  "adonis-version": "1.0.0",
+  "description": "random retro game generator",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node ace test",
+    "front": "npm start --prefix front",
+    "react": "node run front",
+    "dev": "concurrently \"npm run start\" \"npm run front\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix front  && npm run build --prefix front"
+  },
+  "keywords": [
+    "adonisjs",
+    "adonis-app"
+  ],
+  "author": "Matt Coy",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@adonisjs/ace": "^5.0.8",
+    "@adonisjs/auth": "^3.0.7",
+    "@adonisjs/bodyparser": "^2.0.5",
+    "@adonisjs/cors": "^1.0.7",
+    "@adonisjs/fold": "^4.0.9",
+    "@adonisjs/framework": "^5.0.9",
+    "@adonisjs/ignitor": "^2.0.8",
+    "@adonisjs/lucid": "^6.1.3",
+    "axios": "^0.19.0",
+    "chroma-js": "^2.0.4",
+    "concurrently": "^4.1.1",
+    "nodemailer": "^6.3.0",
+    "query-string": "^6.8.2"
+  },
+  "devDependencies": {},
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "autoload": {
+    "App": "./app"
+  }
+}

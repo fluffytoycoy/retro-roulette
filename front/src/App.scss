@@ -1,0 +1,22 @@
+@import 'sass/reset';
+@import 'sass/variables';
+
+html, body, #root {
+    height: 100%;
+    color: $light-black;
+}
+
+#root{
+
+}
+
+.container{
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  > div{
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 100%;
+  }
+}
