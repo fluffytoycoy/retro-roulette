@@ -19,8 +19,8 @@ const Route = use('Route');
 const Helpers = use('Helpers');
 
 Route.group(() => {
-
-}).prefix('api/v1/');
+    Route.get('/test', 'ApiController.getGenres');
+}).prefix('api/');
 
 Route.any('*', ({ response }) => {
   response.download(Helpers.publicPath('react/app.html'));

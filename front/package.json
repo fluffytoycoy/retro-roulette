@@ -2,6 +2,7 @@
   "name": "adonis-react-front",
   "version": "0.1.0",
   "private": true,
+    "proxy": "http://localhost:3333",
   "homepage": "./react",
   "dependencies": {
     "axios": "^0.19.0",

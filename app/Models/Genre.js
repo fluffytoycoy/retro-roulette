@@ -5,7 +5,7 @@ const Model = use('Model')
 
 class Genre extends Model {
   games(){
-    return this.hasMany('App/Model/Game');
+    return this.hasMany('App/Models/Game');
   }
 }
 
