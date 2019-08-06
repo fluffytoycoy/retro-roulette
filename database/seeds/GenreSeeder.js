@@ -12,7 +12,7 @@
 
 /** @type {import('@adonisjs/lucid/src/Factory')} */
 const Factory = use('Factory')
-  const genres = ['action', 'first person shooter', 'sports']
+  const genres = require('../GenreData')
 
 class GenreSeeder {
   async run () {
