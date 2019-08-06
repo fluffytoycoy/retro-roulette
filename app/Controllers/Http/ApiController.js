@@ -16,7 +16,7 @@ class ApiController {
       const game = await Database
         .from('games')
         .innerJoin('genres', 'games.genre_id', 'genres.id')
-                .select('title', 'name as genre')
+        .select('title', 'name as genre')
       console.log(game)
     } catch (e){
       console.log(e)

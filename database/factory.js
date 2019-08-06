@@ -21,17 +21,16 @@ const Factory = use('Factory')
 // })
 
 Factory.blueprint('App/Models/Genre', async (faker, i, data) => {
-  const genres = ['action', 'first person shooter', 'sports']
   console.log(i)
   return {
-    name: genres[i],
+    name: data[i],
   }
 })
 
 Factory.blueprint('App/Models/Game', async (faker, i, data) => {
   console.log(i)
   return {
-    title: faker.first(),
-    genre_id: 4
+    title: data[i].title,
+    genre_id: data[i].genre_id
   }
 })

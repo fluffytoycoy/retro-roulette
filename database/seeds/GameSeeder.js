@@ -12,10 +12,11 @@
 
 /** @type {import('@adonisjs/lucid/src/Factory')} */
 const Factory = use('Factory')
-
+const games = [{title: 'game 1', genre_id: 1}, {title: 'game 2', genre_id: 3}]
 class GameSeeder {
+
   async run () {
-    await Factory.model('App/Models/Game').createMany(3)
+    await Factory.model('App/Models/Game').createMany(games.length, games)
   }
 }
 
