@@ -22,7 +22,15 @@ componentWillMount(){
   render(){
     return (
       <div id="home">
-        home
+        <div className="hero">
+          <div className="sign-wrapper">
+            <img className="lights-on" src="/img/retro_sign.png"/>
+            <img className="lights-off" src="/img/retro_sign_off.png"/>
+          </div>
+          <div className="btn-wrapper">
+            <div className="hero-btn">Place Your Bets</div>
+          </div>
+        </div>
       </div>
     );
   }
