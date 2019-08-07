@@ -12,7 +12,7 @@
 
 /** @type {import('@adonisjs/lucid/src/Factory')} */
 const Factory = use('Factory')
-const Games = require('../GameData');
+const games = require('../GameData');
 //const games = [{title: 'game 1', genre_id: 1}, {title: 'game 2', genre_id: 3}]
 class GameSeeder {
 

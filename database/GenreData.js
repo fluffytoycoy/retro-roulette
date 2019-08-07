@@ -14,4 +14,6 @@ module.exports = [
   'Strategy',
   'Board Game',
   'JRPG',
+  'Racing',
+  'Flight'
 ]

@@ -15,6 +15,7 @@ class ApiController {
       // .fetch()
       const game = await Database
         .from('games')
+        .whereNotIn('genre_id', [])
         .innerJoin('genres', 'games.genre_id', 'genres.id')
         .select('title', 'name as genre')
       console.log(game)
