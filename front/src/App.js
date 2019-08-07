@@ -5,7 +5,7 @@ import Header from './components/Header/Header';
 import Home from './components/HomePage/Home';
 import NotFound from './components/NotFound/NotFound';
 //import SingleProduct from './components/SingleProductPage/SingleProduct';
-import ScrollToTop from './components/Utils/Scroll/Scroll';
+import ScrollToTop from './components/Utils/Scroll/ScrollToTop';
 import Footer from './components/Footer/Footer';
 
 class App extends Component {

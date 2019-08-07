@@ -1,5 +1,5 @@
 #home {
-  .hero {
+  #hero {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -17,7 +17,7 @@
 
       img {
         width: 100%;
-
+        max-width: 800px;
         &.lights-on {
           position: absolute;
           opacity: 0.3;
@@ -35,8 +35,8 @@
       .hero-btn {
         color: white;
         height: 30px;
-        width: 300px;
-        font-size: 1.3rem;
+        width: 200px;
+        /* font-size: 1.3rem; */
         background: rgba(255, 0, 212, 0.5);
         display: flex;
         justify-content: center;
@@ -53,5 +53,9 @@
         }
       }
     }
+  }
+  #bets{
+    min-height: 100vh;
+    background: red;
   }
 }
