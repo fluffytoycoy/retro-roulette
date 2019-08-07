@@ -12,12 +12,18 @@
 
 /** @type {import('@adonisjs/lucid/src/Factory')} */
 const Factory = use('Factory')
+const Database = use('Database')
 const games = require('../GameData');
+const Game = use('App/Models/Game')
+
 //const games = [{title: 'game 1', genre_id: 1}, {title: 'game 2', genre_id: 3}]
 class GameSeeder {
 
   async run () {
-    await Factory.model('App/Models/Game').createMany(games.length, games)
+    const trx = await Database.beginTransaction()
+    await Game.createMany(games, trx)
+    trx.commit();
+
   }
 }
 

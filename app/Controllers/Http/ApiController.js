@@ -3,27 +3,21 @@ const axios = use('axios');
 const Database = use('Database')
 const Game = use('App/Models/Game')
 class ApiController {
-  async getGenres(){
-    console.log('getGenres')
+  async getGenres({response, request}){
+  //  console.log(request)
     try{
-      // const genres = await Database
-      //   .table('games').genre()
-      //   console.log(genres)
-      // const game = await Game
-      // .query()
-      // .with('genre')
-      // .fetch()
       const game = await Database
         .from('games')
-        .whereNotIn('genre_id', [])
+        .whereNotIn('genre_id', [1,2])
         .innerJoin('genres', 'games.genre_id', 'genres.id')
         .select('title', 'name as genre')
+        .orderByRaw('RANDOM()')
+        .limit(1)
       console.log(game)
+      return game
     } catch (e){
       console.log(e)
     }
-
-
   }
 }
 
