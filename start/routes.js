@@ -20,6 +20,7 @@ const Helpers = use('Helpers');
 
 Route.group(() => {
     Route.get('/test', 'ApiController.getGenres');
+    Route.post('/login', 'ApiController.login');
 }).prefix('api/');
 
 Route.any('*', ({ response }) => {

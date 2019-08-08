@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.scss';
 import Header from './components/Header/Header';
 import Home from './components/HomePage/Home';
+import Login from './components/Auth/Login';
+import Logout from './components/Auth/Logout';
 import NotFound from './components/NotFound/NotFound';
 //import SingleProduct from './components/SingleProductPage/SingleProduct';
 import ScrollToTop from './components/Utils/Scroll/ScrollToTop';
@@ -22,6 +24,8 @@ class App extends Component {
 				<Header/>
 					<Switch>
 						<Route exact  path="/" component={Home} />
+            <Route exact path="/login" component={Login}/>
+            <Route exact path="/logout" component={Logout}/>
             <Route component={NotFound}/>
 				</Switch>
         <Footer/>
