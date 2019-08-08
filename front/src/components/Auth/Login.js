@@ -36,6 +36,7 @@ class Login extends Component{
         axios.post('/api/login', values)
           .then(function (response) {
             localStorage.setItem('jwtToken', response.data.token);
+            self.props.login(true)
             self.setState({
               submitSuccess: true,
               submitFailure: false,
@@ -75,8 +76,8 @@ class Login extends Component{
   }
 
   isLoggedIn(){
-    console.log(!!localStorage.getItem('jwtToken'))
-    return !!localStorage.getItem('jwtToken');
+    console.log(this.props.isLoggedIn)
+    return this.props.isLoggedIn;
   }
 
   render(){

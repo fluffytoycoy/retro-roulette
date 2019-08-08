@@ -10,6 +10,7 @@ class Logout extends Component{
 
   componentWillMount(){
      localStorage.removeItem('jwtToken');
+     this.props.logout(localStorage.getItem('jwtToken'))
   }
 
   render(){

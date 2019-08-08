@@ -17,7 +17,15 @@ class App extends Component {
     this.state = {
       isLoggedIn: !!localStorage.getItem('jwtToken')
     };
+    this.handleAuth = this.handleAuth.bind(this);
   };
+
+  handleAuth(status){
+    console.log(status)
+    this.setState({
+      isLoggedIn: status
+    })
+  }
 
   render() {
     return (
@@ -25,9 +33,9 @@ class App extends Component {
       <ScrollToTop >
 				<Header {...this.state}/>
 					<Switch>
-						<Route exact  path="/" component={Home} {...this.props}/>
-            <Route exact path="/login" component={Login}/>
-            <Route exact path="/logout" component={Logout}/>
+						<Route exact  path="/" component={Home} />
+            <Route exact path="/login" render={(props) => <Login {...props} isLoggedIn={this.state.isLoggedIn} login={this.handleAuth} />}/>
+            <Route exact path="/logout" render={(props) => <Logout {...props} isLoggedIn={this.state.isLoggedIn} logout={this.handleAuth} />}/>
             <PrivateRoute path="/dashboard" component={Home}/>
             <Route component={NotFound}/>
 				</Switch>

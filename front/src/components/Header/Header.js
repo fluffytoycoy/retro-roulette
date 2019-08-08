@@ -3,9 +3,9 @@ import React from 'react';
 import './Header.scss';
 
 function Header(props){
-  console.log(props.isLoggedIn)
+
     return (
-      props.isLoggedIn ?
+      isLoggedIn() ?
       <div id="header">
         <a href="/logout">Logout</a>
       </div>
@@ -13,9 +13,9 @@ function Header(props){
     );
 }
 
-// function isLoggedIn(){
-//   console.log(localStorage.getItem('jwtToken'));
-//   return localStorage.getItem('jwtToken');
-// }
+function isLoggedIn(){
+  console.log(localStorage.getItem('jwtToken'));
+  return localStorage.getItem('jwtToken');
+}
 
 export default Header;

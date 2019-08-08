@@ -11,7 +11,6 @@ const PrivateRoute = ({ component: Component,  ...rest }) => {
 }
 
 function isLoggedIn(){
-  console.log(localStorage.getItem('jwtToken'));
   return localStorage.getItem('jwtToken');
 }
 
