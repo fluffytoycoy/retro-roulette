@@ -5,8 +5,7 @@ import { withRouter } from 'react-router-dom';
 const ScrollToTop = ({ children, location: { pathname }}) => {
 
   function shouldScroll(){
-    const serviceRegex = '(/Services/)([A-Z])+';
-    return !pathname.match(serviceRegex);
+    return true;
   }
 
   useEffect(() => {

@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import { render } from 'react-dom';
-import { Link, DirectLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
+import { Link, animateScroll as  scroller } from 'react-scroll';
 import './Home.scss';
 import axios from 'axios';
 
 class Home extends Component{
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
+    this.state={}
   }
 
 componentWillMount(){
@@ -32,8 +32,8 @@ scrollTo() {
       <div id="home">
         <div id="hero">
           <div className="sign-wrapper">
-            <img className="lights-on" src="/img/retro_sign.png"/>
-            <img className="lights-off" src="/img/retro_sign_off.png"/>
+            <img alt="retro vegas sign with lights on" className="lights-on" src="/img/retro_sign.png"/>
+            <img alt="retro vegas sign with lights off" className="lights-off" src="/img/retro_sign_off.png"/>
           </div>
           <div className="btn-wrapper">
             <Link to="bet-section" smooth={true} duration={500}>

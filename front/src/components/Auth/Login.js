@@ -35,12 +35,13 @@ class Login extends Component{
       }, ()=>{
         axios.post('/api/login', values)
           .then(function (response) {
+            localStorage.setItem('jwtToken', response.data.token);
             self.setState({
               submitSuccess: true,
               submitFailure: false,
               isSubmitting: false,
             })
-            localStorage.setItem('jwtToken', response.data.token);
+
           })
           .catch(function (error) {
             self.setState({
@@ -81,11 +82,11 @@ class Login extends Component{
   render(){
     return (
       this.isLoggedIn() ?
-      <Redirect to="/loggedIn"/>
+      <Redirect to="/dashboard"/>
       :
       <div id="home">
         <div className={`form-card ${this.state.submitFailure ? '' : 'no-flex'}`}>
-          {this.state.submitSuccess ? <Redirect to="/loggedIn"/> : this.form()}
+          {this.state.submitSuccess ? <Redirect to="/dashboard"/> : this.form()}
         </div>
       </div>
     );
