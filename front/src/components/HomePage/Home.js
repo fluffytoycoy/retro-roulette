@@ -60,7 +60,7 @@ scrollTo() {
                   <p>All genres are included in the pool.</p>
                   <p>Do you have the courage to go all in?</p>
                 </div>
-                <div className="hero-btn">
+                <div className="hero-btn all-in">
                 </div>
               </div>
               <div className="divider">

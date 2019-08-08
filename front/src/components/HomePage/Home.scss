@@ -88,7 +88,7 @@
           color: white;
           width: 100%;
           flex: 1;
-          padding: 30px 0;
+              padding: 50px 0;
           display: flex;
           flex-direction: column;
           & > div{
@@ -116,6 +116,9 @@
             background: red;
             margin: auto auto 0;
             width: 200px;
+            &.all-in{
+              margin-bottom: 20px;
+            }
           }
         }
         .divider{
@@ -147,6 +150,9 @@
       height: auto !important;
       width: 3px !important;
       margin: 1% 0 !important;
+    }
+    .all-in{
+      margin-bottom: 0 !important;
     }
   }
 }
