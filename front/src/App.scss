@@ -1,5 +1,6 @@
 @import 'sass/reset';
 @import 'sass/variables';
+@import url('https://fonts.googleapis.com/css?family=Pinyon+Script&display=swap');
 
 html, body, #root {
     height: 100%;
@@ -11,12 +12,13 @@ html, body, #root {
 }
 
 .container{
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   width: 100%;
   > div{
     margin-left: 20px;
     margin-right: 20px;
     height: 100%;
+    width: 100%;
   }
 }
