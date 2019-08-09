@@ -2,25 +2,23 @@ import React, {Component} from 'react';
 import { Link, animateScroll as  scroller } from 'react-scroll';
 import './Home.scss';
 import SlotMachine from '../SlotMachine/SlotMachine';
-import BetSection from './BetSection/BetSection';
+import AllInSection from './BetSection/AllInSection';
+import BettingSection from './BetSection/BettingSection';
 import axios from 'axios';
 
 class Home extends Component{
   constructor(props){
     super(props);
     this.state={
-      isBetPlaced: false
+      isBetPlaced: false,
+      filters: [],
+      game: undefined
     }
     this.bet = this.bet.bind(this)
   }
 
 componentWillMount(){
-  axios.get('api/test')
-  .then(response=>{
-    console.log(response)
-  }).catch(error=>{
-    console.log(error)
-  })
+
 }
 
 scrollTo() {
@@ -32,9 +30,21 @@ scrollTo() {
 }
 
   bet(){
+    let self = this;
     this.setState({
       isBetPlaced: true
+    },()=>{
+      axios.get('api/test')
+      .then(response=>{
+        console.log(response)
+        self.setState({
+          game: response.data
+        })
+      }).catch(error=>{
+        console.log(error)
+      })
     })
+
   }
 
   render(){
@@ -64,19 +74,12 @@ scrollTo() {
           <div id="bet-section" className="container">
             <div className="bet-row">
                 <div className="col">
-                  {this.state.isBetPlaced ? <SlotMachine/> : <BetSection AllIn={this.bet}/>}
+                  {this.state.isBetPlaced ? <SlotMachine game={this.state.game}/> : <AllInSection AllIn={this.bet}/>}
                 </div>
               <div className="divider">
               </div>
               <div className="col">
-                <div>
-                  <h1>Place your bets</h1>
-                  <p>Placing your bet will let you select which console or consoles will show up in the roulette.</p>
-                  <p>In addtion you can cross off genres you don't want such as Sports, RPGs, Racing, ect.</p>
-                  <p>The cards are in your hands, Ante up.</p>
-                </div>
-                <div className="hero-btn">
-                </div>
+                {this.state.isBetPlaced ? <><div>?</div></> : <BettingSection AllIn={this.bet}/>}
               </div>
             </div>
           </div>

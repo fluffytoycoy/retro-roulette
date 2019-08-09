@@ -14,8 +14,8 @@ class ApiController {
         .select('title', 'name as genre')
         .orderByRaw('RANDOM()')
         .limit(1)
-      console.log(game)
-      return game
+      console.log(game[0])
+      return game[0]
     } catch (e){
       console.log(e)
     }

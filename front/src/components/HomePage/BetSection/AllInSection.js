@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 
-class BetSection extends Component{
+class AllInSection extends Component{
   constructor(props){
     super(props);
     this.state={}
@@ -14,7 +14,7 @@ componentWillMount(){
   render(){
     return (
       <>
-      <div>
+      <div className="text-block">
         <h1>High Roller</h1>
         <p>Going all in will select a random game from the NES, SNES, Gameboy, Sega Master System or Sega Genesis.</p>
         <p>All genres are included in the pool.</p>
@@ -29,4 +29,4 @@ componentWillMount(){
 
 }
 
-export default BetSection;
+export default AllInSection;
