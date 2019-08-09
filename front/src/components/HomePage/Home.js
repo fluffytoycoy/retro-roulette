@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Link, animateScroll as  scroller } from 'react-scroll';
 import './Home.scss';
+import SlotMachine from '../SlotMachine/SlotMachine';
 import axios from 'axios';
 
 class Home extends Component{
@@ -78,6 +79,7 @@ scrollTo() {
             </div>
           </div>
         </div>
+        <SlotMachine/>
       </div>
     );
   }

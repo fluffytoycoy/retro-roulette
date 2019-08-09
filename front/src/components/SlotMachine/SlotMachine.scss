@@ -1,0 +1,98 @@
+.slot-machine {
+  max-width: 600px;
+  max-height: 500px;
+  overflow: hidden;
+
+  .scroll {
+    max-width: 600px;
+    max-height: 500px;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 20px;
+    display: flex;
+    justify-content: center;
+    & > div {
+      height: 300px;
+      display: flex;
+      align-items: center;
+      &.enter{
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+      &.exit{
+        transform: translate(0, 100%);
+        opacity: 1;
+      }
+      .slide{
+        flex-direction: row !important;
+        display: flex;
+        align-items: center;
+        background: none !important;
+        min-height: 300px;
+      }
+      .slider.animated{
+        transition: all .2s linear !important;
+      }
+
+      }
+      &.selected{
+        .slider.animated{
+          transition: all .5s ease-in-out !important;
+        }
+    }
+  }
+
+  img {
+    width: 100%;
+  }
+
+}
+.btn{
+  height: 100px;
+  width: 100px;
+  background: red;
+}
+
+.blank-slide{
+  height: 0;
+  width: 0;
+}
+
+@media only screen and (min-width: 1200px){
+  .slot-machine {
+    max-width: 600px;
+    max-height: 500px;
+    overflow: hidden;
+
+    .scroll {
+      max-width: 600px;
+      max-height: 500px;
+      height: 500px;
+      overflow: hidden;
+      position: relative;
+      margin: 0 20px;
+      display: flex;
+      justify-content: center;
+      & > div {
+        height: 500px;
+        display: flex;
+        align-items: center;
+
+        .slide{
+          flex-direction: row !important;
+          display: flex;
+          align-items: center;
+          background: none !important;
+          min-height: 500px;
+        }
+
+
+        }
+
+    }
+
+
+  }
+
+}

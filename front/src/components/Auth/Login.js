@@ -75,14 +75,9 @@ class Login extends Component{
     )
   }
 
-  isLoggedIn(){
-    console.log(this.props.isLoggedIn)
-    return this.props.isLoggedIn;
-  }
-
   render(){
     return (
-      this.isLoggedIn() ?
+      this.props.isLoggedIn ?
       <Redirect to="/dashboard"/>
       :
       <div id="home">
