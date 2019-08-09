@@ -2,12 +2,16 @@ import React, {Component} from 'react';
 import { Link, animateScroll as  scroller } from 'react-scroll';
 import './Home.scss';
 import SlotMachine from '../SlotMachine/SlotMachine';
+import BetSection from './BetSection/BetSection';
 import axios from 'axios';
 
 class Home extends Component{
   constructor(props){
     super(props);
-    this.state={}
+    this.state={
+      isBetPlaced: false
+    }
+    this.bet = this.bet.bind(this)
   }
 
 componentWillMount(){
@@ -27,6 +31,11 @@ scrollTo() {
   })
 }
 
+  bet(){
+    this.setState({
+      isBetPlaced: true
+    })
+  }
 
   render(){
     return (
@@ -55,15 +64,8 @@ scrollTo() {
           <div id="bet-section" className="container">
             <div className="bet-row">
                 <div className="col">
-                <div>
-                  <h1>High Roller</h1>
-                  <p>Going all in will select a random game from the NES, SNES, Gameboy, Sega Master System or Sega Genesis.</p>
-                  <p>All genres are included in the pool.</p>
-                  <p>Do you have the courage to go all in?</p>
+                  {this.state.isBetPlaced ? <SlotMachine/> : <BetSection AllIn={this.bet}/>}
                 </div>
-                <div className="hero-btn all-in">
-                </div>
-              </div>
               <div className="divider">
               </div>
               <div className="col">
@@ -79,7 +81,6 @@ scrollTo() {
             </div>
           </div>
         </div>
-        <SlotMachine/>
       </div>
     );
   }
