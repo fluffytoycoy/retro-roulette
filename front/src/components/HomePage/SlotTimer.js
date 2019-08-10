@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { Link, animateScroll as  scroller } from 'react-scroll';
-import './SlotMachine.scss';
 import Slider from "react-slick";
 import Timer from 'react-compound-timer'
 import {getRandomInt} from '../Utils/RandNum/RandNum'
@@ -18,25 +17,27 @@ const withTimer = timerProps => WrappedComponent => wrappedComponentProps => (
 class STimer extends React.Component {
   constructor(props){
     super(props);
-    this.reset = this.reset.bind(this)
+
+    this.resetTimer = this.resetTimer.bind(this)
   }
+
     componentDidMount(props) {
-      this.props.reset(this.reset);
+        this.props.setReset(this.resetTimer);
+
         const { setCheckpoints, stop, reset, setDirection, setTime, start } = this.props.timer;
-        const {setRotationsCompleted} = this.props
-        setCheckpoints([
-            {
+        const {setRotationsCompleted} = this.props;
+        setCheckpoints([{
                 time: 5000,
                 callback: () => {setRotationsCompleted(); stop()},
-            },
-        ]);
+            }]);
     }
 
-    reset(){
-      const { setCheckpoints, stop, reset, setDirection, setTime, start } = this.props.timer;
+    resetTimer(){
+      const { reset, start } = this.props.timer;
       reset();
       start();
     }
+
     render() {
         return (
               <Timer.Seconds />
@@ -44,7 +45,7 @@ class STimer extends React.Component {
     }
 }
 
-const SlotTimer = withTimer()(STimer);
+const SlotTimer = withTimer({startImmediately: false})(STimer);
 
 
 export default SlotTimer

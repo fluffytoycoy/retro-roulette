@@ -141,6 +141,8 @@
       &#bet-section{
         flex-grow: 1;
         align-items: center;
+        display: flex;
+        flex-direction: column;
         //testing ipad
         position: relative;
         padding: 50px 0;

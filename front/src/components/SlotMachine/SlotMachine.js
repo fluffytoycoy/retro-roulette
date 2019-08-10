@@ -6,7 +6,7 @@ import { Carousel } from 'react-responsive-carousel';
 import ConsoleCarousel from './ConsoleCarousel';
 import Slider from "react-slick";
 import Timer from 'react-compound-timer'
-import SlotTimer from './SlotTimer'
+
 import {getRandomInt} from '../Utils/RandNum/RandNum'
 
 class SlotMachine extends Component{
@@ -16,16 +16,15 @@ class SlotMachine extends Component{
       autoPlay: false,
       selectedSystem: undefined,
       _isMounted: false,
-      rotationsCompleted: false,
-      resetTimer: false
     }
     this.reset = this.reset.bind(this)
     this.spin = this.spin.bind(this)
     this.setRotationsCompleted = this.setRotationsCompleted.bind(this)
+    this.reset = this.reset.bind(this)
   }
 
   componentWillMount(){
-      //<div  onClick={this.click }className="btn"></div>
+      this.props.setReset(console.log('reset'));
   }
 
   componentDidMount(){
@@ -45,41 +44,39 @@ class SlotMachine extends Component{
   reset(){
     //starts or stops the roulette and selects a new stopping point
     //for testing
-
+    console.log('here')
     this.setState({
       autoPlay: true,
-      selectedSystem: 0,
       rotationsCompleted: false,
-      resetTimer: true
     },()=>{
       this.resetTimer()
     })
   }
 
-  componentWillReceiveProps(newProps){
-    console.log(newProps)
-    console.log(this.state.rotationsCompleted)
-    if(newProps && this.state.rotationsCompleted){
-      console.log('in here')
-      this.setState({
-        autoPlay: false,
-        selectedSystem: getRandomInt(6)
-      })
-    }
+  componentWillReceiveProps(newProps) {
+    console.log(newProps, this.state.rotationsCompleted )
+  if (newProps && this.state.rotationsCompleted) {
+    console.log('in here')
+    this.setState({
+      autoPlay: false,
+      selectedSystem: getRandomInt(6),
+      rotationsCompleted: false
+    })
   }
+}
 
   setRotationsCompleted(){
     if(this.props.game){
       this.setState({
         autoPlay: false,
         selectedSystem: getRandomInt(6),
-        rotationsCompleted: true
       })
     } else{
-      this.state.rotationsCompleted = true;
+      this.setState({
+        rotationsCompleted: true
+      })
     }
   }
-
 
   render(){
 
@@ -109,9 +106,8 @@ class SlotMachine extends Component{
 
     return (
       <>
-        <SlotTimer setRotationsCompleted={this.setRotationsCompleted} reset={reset => this.resetTimer = reset}/>
         <div className={`slot-machine  ${this.state._isMounted ? 'fade-in': ''}`}>
-          <div className={`scroll ${this.state.autoPlay ? '': 'selected'}`}>
+          <div className={`scroll`}>
             <Carousel {...settings} >
               <div data-system="gameboy" className="exit"><img src="https://www.stickpng.com/assets/images/5a6a3c53ab538104d4a30e32.png"/></div>
               <div data-system="gameboy-color"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Game_Boy_Color_logo.svg/1280px-Game_Boy_Color_logo.svg.png"/></div>
@@ -121,7 +117,6 @@ class SlotMachine extends Component{
               <div data-system="gen"><img src="https://pikointeractive.com/wp-content/uploads/2014/03/sega_genesis_logo_by_overxbound-d5r5d1q.png"/></div>
             </Carousel>
           </div>
-          <div  onClick={this.reset }className="btn"></div>
         </div>
       </>
     );

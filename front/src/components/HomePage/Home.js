@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Link, animateScroll as  scroller } from 'react-scroll';
 import './Home.scss';
 import SlotMachine from '../SlotMachine/SlotMachine';
+import SlotTimer from './SlotTimer'
 import AllInSection from './BetSection/AllInSection';
 import BettingSection from './BetSection/BettingSection';
 import axios from 'axios';
@@ -12,16 +13,25 @@ class Home extends Component{
     this.state={
       isBetPlaced: false,
       filters: [],
-      game: undefined
+      game: undefined,
+      rotationsCompleted: false,
+      shouldSlotSpin: false,
     }
     this.bet = this.bet.bind(this)
+    this.reset = this.reset.bind(this)
+    this.setSlotSpin = this.setSlotSpin.bind(this)
   }
 
-componentWillMount(){
+  componentWillMount(){
 
 }
 
-scrollTo() {
+  reset(){
+    this.bet()
+    this.resetTimer()
+  }
+
+  scrollTo() {
   scroller.scrollTo('scroll-to-element', {
     duration: 800,
     delay: 0,
@@ -36,16 +46,26 @@ scrollTo() {
     },()=>{
       axios.get('api/test')
       .then(response=>{
-        setTimeout(()=>{
           self.setState({
             game: response.data
           })
-        }, 7000)
       }).catch(error=>{
         console.log(error)
       })
     })
 
+  }
+
+  setSlotSpin(){
+    if(this.state.game){
+      this.setState({
+        shouldSlotSpin: false,
+      })
+    } else{
+      this.setState({
+        rotationsCompleted: true
+      })
+    }
   }
 
   render(){
@@ -72,17 +92,20 @@ scrollTo() {
               </div>
             </div>
           </div>
+          <SlotTimer setRotationsCompleted={this.setSlotSpin} setReset={e => this.resetTimer = e}/>
           <div id="bet-section" className="container">
             <div className="bet-row">
                 <div className="col">
-                  {this.state.isBetPlaced ? <SlotMachine game={this.state.game}/> : <AllInSection AllIn={this.bet}/>}
+                  {this.state.isBetPlaced ?
+                    <SlotMachine game={this.state.game} setReset={e => this.resetSlot = e} />
+                    : <AllInSection AllIn={this.reset}/>}
                 </div>
-              <div className="divider">
-              </div>
-              <div className="col">
-                {this.state.isBetPlaced ? <><div>?</div></> : <BettingSection AllIn={this.bet}/>}
-              </div>
+                <div className="divider"></div>
+                <div className="col">
+                  {this.state.isBetPlaced ? <><div>?</div></> : <BettingSection AllIn={this.bet}/>}
+                </div>
             </div>
+            <div  onClick={this.reset}className="btn"></div>
           </div>
         </div>
       </div>
@@ -90,5 +113,6 @@ scrollTo() {
   }
 
 }
+
 
 export default Home;
