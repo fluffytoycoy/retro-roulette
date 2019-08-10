@@ -36,10 +36,11 @@ scrollTo() {
     },()=>{
       axios.get('api/test')
       .then(response=>{
-        console.log(response)
-        self.setState({
-          game: response.data
-        })
+        setTimeout(()=>{
+          self.setState({
+            game: response.data
+          })
+        }, 7000)
       }).catch(error=>{
         console.log(error)
       })

@@ -16,8 +16,13 @@ const withTimer = timerProps => WrappedComponent => wrappedComponentProps => (
 );
 
 class STimer extends React.Component {
+  constructor(props){
+    super(props);
+    this.reset = this.reset.bind(this)
+  }
     componentDidMount(props) {
-        const { setCheckpoints, stop, setDirection, setTime, start } = this.props.timer;
+      this.props.reset(this.reset);
+        const { setCheckpoints, stop, reset, setDirection, setTime, start } = this.props.timer;
         const {setRotationsCompleted} = this.props
         setCheckpoints([
             {
@@ -26,9 +31,15 @@ class STimer extends React.Component {
             },
         ]);
     }
+
+    reset(){
+      const { setCheckpoints, stop, reset, setDirection, setTime, start } = this.props.timer;
+      reset();
+      start();
+    }
     render() {
         return (
-            null
+              <Timer.Seconds />
         );
     }
 }
