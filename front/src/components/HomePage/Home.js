@@ -15,23 +15,48 @@ class Home extends Component{
       filters: [],
       game: undefined,
       rotationsCompleted: false,
-      shouldSlotSpin: false,
+      shouldSlotSpin: true,
     }
-    this.bet = this.bet.bind(this)
     this.reset = this.reset.bind(this)
     this.setSlotSpin = this.setSlotSpin.bind(this)
   }
 
   componentWillMount(){
 
-}
+  }
 
   reset(){
-    this.bet()
+    let self = this;
+    //axios call for new game
+    //reset and start Timer
+    getGame()
     this.resetTimer()
+
+    function getGame() {
+      self.setState({
+        isBetPlaced: true,
+        game: undefined,
+        shouldSlotSpin: true,
+        rotationsCompleted: false
+      }, () => {
+        self.resetSlot()
+        axios.get('api/test')
+          .then(response => {
+            setTimeout(()=>{
+              self.setState({
+                game: response.data
+              })
+            }, 6000)
+
+          }).catch(error => {
+            console.log(error)
+          })
+      })
+    }
   }
 
   scrollTo() {
+    //scroll to for hero button
   scroller.scrollTo('scroll-to-element', {
     duration: 800,
     delay: 0,
@@ -39,33 +64,32 @@ class Home extends Component{
   })
 }
 
-  bet(){
-    let self = this;
-    this.setState({
-      isBetPlaced: true
-    },()=>{
-      axios.get('api/test')
-      .then(response=>{
-          self.setState({
-            game: response.data
-          })
-      }).catch(error=>{
-        console.log(error)
-      })
-    })
-
-  }
-
   setSlotSpin(){
+    console.log('slot timer finished')
     if(this.state.game){
       this.setState({
         shouldSlotSpin: false,
       })
     } else{
-      this.setState({
-        rotationsCompleted: true
-      })
+      this.state.rotationsCompleted = true
     }
+  }
+
+  shouldComponentUpdate(newProps, nextState){
+    // if(nextState.game && this.state.rotationsCompleted){
+    //
+    // } else if(nextState.game && !this.state.rotationsCompleted){
+    //   console.log('game is loaded but rotation NOT COMPLETED')
+    // } else if (!nextState.game && !this.state.rotationsCompleted){
+    //   console.log('game is NOT LOADED and rotation NOT COMPLETED')
+    // }
+    if(this.state.rotationsCompleted){
+    }
+    return true;
+  }
+
+  setSlotFinished(){
+
   }
 
   render(){
@@ -97,7 +121,7 @@ class Home extends Component{
             <div className="bet-row">
                 <div className="col">
                   {this.state.isBetPlaced ?
-                    <SlotMachine game={this.state.game} setReset={e => this.resetSlot = e} />
+                    <SlotMachine game={this.state.game} rotationsCompleted={this.state.rotationsCompleted} setReset={e => this.resetSlot = e} />
                     : <AllInSection AllIn={this.reset}/>}
                 </div>
                 <div className="divider"></div>

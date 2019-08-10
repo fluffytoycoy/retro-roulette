@@ -13,70 +13,50 @@ class SlotMachine extends Component{
   constructor(props){
     super(props);
     this.state={
-      autoPlay: false,
       selectedSystem: undefined,
       _isMounted: false,
+      autoPlay: false,
     }
-    this.reset = this.reset.bind(this)
-    this.spin = this.spin.bind(this)
-    this.setRotationsCompleted = this.setRotationsCompleted.bind(this)
     this.reset = this.reset.bind(this)
   }
 
   componentWillMount(){
-      this.props.setReset(console.log('reset'));
+
   }
 
   componentDidMount(){
-  //timeout function is needed to fix scrolling issue
-  //start intial spin
-  setTimeout(this.spin, 0)
-}
-
-  spin(){
-    //starts the roulette
+  //timeout 0 function is needed to fix mounting animations
+    this.props.setReset(this.reset);
+  setTimeout(() => {
     this.setState({
-      autoPlay: true,
-      _isMounted: true
+      _isMounted: true,
+      autoPlay: true
     })
-  }
+    }, 0)
+}
 
   reset(){
     //starts or stops the roulette and selects a new stopping point
     //for testing
-    console.log('here')
     this.setState({
+      selectedSystem: undefined,
       autoPlay: true,
       rotationsCompleted: false,
-    },()=>{
-      this.resetTimer()
     })
   }
 
   componentWillReceiveProps(newProps) {
-    console.log(newProps, this.state.rotationsCompleted )
-  if (newProps && this.state.rotationsCompleted) {
-    console.log('in here')
-    this.setState({
-      autoPlay: false,
-      selectedSystem: getRandomInt(6),
-      rotationsCompleted: false
-    })
-  }
-}
-
-  setRotationsCompleted(){
-    if(this.props.game){
+    console.log(newProps);
+    if (newProps.game &&  newProps.rotationsCompleted) {
+      console.log('game is loaded and rotationsCompleted')
       this.setState({
         autoPlay: false,
         selectedSystem: getRandomInt(6),
       })
-    } else{
-      this.setState({
-        rotationsCompleted: true
-      })
     }
   }
+
+
 
   render(){
 
@@ -117,6 +97,7 @@ class SlotMachine extends Component{
               <div data-system="gen"><img src="https://pikointeractive.com/wp-content/uploads/2014/03/sega_genesis_logo_by_overxbound-d5r5d1q.png"/></div>
             </Carousel>
           </div>
+          <div className="shadow"></div>
         </div>
       </>
     );

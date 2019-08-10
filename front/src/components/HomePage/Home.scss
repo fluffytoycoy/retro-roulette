@@ -86,7 +86,7 @@
         display: flex;
         flex-grow: 2;
         flex-direction: column;
-        margin: 0;
+
         .col{
           color: white;
           width: 100%;
@@ -135,7 +135,7 @@
           margin: 0 auto;
           height: 3px;
           background: linear-gradient(45deg, transparent ,#ed0192, transparent);
-          box-shadow: #ea0091 0 0 50px;
+        
         }
       }
       &#bet-section{
@@ -143,9 +143,20 @@
         align-items: center;
         display: flex;
         flex-direction: column;
-        //testing ipad
         position: relative;
-        padding: 50px 0;
+        padding: 50px 0 0;
+
+        //background testing
+      box-shadow: inset 0px 0px 40px 20px #000000;
+      border-radius: 30px;
+      overflow: hidden;
+      top: 0;
+      z-index: 0;
+      left: 0;
+      background: -webkit-radial-gradient(#00ff0000, #00000073);
+      background: radial-gradient(#00ff0000, #00000073);
+      background-size: 6px 6px;
+      margin: 50px auto;
       }
     }
   }
