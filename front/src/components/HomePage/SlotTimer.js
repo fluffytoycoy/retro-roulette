@@ -40,7 +40,7 @@ class STimer extends React.Component {
 
     render() {
         return (
-              <Timer.Seconds />
+            null
         );
     }
 }

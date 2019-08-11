@@ -4,10 +4,9 @@ import './SlotMachine.scss';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import ConsoleCarousel from './ConsoleCarousel';
-import Slider from "react-slick";
 import Timer from 'react-compound-timer'
 
-import {getRandomInt} from '../Utils/RandNum/RandNum'
+import {getRandomInt} from '../../Utils/RandNum/RandNum'
 
 class SlotMachine extends Component{
   constructor(props){
