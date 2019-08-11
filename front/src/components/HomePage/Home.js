@@ -3,11 +3,11 @@ import { Link, animateScroll as  scroller } from 'react-scroll';
 import './Home.scss';
 import SlotMachine from '../SlotMachine/SlotMachine';
 import SlotTimer from './SlotTimer'
-
 import AllInSection from './BetSection/AllInSection';
 import BettingSection from './BetSection/BettingSection';
 
 import GameSection from './GameRoulette/GameSection'
+import GameInfo from './GameRoulette/GameInfo'
 import axios from 'axios';
 
 class Home extends Component{
@@ -122,16 +122,9 @@ class Home extends Component{
                 <div className={`col ${this.state.isBetPlaced ? 'game' : ''}`}>
                   {this.state.isBetPlaced ? <GameSection game={this.state.game} slotFinished={this.state.slotFinished}/> : <BettingSection AllIn={this.bet}/>}
                 </div>
-                { this.state.slotFinished ?
-                  <div className="game-info">
-                    <h1>The Revenge of Shinobi</h1>
-                    <h2>Platform: Sega</h2>
-                    <p>Genre: Action</p>
-                  </div>
-                  : <></>}
+                {this.state.slotFinished ? <GameInfo mounted={this.state.slotFinished}/> : <></>}
             </div>
             <div  onClick={this.reset}className="btn"></div>
-            <div className="shadow"></div>
           </div>
         </div>
       </div>

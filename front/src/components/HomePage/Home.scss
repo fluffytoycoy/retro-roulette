@@ -57,7 +57,7 @@
     }
   }
   #bets{
-    background: linear-gradient(45deg, rgba(45, 7, 72, 0.75), rgba(66, 17, 78, 0.75));
+        background: linear-gradient(rgba(18, 1, 60, 0.5), rgba(213, 0, 203, 0.5));
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -136,7 +136,7 @@
 
         }
         .game-info{
-          margin: 0 20px 0;
+          margin: 50px 20px 0;
           //padding: 50px 0;
           display: flex;
           flex-direction: column;
@@ -160,18 +160,24 @@
         position: relative;
         justify-content: center;
         padding: 50px 0 0;
-
         //background testing
-      box-shadow: inset 0px 0px 40px 20px #101010;
+      box-shadow: inset 0px 0px 0px 10px rgba(16, 16, 16, 0.5);
       border-radius: 30px;
       overflow: hidden;
       top: 0;
       z-index: 0;
       left: 0;
-      background: -webkit-radial-gradient(#00ff0000, #00000073);
-      background: radial-gradient(#00ff0000, #00000073);
+      background: radial-gradient(rgba(0, 17, 41, 0.5), #14013cba);
       background-size: 6px 6px;
       margin: 50px auto;
+      .btn{
+        height: 100px !important;
+        width: 100%;
+        background: rgba(255, 0, 0, 0.5);
+        pointer-events: auto;
+        cursor: pointer;
+
+      }
       }
     }
   }
@@ -202,8 +208,7 @@
           }
 
           .game-info{
-            margin: 0 20px 0;
-            padding: 50px 0 0;
+            margin: 50px 20px 0;
             text-align: center;
             width: 50%;
           }
