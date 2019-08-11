@@ -96,7 +96,7 @@
           justify-content: center;
           align-items: center;
           &.game{
-            flex: 0;
+                  flex: 0;
           }
           .text-block{
             text-align: center;
@@ -204,8 +204,7 @@
 
           .game-info{
             margin: 0 20px 0;
-            padding: 50px 0;
-            /* width: 50%; */
+            padding: 50px 0 0;
             text-align: center;
           }
         }
@@ -218,6 +217,9 @@
   #home{
     .col{
       padding: 30px !important;
+      &.game{
+        flex: 1 1 !important;
+      }
     }
     .bet-row{
 
@@ -229,6 +231,9 @@
     }
     .all-in{
       margin-bottom: 0 !important;
+    }
+    .game-info{
+      width: 100%;
     }
   }
 }

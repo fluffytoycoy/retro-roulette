@@ -119,7 +119,7 @@ class Home extends Component{
                     : <AllInSection AllIn={this.reset}/>}
                 </div>
                 <div className="divider"></div>
-                <div className="col">
+                <div className={`col ${this.state.isBetPlaced ? 'game' : ''}`}>
                   {this.state.isBetPlaced ? <GameSection game={this.state.game} slotFinished={this.state.slotFinished}/> : <BettingSection AllIn={this.bet}/>}
                 </div>
                 <div className="game-info">

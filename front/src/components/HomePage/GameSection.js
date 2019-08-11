@@ -36,7 +36,7 @@ class GameSection extends Component{
         <div className="game-section">
           {slotFinished ?
             <div>
-              <img className="sega" src="https://z7v6x4c5.stackpathcdn.com/storage/attachments/monthly_2017_02/58abe801b40ed_FatalFury(USA).png.2031ba08b6e2988e926aa14848b45f73.png"/>
+              <img  src="https://z7v6x4c5.stackpathcdn.com/storage/attachments/monthly_2017_02/58abe801b40ed_FatalFury(USA).png.2031ba08b6e2988e926aa14848b45f73.png"/>
             </div>
             : <h1>?</h1>
           }
