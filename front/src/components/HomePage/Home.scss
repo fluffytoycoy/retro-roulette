@@ -80,12 +80,9 @@
       .bet-row{
         margin-bottom: 50px;
         display: flex;
-        flex-grow: 1;
         flex-direction: column;
-
-        display: flex;
         flex-grow: 2;
-        flex-direction: column;
+        justify-content: center;
 
         .col{
           color: white;
@@ -98,6 +95,9 @@
           flex-direction: column;
           justify-content: center;
           align-items: center;
+          &.game{
+            flex: 0;
+          }
           .text-block{
             text-align: center;
             margin: 0 20px;
@@ -119,7 +119,6 @@
           .hero-btn{
             display: flex;
             height: 50px;
-            /* width: 100%; */
             background: red;
             margin: auto auto 0;
             justify-content: center;
@@ -135,7 +134,13 @@
           margin: 0 auto;
           height: 3px;
           background: linear-gradient(45deg, transparent ,#ed0192, transparent);
-        
+
+        }
+        .game-info{
+          margin: 0 20px 0;
+          //padding: 50px 0;
+          /* width: 50%; */
+          text-align: center;
         }
       }
       &#bet-section{
@@ -144,10 +149,11 @@
         display: flex;
         flex-direction: column;
         position: relative;
+        justify-content: center;
         padding: 50px 0 0;
 
         //background testing
-      box-shadow: inset 0px 0px 40px 20px #000000;
+      box-shadow: inset 0px 0px 40px 20px #101010;
       border-radius: 30px;
       overflow: hidden;
       top: 0;
@@ -161,7 +167,52 @@
     }
   }
 }
+@media only screen and (min-width: 768px){
 
+  #home {
+    }
+    #bets{
+      .container{
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+
+        .bet-row{
+          margin-bottom: 50px;
+          display: flex;
+          flex-grow: 1;
+          flex-wrap: wrap;
+          flex-direction: row !important;
+          height: auto;
+
+          .col{
+            color: white;
+            width: 100%;
+            flex: 1;
+            padding: 50px 0;
+            display: flex;
+            flex-direction: column;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            &.game{
+              flex: 0;
+            }
+
+          }
+
+          .game-info{
+            margin: 0 20px 0;
+            padding: 50px 0;
+            /* width: 50%; */
+            text-align: center;
+          }
+        }
+
+      }
+    }
+  }
 
 @media only screen and (min-width: 1200px){
   #home{
@@ -169,8 +220,7 @@
       padding: 30px !important;
     }
     .bet-row{
-      flex-direction: row !important;
-      height: auto;
+
     }
     .divider{
       height: auto !important;

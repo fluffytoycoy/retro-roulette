@@ -36,8 +36,7 @@ class SlotMachine extends Component{
 }
 
   reset(){
-    //starts or stops the roulette and selects a new stopping point
-    //for testing
+    //reStarts the roulette
     this.setState({
       selectedSystem: undefined,
       autoPlay: true,
@@ -46,17 +45,21 @@ class SlotMachine extends Component{
   }
 
   componentWillReceiveProps(newProps) {
-    console.log(newProps);
-    if (newProps.game &&  newProps.rotationsCompleted) {
-      console.log('game is loaded and rotationsCompleted')
-      this.setState({
-        autoPlay: false,
-        selectedSystem: getRandomInt(6),
-      })
+    //if slot is finished do nothing
+    //else if game exists && rotationsCompleted
+    //stop the rotation on selected game and set slot to finished
+    if(!newProps.slotFinished){
+      console.log(newProps)
+      if (newProps.game &&  newProps.rotationsCompleted) {
+        this.setState({
+          autoPlay: false,
+          selectedSystem: newProps.game.console,
+        },()=>{
+          this.props.setSlotFinished();
+        })
+      }
     }
   }
-
-
 
   render(){
 
@@ -97,7 +100,6 @@ class SlotMachine extends Component{
               <div data-system="gen"><img src="https://pikointeractive.com/wp-content/uploads/2014/03/sega_genesis_logo_by_overxbound-d5r5d1q.png"/></div>
             </Carousel>
           </div>
-          <div className="shadow"></div>
         </div>
       </>
     );

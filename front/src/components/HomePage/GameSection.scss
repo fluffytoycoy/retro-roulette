@@ -1,0 +1,50 @@
+.game-section{
+  max-width: 728px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    color: #ffffff;
+    justify-content: center;
+    align-items: center;
+    font-weight: 100;
+    text-shadow: #ea0191 0 0 5px, #e90090 0 0 11px, #ea0091 0 0 7px, #ffffff 0 0 40px;
+    text-align: center;
+    > div{
+      margin: 0 20px;
+    }
+    h1{
+          font-size: 10rem;
+          filter: blur(2px);
+    }
+    h2{
+      font-size: 5rem;
+          filter: blur(2px);
+    }
+    img{
+      max-height: 400px;
+      width: 100%;
+      box-shadow: black 0 0 20px;
+      border-radius: 20px;
+      &.sega{
+        height: 100%;
+        width: auto;
+      }
+    }
+}
+
+@media only screen and (min-width: 768px){
+
+  .game-section{
+
+      h1{
+
+      }
+      h2{
+
+      }
+      img{
+        //for sega
+        max-width: 500px;
+      }
+  }
+}
