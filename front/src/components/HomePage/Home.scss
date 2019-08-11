@@ -74,16 +74,13 @@
     }
     .container{
       max-width: 1400px;
-      margin: 0 auto;
       display: flex;
 
       .bet-row{
-        margin-bottom: 50px;
         display: flex;
         flex-direction: column;
-        flex-grow: 2;
         justify-content: center;
-
+        margin-bottom: 50px;
         .col{
           color: white;
           width: 100%;
@@ -96,7 +93,7 @@
           justify-content: center;
           align-items: center;
           &.game{
-                  flex: 0;
+
           }
           .text-block{
             text-align: center;
@@ -139,8 +136,18 @@
         .game-info{
           margin: 0 20px 0;
           //padding: 50px 0;
-          /* width: 50%; */
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
           text-align: center;
+          h1{
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+          }
+          h2{
+            font-size: 2rem;
+            margin-bottom: 10px;
+          }
         }
       }
       &#bet-section{
@@ -156,9 +163,6 @@
       box-shadow: inset 0px 0px 40px 20px #101010;
       border-radius: 30px;
       overflow: hidden;
-      top: 0;
-      z-index: 0;
-      left: 0;
       background: -webkit-radial-gradient(#00ff0000, #00000073);
       background: radial-gradient(#00ff0000, #00000073);
       background-size: 6px 6px;
@@ -173,29 +177,12 @@
     }
     #bets{
       .container{
-        max-width: 1400px;
-        margin: 0 auto;
-        display: flex;
-
         .bet-row{
-          margin-bottom: 50px;
-          display: flex;
-          flex-grow: 1;
           flex-wrap: wrap;
           flex-direction: row !important;
-          height: auto;
-
+          margin-bottom: 0px !important;
           .col{
-            color: white;
-            width: 100%;
-            flex: 1;
-            padding: 50px 0;
-            display: flex;
-            flex-direction: column;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+
             &.game{
               flex: 0;
             }
@@ -206,6 +193,7 @@
             margin: 0 20px 0;
             padding: 50px 0 0;
             text-align: center;
+            width: 50%;
           }
         }
 
@@ -215,15 +203,20 @@
 
 @media only screen and (min-width: 1200px){
   #home{
+
+    #bet-section{
+      .bet-row{
+        margin-bottom: 50px !important;
+
+      }
+    }
     .col{
       padding: 30px !important;
       &.game{
-        flex: 1 1 !important;
+        //flex: 1 1 !important;
       }
     }
-    .bet-row{
 
-    }
     .divider{
       height: auto !important;
       width: 3px !important;
@@ -233,7 +226,7 @@
       margin-bottom: 0 !important;
     }
     .game-info{
-      width: 100%;
+          width: 100% !important;
     }
   }
 }

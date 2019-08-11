@@ -124,8 +124,8 @@ class Home extends Component{
                 </div>
                 <div className="game-info">
                   <h1>The Revenge of Shinobi</h1>
-                  <h2>Sega</h2>
-                  <p>Action</p>
+                  <h2>Platform: Sega</h2>
+                  <p>Genre: Action</p>
                 </div>
             </div>
             <div  onClick={this.reset}className="btn"></div>
