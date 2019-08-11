@@ -74,11 +74,13 @@
     }
     .container{
       max-width: 1400px;
+      margin: 0 auto;
       display: flex;
 
       .bet-row{
         display: flex;
         flex-direction: column;
+        flex-grow: 2;
         justify-content: center;
         margin-bottom: 50px;
         .col{
@@ -163,6 +165,9 @@
       box-shadow: inset 0px 0px 40px 20px #101010;
       border-radius: 30px;
       overflow: hidden;
+      top: 0;
+      z-index: 0;
+      left: 0;
       background: -webkit-radial-gradient(#00ff0000, #00000073);
       background: radial-gradient(#00ff0000, #00000073);
       background-size: 6px 6px;
@@ -177,9 +182,16 @@
     }
     #bets{
       .container{
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+
         .bet-row{
+          display: flex;
+          flex-grow: 1;
           flex-wrap: wrap;
           flex-direction: row !important;
+          height: auto;
           margin-bottom: 0px !important;
           .col{
 

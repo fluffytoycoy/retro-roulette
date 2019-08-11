@@ -35,6 +35,12 @@
         width: auto;
       }
     }
+    .question-mark{
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 }
 
 @media only screen and (min-width: 768px){

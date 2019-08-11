@@ -7,7 +7,7 @@ import SlotTimer from './SlotTimer'
 import AllInSection from './BetSection/AllInSection';
 import BettingSection from './BetSection/BettingSection';
 
-import GameSection from './GameSection'
+import GameSection from './GameRoulette/GameSection'
 import axios from 'axios';
 
 class Home extends Component{
@@ -122,11 +122,13 @@ class Home extends Component{
                 <div className={`col ${this.state.isBetPlaced ? 'game' : ''}`}>
                   {this.state.isBetPlaced ? <GameSection game={this.state.game} slotFinished={this.state.slotFinished}/> : <BettingSection AllIn={this.bet}/>}
                 </div>
-                <div className="game-info">
-                  <h1>The Revenge of Shinobi</h1>
-                  <h2>Platform: Sega</h2>
-                  <p>Genre: Action</p>
-                </div>
+                { this.state.slotFinished ?
+                  <div className="game-info">
+                    <h1>The Revenge of Shinobi</h1>
+                    <h2>Platform: Sega</h2>
+                    <p>Genre: Action</p>
+                  </div>
+                  : <></>}
             </div>
             <div  onClick={this.reset}className="btn"></div>
             <div className="shadow"></div>

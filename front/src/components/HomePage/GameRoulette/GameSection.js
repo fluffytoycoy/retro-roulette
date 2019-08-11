@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import { Link, animateScroll as  scroller } from 'react-scroll';
 import './GameSection.scss';
+import GamePlaceHolder from './GamePlaceHolder';
+import GameImage from './GameImage';
 
-import {getRandomInt} from '../Utils/RandNum/RandNum'
 
 class GameSection extends Component{
   constructor(props){
@@ -13,7 +14,7 @@ class GameSection extends Component{
   }
 
   componentWillMount(){
-
+    console.log('testing', this.props)
   }
 
   componentDidMount(){
@@ -28,18 +29,17 @@ class GameSection extends Component{
 
   }
 
+  isQuestionMarkMounted(){
 
+  }
 
   render(){
     const {game, slotFinished} = this.props;
     return (
         <div className="game-section">
-          {slotFinished ?
-            <div>
-              <img  src="https://z7v6x4c5.stackpathcdn.com/storage/attachments/monthly_2017_02/58abe801b40ed_FatalFury(USA).png.2031ba08b6e2988e926aa14848b45f73.png"/>
-            </div>
-            : <h1>?</h1>
-          }
+          {slotFinished 
+            ? <GameImage mounted={this.props.slotFinished}/>
+            : <GamePlaceHolder mounted={!this.props.slotFinished}/>}
         </div>
     );
   }
