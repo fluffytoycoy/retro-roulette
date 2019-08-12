@@ -6,7 +6,8 @@ import SlotTimer from './SlotTimer'
 import AllInSection from './BetSection/AllInSection';
 import BettingSection from './BetSection/BettingSection';
 import BetBar from './BetSection/BetBar';
-
+import './BetSection/BetModal.scss';
+import BetModal from './BetSection/BetModal';
 import GameSection from './GameRoulette/GameSection'
 import GameInfo from './GameRoulette/GameInfo'
 import axios from 'axios';
@@ -20,10 +21,13 @@ class Home extends Component{
       game: undefined,
       rotationsCompleted: false,
       slotFinished: false,
+      betModalOpen: false
     }
     this.reset = this.reset.bind(this)
     this.setSlotSpin = this.setSlotSpin.bind(this)
     this.setSlotFinished = this.setSlotFinished.bind(this)
+    this.toggleBetModal = this.toggleBetModal.bind(this)
+    this.updateFilters = this.updateFilters.bind(this)
   }
 
   componentWillMount(){
@@ -47,9 +51,11 @@ class Home extends Component{
         self.resetSlot()
         axios.get('api/test')
           .then(response => {
-            setTimeout(()=>{
+            setTimeout(() => {
               self.setState({
-                game: Object.assign(response.data, {console: 2})
+                game: Object.assign(response.data, {
+                  console: 2
+                })
               })
             }, 6000)
 
@@ -58,6 +64,10 @@ class Home extends Component{
           })
       })
     }
+  }
+
+  setFilters(){
+
   }
 
   scrollTo() {
@@ -87,9 +97,20 @@ class Home extends Component{
     })
   }
 
+  toggleBetModal(){
+    this.setState({
+      betModalOpen: !this.state.betModalOpen
+    })
+  }
+
+  updateFilters(){
+
+  }
+
   render(){
     return (
-      <div id="home">
+      <>
+      <div id="home" className={`${this.state.betModalOpen ? 'blur' : ''}`}>
         <div id="hero">
           <div className="sign-wrapper">
             <img alt="retro vegas sign with lights on" className="lights-on" src="/img/retro_sign.png"/>
@@ -121,14 +142,16 @@ class Home extends Component{
                 </div>
                 <div className="divider"></div>
                 <div className={`col ${this.state.isBetPlaced ? 'game' : ''}`}>
-                  {this.state.isBetPlaced ? <GameSection game={this.state.game} slotFinished={this.state.slotFinished}/> : <BettingSection AllIn={this.bet}/>}
+                  {this.state.isBetPlaced ? <GameSection game={this.state.game} slotFinished={this.state.slotFinished}/> : <BettingSection toggleBetModal={this.toggleBetModal}/>}
                 </div>
                 {this.state.slotFinished ? <GameInfo mounted={this.state.slotFinished}/> : <></>}
             </div>
-            <BetBar slotFinished={this.state.slotFinished} spinAgain={this.reset}/>
+            <BetBar slotFinished={this.state.slotFinished} toggleBetModal={this.toggleBetModal} spinAgain={this.reset}/>
           </div>
         </div>
       </div>
+      <BetModal filters={this.state.filters} toggleBetModal={this.toggleBetModal} open={this.state.betModalOpen} toggleBetModal={this.toggleBetModal} updateFilters={this.updateFilters}/>
+      </>
     );
   }
 

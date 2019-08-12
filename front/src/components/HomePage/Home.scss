@@ -5,7 +5,10 @@
   background-size: cover;
   position: relative;
   background-attachment: fixed;
-
+  transition: all .5s ease-in-out;
+  &.blur{
+    filter: blur(5px);
+  }
   #hero {
     display: flex;
     justify-content: center;

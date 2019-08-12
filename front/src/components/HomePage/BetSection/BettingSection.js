@@ -20,7 +20,7 @@ componentWillMount(){
           <p>In addtion you can cross off genres you don't want such as Sports, RPGs, Racing, ect.</p>
           <p>The cards are in your hands, Ante up.</p>
         </div>
-        <div className="hero-btn">
+        <div onClick={this.props.toggleBetModal} className="hero-btn">Bet
         </div>
       </>
     );
