@@ -6,9 +6,7 @@ import './GameSection.scss';
 class GameSection extends Component{
   constructor(props) {
     super(props)
-    this.transitionEnd = this.transitionEnd.bind(this)
     this.mountStyle = this.mountStyle.bind(this)
-    this.unMountStyle = this.unMountStyle.bind(this)
     this.state ={ //base css
       show: true,
       style :{
@@ -17,26 +15,6 @@ class GameSection extends Component{
         transition: 'all 1s ease',
       }
     }
-  }
-
-  componentWillReceiveProps(newProps) { // check for the mounted props
-    if(!newProps.mounted)
-      return this.unMountStyle() // call outro animation when mounted prop is false
-    this.setState({ // remount the node when the mounted prop is true
-      show: true
-    })
-    setTimeout(this.mountStyle, 10) // call the into animation
-  }
-
-  unMountStyle() { // css for unmount animation
-    console.log('unmount style')
-    this.setState({
-      style: {
-        opacity: .7,
-        transform: 'scale(.5)',
-        transition: 'all 1s ease',
-      }
-    })
   }
 
   mountStyle() { // css for mount animation
@@ -52,15 +30,6 @@ class GameSection extends Component{
   componentDidMount(){
     setTimeout(this.mountStyle, 10) // call the into animation
   }
-
-  transitionEnd(){
-    if(!this.props.mounted){ // remove the node on transition end when the mounted prop is false
-      this.setState({
-        show: false
-      })
-    }
-  }
-
 
   render(){
     return this.state.show &&

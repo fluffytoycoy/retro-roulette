@@ -1,4 +1,3 @@
-
 #home {
   background: linear-gradient(rgba(58, 1, 72, 0.9),rgba(9, 2, 62, 0.9)), url("/img/bg.png");
   background-repeat: no-repeat;
@@ -6,6 +5,7 @@
   background-size: cover;
   position: relative;
   background-attachment: fixed;
+
   #hero {
     display: flex;
     justify-content: center;
@@ -14,6 +14,7 @@
     min-height: -webkit-fill-available;
     align-items: center;
     position: relative;
+
     .sign-wrapper {
       position: relative;
       max-width: 1200px;
@@ -22,6 +23,7 @@
       img {
         width: 100%;
         max-width: 800px;
+
         &.lights-on {
           position: absolute;
           opacity: 0.3;
@@ -32,36 +34,41 @@
 
     .btn-wrapper {
       width: 100%;
-          position: absolute;
-          bottom: 0;
-          max-width: 230px;
-          margin: 0 auto 30px;
+      position: absolute;
+      bottom: 0;
+      max-width: 230px;
+      margin: 0 auto 30px;
+
       .hero-btn {
         color: white;
         height: 50px;
         font-size: 1.8rem;
-        background:  rgba(255, 0, 153, 0.9);
+        background: rgba(255, 0, 153, 0.9);
         display: flex;
         justify-content: center;
         align-items: center;
         border-radius: 50px;
         font-weight: 100;
         //margin: 0 auto 30px;
-        box-shadow: #e7008f 0 0 17px, #ffffff 0 0 5px 0px;
+        box-shadow: #e7008f 0 0 17px, #ffffff 0 0 5px 0;
         font-family: 'Pinyon Script', cursive;
         cursor: pointer;
-        &:hover{
+        text-shadow: black 0 0 5px, black 0 5px 5px;
+
+        &:hover {
           background: rgba(255, 0, 153, 1);
         }
       }
     }
   }
-  #bets{
-        background: linear-gradient(rgba(18, 1, 60, 0.5), rgba(213, 0, 203, 0.5));
+
+  #bets {
+    background: linear-gradient(rgba(18, 1, 60, 0.5), rgba(213, 0, 203, 0.5));
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    .ad{
+
+    .ad {
       height: 90px;
       max-width: 728px;
       width: 100%;
@@ -70,20 +77,21 @@
       display: flex;
       justify-content: center;
       align-items: center;
-
     }
-    .container{
+
+    .container {
       max-width: 1400px;
       margin: 0 auto;
       display: flex;
 
-      .bet-row{
+      .bet-row {
         display: flex;
         flex-direction: column;
         flex-grow: 2;
         justify-content: center;
         margin-bottom: 50px;
-        .col{
+
+        .col {
           color: white;
           width: 100%;
           flex: 1;
@@ -94,20 +102,21 @@
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          &.game{
 
-          }
-          .text-block{
+          &.game {}
+
+          .text-block {
             text-align: center;
             margin: 0 20px;
-            h1{
+
+            h1 {
               font-size: 2rem;
               margin-bottom: 50px;
               letter-spacing: 2px;
               text-transform: uppercase;
-
             }
-            p{
+
+            p {
               font-size: 1.2rem;
               line-height: 1.5rem;
               letter-spacing: 1px;
@@ -115,7 +124,7 @@
             }
           }
 
-          .hero-btn{
+          .hero-btn {
             display: flex;
             height: 50px;
             background: rgba(255, 0, 0, 0.5);
@@ -126,40 +135,46 @@
             width: 200px;
             align-items: center;
             box-shadow: black 0 0;
-            transition: all .5s ease-in-out;
-            &:hover{
+            transition: all 0.5s ease-in-out;
+
+            &:hover {
               background: red;
             }
-            &.all-in{
+
+            &.all-in {
               margin-bottom: 20px;
             }
           }
         }
-        .divider{
+
+        .divider {
           width: 99%;
           margin: 0 auto;
           height: 3px;
           background: linear-gradient(45deg, transparent ,#ed0192, transparent);
-
         }
-        .game-info{
-          margin: 50px 20px 0;
+
+        .game-info {
+          margin: 0px 20px 0;
           //padding: 50px 0;
           display: flex;
           flex-direction: column;
           justify-content: center;
           text-align: center;
-          h1{
+
+          h1 {
             font-size: 2.5rem;
             margin-bottom: 20px;
           }
-          h2{
+
+          h2 {
             font-size: 2rem;
             margin-bottom: 10px;
           }
         }
       }
-      &#bet-section{
+
+      &#bet-section {
         flex-grow: 1;
         align-items: center;
         display: flex;
@@ -168,89 +183,122 @@
         justify-content: center;
         padding: 50px 0 0;
         //background testing
-      box-shadow: inset 0px 0px 0px 10px rgba(16, 16, 16, 0.5);
-      border-radius: 30px;
-      overflow: hidden;
-      top: 0;
-      z-index: 0;
-      left: 0;
-      background: radial-gradient(rgba(0, 17, 41, 0.5), #14013cba);
-      background-size: 6px 6px;
-      margin: 50px auto;
-      .btn{
-        height: 100px !important;
-        width: 100%;
-        background: rgba(255, 0, 0, 0.5);
-        pointer-events: auto;
-        cursor: pointer;
+        box-shadow: inset 0 0 0 10px rgba(16, 16, 16, 0.5);
+        border-radius: 30px;
+        overflow: hidden;
+        top: 0;
+        z-index: 0;
+        left: 0;
+        background: radial-gradient(rgba(0, 17, 41, 0.5), #14013cba);
+        background-size: 6px 6px;
+        margin: 50px auto;
 
-      }
+        .btn-bar {
+          height: 100px !important;
+          width: 100%;
+          background: rgba(255, 0, 0, 0.5);
+          pointer-events: auto;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 3rem;
+          letter-spacing: 2px;
+          font-weight: 700;
+          font-family: 'Pinyon Script', cursive;
+          text-shadow: black 0 0 5px, black 0 5px 5px;
+          &.finished{
+            background: transparent;
+             > div {
+              width: 50%;
+              /* background: white; */
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-size: 2rem;
+              cursor: pointer;
+                  height: 100%;
+
+              p {
+                transform: translate(0px, 0px);
+
+                transition: all 0.5s ease-in-out;
+              }
+
+              &:nth-child(1) {
+                background: rgba(255, 0, 0, 0.5);
+              }
+
+              &:nth-child(2) {
+                background: rgba(237, 1, 145, .5);
+              }
+            }
+          }
+
+        }
       }
     }
   }
 }
-@media only screen and (min-width: 768px){
+@media only screen and (min-width: 768px) {
+  #home {}
 
-  #home {
-    }
-    #bets{
-      .container{
-        max-width: 1400px;
-        margin: 0 auto;
+  #bets {
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+
+      .bet-row {
         display: flex;
+        flex-grow: 1;
+        flex-wrap: wrap;
+        flex-direction: row !important;
+        height: auto;
+        margin-bottom: 0 !important;
 
-        .bet-row{
-          display: flex;
-          flex-grow: 1;
-          flex-wrap: wrap;
-          flex-direction: row !important;
-          height: auto;
-          margin-bottom: 0px !important;
-          .col{
-
-            &.game{
-              flex: 0;
-            }
-
-          }
-
-          .game-info{
-            margin: 50px 20px 0;
-            text-align: center;
-            width: 50%;
+        .col {
+          &.game {
+            flex: 0;
           }
         }
 
+        .game-info {
+          margin: 0 20px 0;
+          text-align: center;
+          width: 50%;
+        }
       }
     }
   }
-
-@media only screen and (min-width: 1200px){
-  #home{
-
-    #bet-section{
-      .bet-row{
+}
+@media only screen and (min-width: 1200px) {
+  #home {
+    #bet-section {
+      .bet-row {
         margin-bottom: 50px !important;
-
       }
     }
-    .col{
+
+    .col {
       padding: 30px !important;
-      &.game{
+
+      &.game {
         //flex: 1 1 !important;
       }
     }
 
-    .divider{
+    .divider {
       height: auto !important;
       width: 3px !important;
       margin: 1% 0 !important;
     }
-    .all-in{
+
+    .all-in {
       margin-bottom: 0 !important;
     }
-    .game-info{
-          width: 100% !important;
+
+    .game-info {
+      width: 100% !important;
     }
   }
 }

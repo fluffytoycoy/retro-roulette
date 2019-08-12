@@ -5,13 +5,12 @@ import { Link, animateScroll as  scroller } from 'react-scroll';
 class GameInfo extends Component{
   constructor(props) {
     super(props)
-    this.transitionEnd = this.transitionEnd.bind(this)
     this.mountStyle = this.mountStyle.bind(this)
-    this.unMountStyle = this.unMountStyle.bind(this)
     this.state ={ //base css
       show: true,
       style :{
         opacity: 0,
+        height: 0,
         overflow: 'hidden',
         transition: 'all 1s ease',
       }
@@ -24,7 +23,7 @@ class GameInfo extends Component{
     this.setState({ // remount the node when the mounted prop is true
       show: true
     })
-    setTimeout(this.mountStyle, 10) // call the into animation
+    setTimeout(this.mountStyle, 500) // call the into animation
   }
 
   unMountStyle() { // css for unmount animation
@@ -42,6 +41,7 @@ class GameInfo extends Component{
     this.setState({
       style: {
         opacity: 1,
+        margin: '50px 0 0',
         overflow: 'hidden',
         transition: 'all 1s ease',
       }
@@ -49,17 +49,8 @@ class GameInfo extends Component{
   }
 
   componentDidMount(){
-    setTimeout(this.mountStyle, 10) // call the into animation
+    setTimeout(this.mountStyle, 500) // call the into animation
   }
-
-  transitionEnd(){
-    if(!this.props.mounted){ // remove the node on transition end when the mounted prop is false
-      this.setState({
-        show: false
-      })
-    }
-  }
-
 
   render(){
     return this.state.show &&

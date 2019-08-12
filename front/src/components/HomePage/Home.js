@@ -5,6 +5,7 @@ import SlotMachine from './SlotMachine/SlotMachine';
 import SlotTimer from './SlotTimer'
 import AllInSection from './BetSection/AllInSection';
 import BettingSection from './BetSection/BettingSection';
+import BetBar from './BetSection/BetBar';
 
 import GameSection from './GameRoulette/GameSection'
 import GameInfo from './GameRoulette/GameInfo'
@@ -124,7 +125,7 @@ class Home extends Component{
                 </div>
                 {this.state.slotFinished ? <GameInfo mounted={this.state.slotFinished}/> : <></>}
             </div>
-            <div  onClick={this.reset}className="btn"></div>
+            <BetBar slotFinished={this.state.slotFinished} spinAgain={this.reset}/>
           </div>
         </div>
       </div>
