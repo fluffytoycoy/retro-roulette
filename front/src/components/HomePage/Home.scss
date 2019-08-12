@@ -214,9 +214,9 @@
               display: flex;
               justify-content: center;
               align-items: center;
-              font-size: 2rem;
+              font-size: 1.5rem;
               cursor: pointer;
-                  height: 100%;
+              height: 100%;
 
               p {
                 transform: translate(0px, 0px);
@@ -269,7 +269,19 @@
         }
       }
     }
+    #bet-section {
+      .btn-bar {
+        &.finished{
+           > div {
+
+            font-size: 2.5rem !important;
+          }
+        }
+
+      }
+    }
   }
+
 }
 @media only screen and (min-width: 1200px) {
   #home {
