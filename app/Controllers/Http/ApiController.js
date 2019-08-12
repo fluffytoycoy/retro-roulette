@@ -4,7 +4,7 @@ const Database = use('Database')
 const Game = use('App/Models/Game')
 const User = use('App/Models/User')
 class ApiController {
-  async getGenres({response, request}){
+  async getGame({response, request}){
   //  console.log(request)
     try{
       const game = await Database
@@ -20,6 +20,7 @@ class ApiController {
       console.log(e)
     }
   }
+
   async login({response, auth, request}){
 
     const {username, password} = request.all();
@@ -34,6 +35,12 @@ class ApiController {
     } catch (error){
       return response.status(401).send()
     }
+  }
+
+  async getFilters({request, response}){
+    const trx = await Database.beginTransaction()
+    await Database.from('genres')
+    trx.commit();
   }
 }
 

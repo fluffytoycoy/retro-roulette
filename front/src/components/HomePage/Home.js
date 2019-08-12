@@ -17,7 +17,10 @@ class Home extends Component{
     super(props);
     this.state={
       isBetPlaced: false,
-      filters: [],
+      filters: {
+        consoles: [],
+        genres: [],
+      },
       game: undefined,
       rotationsCompleted: false,
       slotFinished: false,
