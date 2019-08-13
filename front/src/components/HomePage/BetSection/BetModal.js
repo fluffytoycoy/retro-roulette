@@ -12,22 +12,22 @@ class BetModal extends Component{
   constructor(props){
     super(props);
     this.state={
-      consoles: [],
-      genres: [],
     }
-    this.test = this.test.bind(this)
+    this.submit = this.submit.bind(this)
+    this.cancel = this.cancel.bind(this)
   }
 
-  test(values, e){
-    console.log(values, e)
+  submit(filters){
+    this.props.toggleBetModal();
+    console.log(filters)
+    this.props.updateFilters(filters.consoles, filters.genres)
   }
 
   cancel(){
-    console.log('canned')
+    this.props.toggleBetModal();
   }
 
   renderForm = ({errors}) =>{
-    console.log(errors)
     return(
       <Form>
         <h1>Pick Your Consoles</h1>
@@ -39,8 +39,8 @@ class BetModal extends Component{
         {errors.genres ? <p>**At least one genre must be selected**</p> : ''}
         <Field checkboxes options={this.props.filterOptions.genres} name='genres'/>
         <div className='btn-bar'>
-        <Button className='cancel' onClick={this.cancel}>Cancel</Button>
-        <Button className='submit' type="submit"/>
+        <Button disabled={this.props.open ? false : true} className='cancel' onClick={this.cancel}>Cancel</Button>
+        <Button disabled={this.props.open ? false : true} className='submit' type="submit"/>
         </div>
       </Form>
 
@@ -48,9 +48,9 @@ class BetModal extends Component{
   }
 
   render(){
-    const consoles = this.props.filtersSelected.consoles.map(console=>(console.value))
-    const genres = this.props.filtersSelected.genres.map(genres=>(genres.value))
-
+    const consoles = this.props.filtersSelected.consoles
+    const genres = this.props.filtersSelected.genres
+    console.log(consoles)
     return (
       this.props.filterOptions ?
       <CSSTransition
@@ -61,8 +61,7 @@ class BetModal extends Component{
           <div className="bet-modal">
             <div className="modal-wrapper">
               <div className="modal">
-                <div className="close-icon" onClick={this.props.toggleBetModal}>x</div>
-                <FormContainer onSubmit={this.test}
+                <FormContainer onSubmit={this.submit}
                 initialValues={{consoles: consoles, genres: genres}}
                 render={this.renderForm}
                 validationSchema={schema}/>

@@ -6,7 +6,7 @@ function BetBar(props){
     return (
       props.slotFinished ?
         <div className="btn-bar finished">
-          <div><p>Change Bet</p></div>
+          <div onClick={props.toggleBetModal}><p>Change Bet</p></div>
           <div onClick={props.spinAgain}><p>Spin Again</p></div>
       </div>
       :

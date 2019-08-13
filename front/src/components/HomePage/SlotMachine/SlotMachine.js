@@ -56,6 +56,10 @@ class SlotMachine extends Component{
     }
   }
 
+  shouldComponentUpdate(newProps){
+    return this.props.open === newProps.open ? true : false
+  }
+
   render(){
 
     const settings = {

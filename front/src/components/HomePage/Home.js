@@ -47,10 +47,10 @@ class Home extends Component{
           genres: response.data.genres
         },
         filtersSelected:{
-          consoles: response.data.consoles,
-          genres: response.data.genres
+          consoles: response.data.consoles.map(console=>(console.value)),
+          genres: response.data.genres.map(genre=>(genre.value)),
         }
-      }, ()=>{console.log(this.state)})
+      })
     })
   }
 
@@ -74,10 +74,10 @@ class Home extends Component{
             setTimeout(() => {
               self.setState({
                 game: Object.assign(response.data, {
-                  console: 2
+                  console: 1
                 })
               })
-            }, 6000)
+            }, 60)
 
           }).catch(error => {
             console.log(error)
@@ -86,12 +86,6 @@ class Home extends Component{
     }
   }
 
-  setFilters(){
-
-  }
-
-
-
   setSlotSpin(){
     console.log('slot timer finished')
     if(this.state.game){
@@ -99,12 +93,13 @@ class Home extends Component{
         rotationsCompleted: true
       })
     } else{
-      this.state.rotationsCompleted = true
+      this.setState({
+        rotationsCompleted: true
+      })
     }
   }
 
   setSlotFinished(){
-    console.log('slot finished')
     this.setState({
       slotFinished: true,
     })
@@ -117,8 +112,16 @@ class Home extends Component{
     })
   }
 
-  updateFilters(){
-
+  updateFilters(consoles, genres){
+    let self = this;
+    this.setState({
+      filtersSelected:{
+        consoles: consoles,
+        genres: genres
+      }
+    }, ()=>{
+      console.log(this.state.filtersSelected)
+    })
   }
 
   render(){
@@ -139,7 +142,7 @@ class Home extends Component{
             <div className="bet-row">
                 <div className="col">
                   {this.state.isBetPlaced ?
-                    <SlotMachine slotFinished={this.state.slotFinished} setSlotFinished={this.setSlotFinished} game={this.state.game} rotationsCompleted={this.state.rotationsCompleted} setReset={e => this.resetSlot = e} />
+                    <SlotMachine open={this.state.betModalOpen} slotFinished={this.state.slotFinished} setSlotFinished={this.setSlotFinished} game={this.state.game} rotationsCompleted={this.state.rotationsCompleted} setReset={e => this.resetSlot = e} />
                     : <AllInSection AllIn={this.reset}/>}
                 </div>
                 <div className="divider"></div>
