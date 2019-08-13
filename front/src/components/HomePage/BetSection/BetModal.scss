@@ -1,3 +1,8 @@
+.modal::-webkit-scrollbar {
+  display: none;
+width: 0px;  /* Remove scrollbar space */
+background: transparent;  /* Optional: just make scrollbar invisible */
+}
 .bet-modal {
   position: fixed;
   height: 100%;
@@ -11,10 +16,12 @@
 
   &.bet-modal-enter {
     opacity: 0;
+
   }
 
   &.bet-modal-enter-done {
     opacity: 1;
+
   }
 
   .modal-wrapper {
@@ -31,6 +38,8 @@
           border-radius: 10px;
           box-shadow: black 0 0 10px;
           border: rgb(143, 5, 24) solid 10px;
+          max-height: 800px;
+    overflow: auto;
       .close-icon{
         position: absolute;
         top: 0;

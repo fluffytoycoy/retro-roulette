@@ -1,7 +1,11 @@
 @import 'sass/reset';
 @import 'sass/variables';
 @import url('https://fonts.googleapis.com/css?family=Pinyon+Script&display=swap');
-
+body{
+  &.modal{
+    overflow: hidden;
+  }
+}
 html, body, #root {
     height: 100%;
     color: white;

@@ -111,6 +111,7 @@ class Home extends Component{
   }
 
   toggleBetModal(){
+    document.body.classList.toggle('modal')
     this.setState({
       betModalOpen: !this.state.betModalOpen
     })
