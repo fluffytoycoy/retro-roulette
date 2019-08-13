@@ -1,8 +1,10 @@
 .modal::-webkit-scrollbar {
   display: none;
-width: 0px;  /* Remove scrollbar space */
-background: transparent;  /* Optional: just make scrollbar invisible */
+  width: 0; /* Remove scrollbar space */
+  background: transparent;
+  /* Optional: just make scrollbar invisible */
 }
+
 .bet-modal {
   position: fixed;
   height: 100%;
@@ -16,12 +18,10 @@ background: transparent;  /* Optional: just make scrollbar invisible */
 
   &.bet-modal-enter {
     opacity: 0;
-
   }
 
   &.bet-modal-enter-done {
     opacity: 1;
-
   }
 
   .modal-wrapper {
@@ -31,48 +31,62 @@ background: transparent;  /* Optional: just make scrollbar invisible */
 
     .modal {
       height: 100%;
-          background: #960127;
-              margin: 50px 20px;
-          padding: 20px;
-          position: relative;
-          border-radius: 10px;
-          box-shadow: black 0 0 10px;
-          border: rgb(143, 5, 24) solid 10px;
-          max-height: 800px;
-    overflow: auto;
-      .close-icon{
+      background: #960127;
+      margin: 50px 20px;
+      padding: 20px;
+      position: relative;
+      border-radius: 10px;
+      box-shadow: black 0 0 10px;
+      border: rgb(143, 5, 24) solid 10px;
+      max-height: 800px;
+      overflow: auto;
+
+      .close-icon {
         position: absolute;
         top: 0;
         right: 0;
-        margin: 0px 10px;
+        margin: 0 10px;
         font-size: 1.2rem;
         cursor: pointer;
       }
-      h1{
+
+      h1 {
         font-size: 1.5rem;
         text-align: center;
         margin-top: 20px;
         font-weight: 600;
         letter-spacing: 3px;
-        text-transform:  uppercase;
+        text-transform: uppercase;
       }
-      .divider{
+
+      .divider {
         margin: 10px 20px;
         /* width: 100%; */
         height: 2px;
-        background: linear-gradient(45deg, transparent, #1a043f, transparent);
+        background: linear-gradient(45deg, transparent, #090138, transparent);
       }
-      form{
-        .ui-label{
+
+      form {
+        .ui-error,
+        .ui-label {
           display: none;
         }
+
+        p {
+          margin-bottom: 10px;
+          font-weight: 700;
+          color: black;
+          text-align: center;
+        }
+
         .ui-field-full {
           display: flex;
           flex-wrap: wrap;
           justify-content: center;
           max-width: 500px;
           margin: 0 auto;
-          label{
+
+          label {
             padding: 10px 10px 10px 0;
             flex-basis: calc(50% - 10px);
             display: flex;
@@ -81,9 +95,37 @@ background: transparent;  /* Optional: just make scrollbar invisible */
             justify-content: space-between;
             flex-direction: row-reverse;
 
-            &:nth-child(odd){
-              border-right: solid #1b043f 1px;
+            &:nth-child(odd) {
+              border-right: solid #090138 1px;
             }
+          }
+        }
+      }
+
+      .btn-bar {
+        margin-top: 20px;
+        max-width: 500px;
+        margin: 20px auto;
+        display: flex;
+        justify-content: flex-end;
+
+        button {
+          width: 100px;
+          font-size: 1rem;
+          cursor: pointer;
+          padding: 8px 0;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          font-family: inherit;
+          //font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+          &.submit {
+            background: #ff0099;
+          }
+
+          &.cancel {
+            margin-right: 20px;
+            background: #090138;
           }
         }
       }

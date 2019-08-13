@@ -1,6 +1,12 @@
 import React, {Component} from 'react';
 import { CSSTransition } from 'react-transition-group';
+import * as Yup from "yup";
 import { FormContainer, Form, Field, Button } from 'ui-form-field';
+
+const schema = Yup.object().shape({
+  consoles: Yup.array().required(),
+  genres: Yup.array().required("At least one genrea must be selected"),
+});
 
 class BetModal extends Component{
   constructor(props){
@@ -12,20 +18,30 @@ class BetModal extends Component{
     this.test = this.test.bind(this)
   }
 
-  test(values){
-    console.log(values)
+  test(values, e){
+    console.log(values, e)
   }
 
-  renderForm = (props) =>{
+  cancel(){
+    console.log('canned')
+  }
+
+  renderForm = ({errors}) =>{
+    console.log(errors)
     return(
       <Form>
         <h1>Pick Your Consoles</h1>
         <div className="divider"></div>
+        {errors.consoles ? <p>**At least one console must be selected**</p> : ''}
         <Field checkboxes options={this.props.filterOptions.consoles} name='consoles'/>
         <h1>Pick Your Genres</h1>
         <div className="divider"></div>
+        {errors.genres ? <p>**At least one genre must be selected**</p> : ''}
         <Field checkboxes options={this.props.filterOptions.genres} name='genres'/>
-        <Button type="submit"/>
+        <div className='btn-bar'>
+        <Button className='cancel' onClick={this.cancel}>Cancel</Button>
+        <Button className='submit' type="submit"/>
+        </div>
       </Form>
 
     )
@@ -46,7 +62,10 @@ class BetModal extends Component{
             <div className="modal-wrapper">
               <div className="modal">
                 <div className="close-icon" onClick={this.props.toggleBetModal}>x</div>
-                <FormContainer onSubmit={this.test}  initialValues={{consoles: consoles, genres: genres}} render={this.renderForm}/>
+                <FormContainer onSubmit={this.test}
+                initialValues={{consoles: consoles, genres: genres}}
+                render={this.renderForm}
+                validationSchema={schema}/>
               </div>
             </div>
           </div>
