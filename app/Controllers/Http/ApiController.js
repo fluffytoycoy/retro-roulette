@@ -38,9 +38,16 @@ class ApiController {
   }
 
   async getFilters({request, response}){
-    const trx = await Database.beginTransaction()
-    await Database.from('genres')
-    trx.commit();
+    const filters = {}
+    try{
+      filters.consoles = await Database.select('id as value','name').from('consoles')
+      filters.genres = await Database.select('id as value','name').from('genres')
+      return filters
+    } catch(e){
+      console.log(e)
+      return response.status(500).send()
+    }
+
   }
 }
 

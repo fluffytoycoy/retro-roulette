@@ -21,6 +21,7 @@ const Helpers = use('Helpers');
 Route.group(() => {
     Route.get('/test', 'ApiController.getGame');
     Route.post('/login', 'ApiController.login');
+    Route.get('/filterInfo', 'ApiController.getFilters')
 }).prefix('api/');
 
 Route.any('*', ({ response }) => {
