@@ -3,8 +3,10 @@ import { Link, animateScroll as  scroller } from 'react-scroll';
 import './Home.scss';
 import SlotMachine from './SlotMachine/SlotMachine';
 import SlotTimer from './SlotTimer'
+import Hero from './Hero/Hero';
 import AllInSection from './BetSection/AllInSection';
 import BettingSection from './BetSection/BettingSection';
+import RouletteSVG from './Hero/Roulette';
 import BetBar from './BetSection/BetBar';
 import './BetSection/BetModal.scss';
 import BetModal from './BetSection/BetModal';
@@ -90,14 +92,7 @@ class Home extends Component{
 
   }
 
-  scrollTo() {
-    //scroll to for hero button
-  scroller.scrollTo('scroll-to-element', {
-    duration: 800,
-    delay: 0,
-    smooth: 'easeInOutQuart'
-  })
-}
+
 
   setSlotSpin(){
     console.log('slot timer finished')
@@ -131,19 +126,7 @@ class Home extends Component{
     return (
       <>
       <div id="home" className={`${this.state.betModalOpen ? 'blur' : ''}`}>
-        <div id="hero">
-          <div className="sign-wrapper">
-            <img alt="retro vegas sign with lights on" className="lights-on" src="/img/retro_sign.png"/>
-            <img alt="retro vegas sign with lights off" className="lights-off" src="/img/retro_sign_off.png"/>
-          </div>
-          <div className="btn-wrapper">
-            <Link to="bet-section" smooth={true} duration={500}>
-              <div className="hero-btn">
-                Place your bets
-              </div>
-            </Link >
-          </div>
-        </div>
+        <Hero/>
         <div id="bets">
           <div className="container">
             <div>
@@ -172,7 +155,7 @@ class Home extends Component{
       </div>
       <BetModal filterOptions={this.state.filterOptions}
                 filtersSelected={this.state.filtersSelected}
-                toggleBetModal={this.toggleBetModal} 
+                toggleBetModal={this.toggleBetModal}
                 open={this.state.betModalOpen}
                 toggleBetModal={this.toggleBetModal}
                 updateFilters={this.updateFilters}/>

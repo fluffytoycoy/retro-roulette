@@ -1,0 +1,74 @@
+#hero {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  align-items: center;
+  position: relative;
+
+  .sign-wrapper {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 20px;
+    //margin: 0 20px 130px;
+    img {
+      width: 100%;
+      max-width: 800px;
+
+      &.lights-on {
+        position: absolute;
+        opacity: 0.3;
+        transition: opacity 0.5s ease-in-out;
+        animation: light-up 10s ease-in 4s alternate infinite;
+      }
+    }
+  }
+
+  .btn-wrapper {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    max-width: 230px;
+    margin: 0 auto 30px;
+
+    .hero-btn {
+      color: white;
+      height: 50px;
+      font-size: 1.8rem;
+      background: rgba(255, 0, 153, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50px;
+      font-weight: 100;
+      //margin: 0 auto 30px;
+      box-shadow: #e7008f 0 0 17px, #ffffff 0 0 5px 0;
+      font-family: 'Pinyon Script', cursive;
+      cursor: pointer;
+      text-shadow: black 0 0 5px, black 0 5px 5px;
+
+      &:hover {
+        background: rgba(255, 0, 153, 1);
+      }
+    }
+  }
+}
+
+@keyframes light-up{
+  0%{
+    opacity: .3;
+  }
+  20%{
+    opacity: 1;
+  }
+  70%{
+    opacity: 1;
+  }
+  90%{
+    opacity: .3;
+  }
+  100%{
+    opacity: .3
+  }
+}
