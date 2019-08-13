@@ -33,7 +33,6 @@ class SlotMachine extends Component{
   reset(){
     //reStarts the roulette
     this.setState({
-      selectedSystem: undefined,
       autoPlay: true,
       rotationsCompleted: false,
     })
@@ -44,7 +43,6 @@ class SlotMachine extends Component{
     //else if game exists && rotationsCompleted
     //stop the rotation on selected game and set slot to finished
     if(!newProps.slotFinished){
-      console.log(newProps)
       if (newProps.game &&  newProps.rotationsCompleted) {
         this.setState({
           autoPlay: false,
@@ -70,7 +68,7 @@ class SlotMachine extends Component{
       autoPlay: this.state.autoPlay,
       interval: 150,
       swipeable: false,
-      transitionTime: 100,
+      transitionTime: 200,
       infiniteLoop: true,
       axis: "vertical",
       stopOnHover: false,

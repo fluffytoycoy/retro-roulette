@@ -50,7 +50,6 @@ class BetModal extends Component{
   render(){
     const consoles = this.props.filtersSelected.consoles
     const genres = this.props.filtersSelected.genres
-    console.log(consoles)
     return (
       this.props.filterOptions ?
       <CSSTransition

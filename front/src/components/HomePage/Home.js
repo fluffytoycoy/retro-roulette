@@ -120,7 +120,7 @@ class Home extends Component{
         genres: genres
       }
     }, ()=>{
-      console.log(this.state.filtersSelected)
+      self.reset()
     })
   }
 
