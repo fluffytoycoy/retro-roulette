@@ -1,17 +1,10 @@
 import React from 'react';
 import './Hero.scss';
 import RouletteSVG from './Roulette';
-import { Link, animateScroll as  scroller } from 'react-scroll';
+import { Link } from 'react-scroll';
 
 function Hero(){
-  function scrollTo() {
-    //scroll to for hero button
-  scroller.scrollTo('scroll-to-element', {
-    duration: 800,
-    delay: 0,
-    smooth: 'easeInOutQuart'
-  })
-}
+
 
   return(
     <div id="hero">
@@ -21,7 +14,7 @@ function Hero(){
         <RouletteSVG/>
       </div>
       <div className="btn-wrapper">
-        <Link to="bet-section" smooth={true} duration={500}>
+        <Link to="bet-section" smooth={true} duration={700}>
           <div className="hero-btn">
             Place your bets
           </div>

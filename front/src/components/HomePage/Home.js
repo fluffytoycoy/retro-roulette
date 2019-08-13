@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
-import { Link, animateScroll as  scroller } from 'react-scroll';
 import './Home.scss';
 import SlotMachine from './SlotMachine/SlotMachine';
 import SlotTimer from './SlotTimer'
 import Hero from './Hero/Hero';
 import AllInSection from './BetSection/AllInSection';
 import BettingSection from './BetSection/BettingSection';
-import RouletteSVG from './Hero/Roulette';
 import BetBar from './BetSection/BetBar';
 import './BetSection/BetModal.scss';
 import BetModal from './BetSection/BetModal';
@@ -157,7 +155,6 @@ class Home extends Component{
                 filtersSelected={this.state.filtersSelected}
                 toggleBetModal={this.toggleBetModal}
                 open={this.state.betModalOpen}
-                toggleBetModal={this.toggleBetModal}
                 updateFilters={this.updateFilters}/>
       </>
     );

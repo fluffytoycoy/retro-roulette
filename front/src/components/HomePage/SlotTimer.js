@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import { Link, animateScroll as  scroller } from 'react-scroll';
-import Slider from "react-slick";
 import Timer from 'react-compound-timer'
-import {getRandomInt} from '../Utils/RandNum/RandNum'
+
 
 
 
@@ -14,7 +12,7 @@ const withTimer = timerProps => WrappedComponent => wrappedComponentProps => (
   </Timer>
 );
 
-class STimer extends React.Component {
+class STimer extends Component {
   constructor(props){
     super(props);
 
@@ -24,7 +22,7 @@ class STimer extends React.Component {
     componentDidMount(props) {
         this.props.setReset(this.resetTimer);
 
-        const { setCheckpoints, stop, reset, setDirection, setTime, start } = this.props.timer;
+        const { setCheckpoints, stop } = this.props.timer;
         const {setRotationsCompleted} = this.props;
         setCheckpoints([{
                 time: 5000,

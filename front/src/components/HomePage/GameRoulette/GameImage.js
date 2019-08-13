@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { Link, animateScroll as  scroller } from 'react-scroll';
 import './GameSection.scss';
 
 
@@ -34,7 +33,7 @@ class GameSection extends Component{
   render(){
     return this.state.show &&
     <div style={this.state.style} onTransitionEnd={this.transitionEnd}>
-      <img  src="https://z7v6x4c5.stackpathcdn.com/storage/attachments/monthly_2017_02/58abe801b40ed_FatalFury(USA).png.2031ba08b6e2988e926aa14848b45f73.png"/>
+      <img  alt="game cover" src="https://z7v6x4c5.stackpathcdn.com/storage/attachments/monthly_2017_02/58abe801b40ed_FatalFury(USA).png.2031ba08b6e2988e926aa14848b45f73.png"/>
     </div>
   }
 

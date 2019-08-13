@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { Link, animateScroll as  scroller } from 'react-scroll';
 import './GameSection.scss';
 
 

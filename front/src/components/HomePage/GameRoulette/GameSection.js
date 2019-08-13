@@ -1,5 +1,4 @@
-import React, {Component} from 'react';
-import { Link, animateScroll as  scroller } from 'react-scroll';
+import React from 'react';
 import './GameSection.scss';
 import GamePlaceHolder from './GamePlaceHolder';
 import GameImage from './GameImage';

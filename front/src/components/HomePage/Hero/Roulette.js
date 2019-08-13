@@ -3,18 +3,18 @@ import './Roulette.scss';
 
 function RouletteSVG(){
   return (
-    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsLink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 638 192.7" enable-background="new 0 0 638 192.7" xmlSpace="preserve">
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnslink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 638 192.7" enableBackground="new 0 0 638 192.7" xmlSpace="preserve">
     <g id="Layer_2" display="none">
       <rect id="XMLID_1_" display="inline" fill="none" width="638" height="192.5"></rect>
       <rect id="XMLID_3_" x="11" y="5" display="inline" fill="none" width="627" height="187.5"></rect>
       <g id="XMLID_7_" display="inline">
         <defs>
-          <text id="XMLID_5_" transform="matrix(1 0 0 1 47 177)" font-family="'PinyonScript'" font-size="200px">Roulette</text>
+          <text id="XMLID_5_" transform="matrix(1 0 0 1 47 177)" fontFamily="'PinyonScript'" fontSize="200px">Roulette</text>
         </defs>
         <clipPath id="XMLID_25_">
           <use xlinkHref="#XMLID_5_" overflow="visible"></use>
         </clipPath>
-        <path id="XMLID_6_" clip-path="url(#XMLID_25_)" fill="none" stroke="#0000FF" stroke-width="9" stroke-miterlimit="10" d="
+        <path id="XMLID_6_" clipPath="url(#XMLID_25_)" fill="none" stroke="#0000FF" strokeWidth="9" strokeMiterlimit="10" d="
           M25.8,157.3c2.5,1.6,3.1,2.2,3,2.4c-0.3,0.5-5.5-2.9-8.9-1.1c-2,1.1-3.3,3.9-3,6.3c0.9,6.2,13.9,11.4,25,9.9
           c4-0.6,8.6-2.1,19.5-10.6c8.5-6.6,15.5-13.2,25.6-24.3c9.4-10.2,13.9-15.4,21.8-25.1c24.1-29.7,23.7-33.8,37.9-47.3
           c10.4-9.9,18.3-15.1,25.3-18.7c13-6.7,18.2-3,22.3-8.3c6-7.8,0.9-22-2-27.3C173.3-21.4,51.1-32.6,18,29
@@ -70,7 +70,7 @@ function RouletteSVG(){
         <clipPath id="R_MASK_3_">
           <use xlinkHref="#R_MASK_1_" overflow="visible"></use>
         </clipPath>
-        <path id="R6" clip-path="url(#R_MASK_3_)" fill="none" stroke="#0000FF" stroke-width="15" stroke-miterlimit="10" d="M180.7,47
+        <path id="R6" clipPath="url(#R_MASK_3_)" fill="none" stroke="#0000FF" strokeWidth="15" strokeMiterlimit="10" d="M180.7,47
           c1.4,2.6,3.1,6.7,4,11.8c0.9,5.4,0.5,9.8,0.2,12.2c-0.8,5.7-2.7,9.7-3.8,12.2c-0.6,1.3-2.7,5.5-6.5,10.2c-3.2,3.9-6.2,6.4-9,8.7
           c-3.4,2.8-6.5,4.7-9,6.3c-1.8,1.2-3.3,2.3-5.5,3.3c-1.7,0.8-1.8,0.7-4.5,1.8c-4,1.7-4.1,2.2-6.3,2.8c-2,0.6-3.6,0.7-5.3,0.8
           c-1.9,0.1-3.5,0.3-5.5-0.2c-1.7-0.3-3.7-0.8-4.3-2.3c-0.3-0.7-0.2-1.5,0.2-2.2c0.7-1.1,2.3-1.2,3.5-1.3c1-0.1,1.8,0.1,3.3,0.3
@@ -80,9 +80,9 @@ function RouletteSVG(){
           c2.4,0.1,4.4,0.3,6.8-0.3c2-0.4,3.4-1.1,6.3-2.5c0.8-0.4,3.4-1.7,6.9-3.9c1.9-1.2,4.3-2.7,7.3-5.1c1.8-1.5,4-3.3,6.4-6
           c0.7-0.8,0.9-1.1,4.6-6.3c4.3-5.9,4.5-6.2,5.1-7.3c1.8-3.1,2.9-5.7,3.8-7.8c0.9-2.2,1.9-4.8,2.8-8.3c0.4-1.8,0.6-3.1,1.1-7.4
           c0.3-2.9,0.8-6.8,1.3-11.4"></path>
-        <path id="R5" clip-path="url(#R_MASK_3_)" fill="none" stroke="#0000FF" stroke-width="4" stroke-miterlimit="10" d="M164.8,33.7
+        <path id="R5" clipPath="url(#R_MASK_3_)" fill="none" stroke="#0000FF" strokeWidth="4" strokeMiterlimit="10" d="M164.8,33.7
           c1.3,0.6,2.8,1.3,4.5,2.3c1.1,0.7,2.7,1.7,4.5,3.3c3,2.6,4.8,5.1,5.5,6.2c1.9,2.8,3.1,5.4,3.8,7.5" ></path>
-        <path id="R4" clip-path="url(#R_MASK_3_)" fill="none" stroke="#0000FF" stroke-width="8" stroke-miterlimit="10" d="M117,41.3
+        <path id="R4" clipPath="url(#R_MASK_3_)" fill="none" stroke="#0000FF" strokeWidth="8" strokeMiterlimit="10" d="M117,41.3
           c0,4-0.3,8.5-1.3,13.5c-1.2,6.5-3.1,11.3-3.8,13c-1.6,3.9-3,6.4-5.8,11.3c-2.5,4.3-4.5,7.8-7.8,12.3c-1.9,2.5-4.7,6.3-9.3,10.5
           c-2.3,2.1-4.9,4.6-9,7c-3,1.8-5.4,2.7-10,4.5c-4.1,1.6-5.6,1.9-6.8,2c-3.3,0.4-6-0.2-7.3-0.5c-1.4-0.3-3.3-0.8-5.5-2
           c-3.1-1.8-4.9-4-5.3-4.5c-2.1-2.8-2.7-5.6-3.3-8.5c-0.8-4.3-0.6-7.9-0.3-10c0.6-3.9,1.7-6.6,3-9.5c1.8-4.1,3.7-7,6-10.5
@@ -90,12 +90,12 @@ function RouletteSVG(){
           c3.2-1.6,5.6-2.7,6.2-3c1.9-0.9,4.2-1.9,7.3-3.2c1.6-0.6,4.2-1.6,7.5-2.7c1.7-0.5,3.7-1.2,6.3-1.8c4.3-1.1,7.7-1.5,8.7-1.7
           c2.1-0.3,4.6-0.4,9.7-0.7c4.8-0.2,7.3-0.4,9.5-0.3c2.8,0,5.5,0.1,9.2,0.7c1,0.2,4,0.7,7.8,1.8c2.3,0.7,4,1.4,6,2.2
           c2.2,0.9,4.1,1.7,5.5,2.3"></path>
-        <path id="R3" clip-path="url(#R_MASK_3_)" fill="none" stroke="#0000FF" stroke-width="5" stroke-miterlimit="10" d="M159.5,48.5
+        <path id="R3" clipPath="url(#R_MASK_3_)" fill="none" stroke="#0000FF" strokeWidth="5" strokeMiterlimit="10" d="M159.5,48.5
           c1.8-1,4.6-2.6,7.8-4.8c3.1-2.1,3.3-2.5,6.3-4.5c4.7-3.1,8.4-5,9.5-5.5c2.3-1.1,4.7-2.3,8-3.3c2.8-0.8,7.1-1.8,12.5-1.8" ></path>
-        <path id="R2_1_" clip-path="url(#R_MASK_3_)" fill="none" stroke="#0000FF" stroke-width="14" stroke-miterlimit="10" d="
+        <path id="R2_1_" clipPath="url(#R_MASK_3_)" fill="none" stroke="#0000FF" strokeWidth="14" strokeMiterlimit="10" d="
           M46.3,180.5c4.7-2.7,11.3-7.1,18.3-13.5c4.5-4.1,7.5-7.6,13.3-14.5c8.7-10.3,14.8-18.7,17.3-22c5.1-7,5-7.4,16.8-24.8
           c8.8-13.1,13.3-19.7,17-24.3c7-8.7,13.1-14.7,18.3-19.8c7.8-7.6,15.2-14.1,22-19.5" ></path>
-        <path id="R1_1_" clip-path="url(#R_MASK_3_)" fill="none" stroke="#0000FF" stroke-width="5" stroke-miterlimit="10" d="
+        <path id="R1_1_" clipPath="url(#R_MASK_3_)" fill="none" stroke="#0000FF" strokeWidth="5" strokeMiterlimit="10" d="
           M25.5,160.5c-2.2-0.1-7.6,0-11,3.8c-0.5,0.5-3,3.3-2,5c0.6,1.1,2.4,1.5,3.8,1c2.1-0.7,3.2-3.5,2.5-4.5c-1.1-1.6-7.9-0.7-9.8,3.3
           c-1.1,2.3-0.1,4.9,0.5,6.5c1.2,3,3.3,4.7,4.5,5.8c0.7,0.5,2.3,1.8,4.8,2.8c1.1,0.4,3,1,7.3,1.3c3.1,0.2,6,0.3,9.5-0.3
           c5.5-0.9,9.3-3.1,13.5-5.5c3-1.7,6.9-4.3,11-8"></path>
@@ -116,17 +116,17 @@ function RouletteSVG(){
         <clipPath id="O_MASK_1_">
           <use xlinkHref="#O_MASK" overflow="visible"></use>
         </clipPath>
-        <path id="O3" clip-path="url(#O_MASK_1_)" fill="none" stroke="#0000FF" stroke-width="4" stroke-miterlimit="10" d="M194,185.7
+        <path id="O3" clipPath="url(#O_MASK_1_)" fill="none" stroke="#0000FF" strokeWidth="4" strokeMiterlimit="10" d="M194,185.7
           c2.1-0.2,3.8-0.5,5-0.7c2.1-0.3,3.2-0.5,4.3-0.8c1.7-0.5,2.9-1.1,4.3-1.8c0.5-0.2,2.4-1.2,5-3c2.3-1.5,3.8-2.9,5.3-4.2
           c1.5-1.3,2.9-2.5,4.5-4.2c0.5-0.5,0.8-0.9,4.3-5.2c2.9-3.6,3.2-3.9,3.5-4.3c1-1.3,1.8-2.7,3.5-5.3c1.5-2.3,2.2-3.5,2.8-4.7
           c1.2-2.1,1.1-2.4,2.3-4.7c1.4-2.5,2-3.3,1.8-3.5c-0.4-0.4-3.1,1.6-5.2,3.7c-1.9,2-2.9,3.7-3.2,4.2c-0.6,1.1-1.5,2.6-1.8,4.8
           c-0.6,3.4,0.4,6,1.2,8c0.5,1.3,0.9,1.8,1.3,2.2c0.4,0.3,1.5,1,4.5,0.5c1.5-0.3,3.4-0.8,6.2-2.3c1.4-0.8,3.6-2.1,6-4.3
           c1.1-1,1.2-1.2,2.8-3c3.3-3.5,4.1-3.8,6.8-6.7c1.9-1.9,1.8-2.1,5.3-6.2c2.4-2.8,4.4-5,5.7-6.3"></path>
-        <path id="O2" clip-path="url(#O_MASK_1_)" fill="none" stroke="#0000FF" stroke-width="14" stroke-miterlimit="10" d="
+        <path id="O2" clipPath="url(#O_MASK_1_)" fill="none" stroke="#0000FF" strokeWidth="14" strokeMiterlimit="10" d="
           M234.3,109.3c-2.4-0.1-7,0-12,2.5c-1.9,0.9-3.7,2.5-7.3,5.5c-3.5,2.9-6,5.3-7,6.3c-2.6,2.6-4.3,4.6-6,6.5
           c-2.2,2.5-3.9,4.5-5.8,7.2c-3.2,4.4-5.2,8.1-6.3,10.3c-1.4,2.7-3.2,6.1-4.8,10.8c-1.9,5.5-3.1,8.3-3,12c0,1.9,0,4.8,1.7,8
           c0.7,1.4,2.1,4.1,5.3,5.8c3.3,1.8,6.5,1.5,7.7,1.3"></path>
-        <path id="O1" clip-path="url(#O_MASK_1_)" fill="none" stroke="#0000FF" stroke-width="4" stroke-miterlimit="10" d="M243.3,145.3
+        <path id="O1" clipPath="url(#O_MASK_1_)" fill="none" stroke="#0000FF" strokeWidth="4" strokeMiterlimit="10" d="M243.3,145.3
           c-1.9-1.4-2.3-2.5-2.3-3.3c0-0.8,0.4-1.2,1-2.7c0.4-1,0.7-1.9,1.2-3.7c0.6-2.3,0.9-4.1,1.2-5.5c0.4-2.3,0.6-3.9,0.7-6.2
           c0-2.5-0.2-4.2-0.3-4.8c-0.2-1.2-0.4-2.4-1-3.8c-0.4-1.1-0.9-2.2-2-3.3c-1.5-1.6-3.2-2.1-4-2.3c-1.7-0.5-3.1-0.4-4.3-0.3
           c-1.3,0.1-3.4,0.4-5.8,1.5"></path>
@@ -144,24 +144,24 @@ function RouletteSVG(){
         <clipPath id="U_MASK_1_">
           <use xlinkHref="#U_MASK" overflow="visible"></use>
         </clipPath>
-        <path id="u6" clip-path="url(#U_MASK_1_)" fill="none" stroke="#0000FF" stroke-width="4" stroke-miterlimit="10" d="M298.8,178.3
+        <path id="u6" clipPath="url(#U_MASK_1_)" fill="none" stroke="#0000FF" strokeWidth="4" strokeMiterlimit="10" d="M298.8,178.3
           c0,1,0.2,3.1,1.6,4.9c0.4,0.5,1,1.3,2,1.8c0.7,0.4,1.3,0.4,2.4,0.6c0.7,0.1,1.9,0.2,3.3,0.1c1.2-0.1,2-0.4,3.7-0.9
           c1.1-0.4,2.3-0.8,3.8-1.5c1.3-0.6,1.3-0.8,3.7-2.3c2.9-1.8,3-1.6,4.3-2.6c1.6-1.2,1.3-1.4,3.3-3c1.7-1.3,2-1.3,3.5-2.6
           c0.8-0.7,0.7-0.7,2.5-2.4c1.9-1.8,1.9-1.7,2.8-2.6c1.1-1.1,1-1.3,2.6-3c1.3-1.5,1.3-1.3,2.5-2.7c1.4-1.6,1.4-1.8,2.9-3.5
           c1.1-1.3,1.2-1.3,2.8-3c1.4-1.6,1.3-1.6,2.2-2.5c1.6-1.7,2.1-2.1,3.9-3.8c1.3-1.3,1-1.2,3-3.3c1.5-1.6,2.9-3.1,4.9-4.9
           c0.9-0.8,2.2-1.9,3.8-3.2"></path>
-        <path id="u5" clip-path="url(#U_MASK_1_)" fill="none" stroke="#0000FF" stroke-width="12" stroke-miterlimit="10" d="
+        <path id="u5" clipPath="url(#U_MASK_1_)" fill="none" stroke="#0000FF" strokeWidth="12" strokeMiterlimit="10" d="
           M316.7,146.8c-5,7.7-8.5,12.6-11,15.8c0,0-2.1,2.7-4.5,7.2c-1.8,3.3-2.4,5-2.5,7c-0.1,2.1,0.3,3.9,0.7,5"></path>
-        <path id="u4" clip-path="url(#U_MASK_1_)" fill="none" stroke="#0000FF" stroke-width="15" stroke-miterlimit="10" d="
+        <path id="u4" clipPath="url(#U_MASK_1_)" fill="none" stroke="#0000FF" strokeWidth="15" strokeMiterlimit="10" d="
           M303.3,155.2c2.6-1.7,6.4-4.3,10.3-8.2c2.6-2.6,4.8-5.4,9-10.8c4.5-5.8,5-6.8,10.2-13.7c4.3-5.7,5-6.3,8.3-10.8
           c4-5.4,7.1-9.9,9-12.7"></path>
-        <path id="u3" clip-path="url(#U_MASK_1_)" fill="none" stroke="#0000FF" stroke-width="5" stroke-miterlimit="10" d="M252.8,180.3
+        <path id="u3" clipPath="url(#U_MASK_1_)" fill="none" stroke="#0000FF" strokeWidth="5" strokeMiterlimit="10" d="M252.8,180.3
           c0.2,0.6,1.2,3.4,4.2,5c1.9,1,3.7,0.9,5.3,0.8c2.5-0.1,4.3-0.8,5.7-1.3c0.7-0.3,0.9-0.4,4.8-2.5c4-2.2,4.3-2.3,4.8-2.7
           c1.7-1.1,2.8-2.1,4.5-3.5c0.7-0.6,1.5-1.3,4.3-4c3-2.8,4.4-4.2,5.3-5.2c1.4-1.5,1.3-1.5,4.8-5.7c2.8-3.3,4.2-4.9,5.8-6.7
           c1.3-1.4,3.2-3.3,5.5-5.3"></path>
-        <path id="u2" clip-path="url(#U_MASK_1_)" fill="none" stroke="#0000FF" stroke-width="13" stroke-miterlimit="10" d="
+        <path id="u2" clipPath="url(#U_MASK_1_)" fill="none" stroke="#0000FF" strokeWidth="13" strokeMiterlimit="10" d="
           M271.3,141.5c-5,7.1-8.8,13.1-11.7,17.7c0,0-2.1,3.3-5.2,10.3c-1.9,4.2-2.6,6.6-2.2,9.3c0.4,2.3,1.5,4.1,2.3,5.2"></path>
-        <path id="u1" clip-path="url(#U_MASK_1_)" fill="none" stroke="#0000FF" stroke-width="15" stroke-miterlimit="10" d="
+        <path id="u1" clipPath="url(#U_MASK_1_)" fill="none" stroke="#0000FF" strokeWidth="15" strokeMiterlimit="10" d="
           M262.5,147.3c2.7-1.5,6.4-3.8,10-7.5c2.1-2.1,2.3-2.8,8.2-10.5c3.4-4.5,6.5-8.4,8-10.3c4.5-5.8,6-7.7,6.5-8.3
           c2.8-3.5,5.1-6.4,6.7-8.3"></path>
       </g>
@@ -177,14 +177,14 @@ function RouletteSVG(){
         <clipPath id="L_MASK_1_">
           <use xlinkHref="#L_MASK" overflow="visible"></use>
         </clipPath>
-        <path id="L3" clip-path="url(#L_MASK_1_)" fill="none" stroke="#0000FF" stroke-width="5" stroke-miterlimit="10" d="M343.3,178.3
+        <path id="L3" clipPath="url(#L_MASK_1_)" fill="none" stroke="#0000FF" strokeWidth="5" strokeMiterlimit="10" d="M343.3,178.3
           c0,0.5-0.2,3.9,2.3,6c1.6,1.4,3.6,1.5,4.7,1.5c1.1,0,2.5-0.3,5.2-1c2.3-0.6,3.5-0.9,5-1.5c2-0.8,3.5-1.6,4.8-2.3
           c2.1-1.2,3.5-2.2,5-3.2c1.2-0.8,2.8-1.9,4.7-3.5c0.9-0.7,0.7-0.7,4-3.7c1.8-1.7,3.4-3.1,3.8-3.5c3-2.7,2.9-2.6,3.7-3.3
           c1.6-1.5,2-2.2,4-4.3c2.4-2.6,2.7-2.7,4.2-4.3c2-2.2,4.5-5.7,4.5-5.7c2.2-3.1,2.3-3.5,2.8-3.5c0.8,0,2.1,1.1,3.8,6.8"></path>
-        <path id="L2" clip-path="url(#L_MASK_1_)" fill="none" stroke="#0000FF" stroke-width="12" stroke-miterlimit="10" d="
+        <path id="L2" clipPath="url(#L_MASK_1_)" fill="none" stroke="#0000FF" strokeWidth="12" strokeMiterlimit="10" d="
           M373.8,124.3c-3.7,5.6-6.8,10.4-9.3,14.3c-8.4,13.2-6.4,10.9-10.5,17c-2.2,3.3-4.1,6.7-8,13.5c-1.1,2-2.6,4.7-2.5,8.3
           c0.1,2.5,0.9,4.5,1.5,5.8"></path>
-        <path id="L1" clip-path="url(#L_MASK_1_)" fill="none" stroke="#0000FF" stroke-width="12" stroke-miterlimit="10" d="M351.8,151
+        <path id="L1" clipPath="url(#L_MASK_1_)" fill="none" stroke="#0000FF" strokeWidth="12" strokeMiterlimit="10" d="M351.8,151
           c2.4-2.2,5.7-5.5,9.3-9.8c2.4-2.8,5.5-6.8,11-15c4.3-6.5,6-9.5,11.5-18.5c2-3.2,5.6-9,13-20.8c9.1-14.4,8.7-13.7,15-23.8
           c12.3-19.5,11.3-18.6,16.3-26c6.5-9.7,8.6-12.2,15.3-22.5c4.5-6.9,8-12.7,10.3-16.5"></path>
       </g>
@@ -201,17 +201,17 @@ function RouletteSVG(){
         <clipPath id="E_MASK_1_">
           <use xlinkHref="#E_MASK" overflow="visible"></use>
         </clipPath>
-        <path id="E4" clip-path="url(#E_MASK_1_)" fill="none" stroke="#0000FF" stroke-width="5" stroke-miterlimit="10" d="M404,182.5
+        <path id="E4" clipPath="url(#E_MASK_1_)" fill="none" stroke="#0000FF" strokeWidth="5" strokeMiterlimit="10" d="M404,182.5
           c0.9,0.7,2.3,1.8,4.2,2.5c1.8,0.7,3.2,0.8,5.3,1c1.2,0.1,3.1,0.3,5.5,0c1.5-0.2,2.8-0.5,5.5-1.2c2.4-0.6,3.6-0.9,5.3-1.5
           c2.6-0.9,4.5-1.8,5.8-2.5c1.1-0.6,3-1.5,5.3-3c1.3-0.9,2.9-2.1,6-4.5c2.7-2.1,4.1-3.2,5-4c0.9-0.8,1.7-1.5,5.3-5.3
           c2-2.1,2.9-2.7,4.2-4.3c1.1-1.5,1.6-2.4,2.2-3.3c2-3.2,4.4-5,6.7-6.8c2.5-2,5.8-5.1,9.8-9.8"></path>
-        <path id="E3" clip-path="url(#E_MASK_1_)" fill="none" stroke="#0000FF" stroke-width="13" stroke-miterlimit="10" d="
+        <path id="E3" clipPath="url(#E_MASK_1_)" fill="none" stroke="#0000FF" strokeWidth="13" strokeMiterlimit="10" d="
           M437.3,112.7c-2.5,1.9-5.5,4.3-8.7,7.2c-3.2,2.8-6.3,5.6-9.8,9.7c-2.8,3.2-4.6,5.7-7.2,9.3c-2.8,3.9-4.2,5.9-5.7,8.5
           c-3.4,6.1-5,11.3-5.5,13.3c-1.4,5.2-2.3,8.4-1.3,12.7c0.9,4,2.9,6.7,3.3,7.3c1.3,1.8,2.8,3,3.8,3.8"></path>
-        <path id="E2" clip-path="url(#E_MASK_1_)" fill="none" stroke="#0000FF" stroke-width="8" stroke-miterlimit="10" d="M451.2,130
+        <path id="E2" clipPath="url(#E_MASK_1_)" fill="none" stroke="#0000FF" strokeWidth="8" strokeMiterlimit="10" d="M451.2,130
           c2-1.4,3.4-2.9,4.3-4c1.1-1.3,2.6-3.2,3.5-6c0.5-1.6,1-3.2,0.5-5.2c-0.5-2-1.8-3.3-2.2-3.7c-1.2-1.2-2.4-1.7-2.8-1.8
           c-1.3-0.5-2.3-0.5-4-0.5c-0.8,0-2.1,0-3.8,0.3c-1.4,0.3-2.6,0.7-4.7,1.7c-1.8,0.9-4.3,2.2-7.2,4.2"></path>
-        <path id="E1" clip-path="url(#E_MASK_1_)" fill="none" stroke="#0000FF" stroke-width="4" stroke-miterlimit="10" d="M397.7,151.7
+        <path id="E1" clipPath="url(#E_MASK_1_)" fill="none" stroke="#0000FF" strokeWidth="4" strokeMiterlimit="10" d="M397.7,151.7
           c1.5,0.1,3.5,0.2,6,0.2c2.2-0.1,4.3-0.1,7-0.7c2.4-0.5,4.2-1.2,7.7-2.7c2.4-1,2.5-1.1,7-3.2c5.5-2.5,5.5-2.3,7.8-3.5
           c3-1.5,5.1-2.8,7.3-4.2c2.4-1.5,4.7-2.9,7.5-5c2.8-2.1,4.5-3.4,6.3-5.5c2-2.3,3.2-4.5,4-6"></path>
       </g>
@@ -227,15 +227,15 @@ function RouletteSVG(){
         <clipPath id="T_MASK_1_">
           <use xlinkHref="#T_MASK" overflow="visible"></use>
         </clipPath>
-        <path id="T3" clip-path="url(#T_MASK_1_)" fill="none" stroke="#0000FF" stroke-width="5" stroke-miterlimit="10" d="M460.8,181.7
+        <path id="T3" clipPath="url(#T_MASK_1_)" fill="none" stroke="#0000FF" strokeWidth="5" strokeMiterlimit="10" d="M460.8,181.7
           c1.3,2.9,3.2,3.7,3.8,4c1.4,0.6,2.8,0.4,5.5,0c1.4-0.2,3.2-0.4,5.3-1.2c0.5-0.2,0.5-0.2,4-1.8c3.3-1.6,3.5-1.6,4.2-2
           c1.4-0.8,2.4-1.6,3.8-2.7c1.5-1.1,2.5-2,4.3-3.7c1.8-1.6,2.7-2.4,3.8-3.5c2.3-2.3,2.2-2.5,4.8-5.2c2.5-2.5,2.8-2.6,4.5-4.5
           c1.3-1.5,1.2-1.6,2.8-3.5c1.3-1.6,1.8-2,3.8-4.2c1.2-1.3,2.3-2.5,4.3-4.8c4.2-4.7,3.5-4.1,4.7-5.3c3-3.1,4-3.5,6.8-6.5
           c1.5-1.6,2.6-3.1,3.3-4"></path>
-        <path id="T2" clip-path="url(#T_MASK_1_)" fill="none" stroke="#0000FF" stroke-width="10" stroke-miterlimit="10" d="
+        <path id="T2" clipPath="url(#T_MASK_1_)" fill="none" stroke="#0000FF" strokeWidth="10" strokeMiterlimit="10" d="
           M479.5,143.7c-2.5,4.2-4.7,7.4-6.2,9.5c-3.6,5-5.2,6.5-8.2,11.3c0,0-1.9,3.1-4.2,8.7c-1.4,3.5-1.8,5.2-1.3,7
           c0.5,2,1.9,3.4,2.8,4.2"></path>
-        <path id="T1" clip-path="url(#T_MASK_1_)" fill="none" stroke="#0000FF" stroke-width="12" stroke-miterlimit="10" d="
+        <path id="T1" clipPath="url(#T_MASK_1_)" fill="none" stroke="#0000FF" strokeWidth="12" strokeMiterlimit="10" d="
           M467.5,152.7c2.2-1.4,5.4-3.5,8.7-6.8c2.2-2.2,3.6-4.1,8.3-11.3c3.2-4.9,5.3-7.9,8.7-13.3c3.3-5.3,3.3-5.4,7.7-12.5
           c1.9-3,5.1-8.3,9.3-14.8c1.7-2.7,4-6.1,8.5-13c5.1-7.8,5.1-7.8,7.7-11.7c3.7-5.7,4.5-7,7.3-11.3c2.7-4.1,5-7.5,6.5-9.7"></path>
       </g>
@@ -251,14 +251,14 @@ function RouletteSVG(){
         <clipPath id="T2_MASK_1_">
           <use xlinkHref="#T2_MASK" overflow="visible"></use>
         </clipPath>
-        <path id="T2_3" clip-path="url(#T2_MASK_1_)" fill="none" stroke="#0000FF" stroke-width="4" stroke-miterlimit="10" d="
+        <path id="T2_3" clipPath="url(#T2_MASK_1_)" fill="none" stroke="#0000FF" strokeWidth="4" strokeMiterlimit="10" d="
           M509,185.3c2,0.4,3.6,0.4,4.8,0.3c2.1-0.1,3.7-0.5,4.8-0.8c1.6-0.4,2.7-0.9,4.2-1.5c1.2-0.5,3-1.2,5.2-2.5c0.6-0.3,2.4-1.4,4.5-3
           c1.8-1.4,1.9-1.6,5.2-4.5c3.1-2.7,3.4-2.8,5-4.3c0.9-0.9,1.7-1.7,3.8-4.2c2.5-2.9,4.4-5.2,6.3-7.5c4.8-5.9,4.6-5.7,6.3-7.7
           c2.3-2.6,2.8-3.1,5.3-6c2.2-2.6,4-4.7,5.2-6.2"></path>
-        <path id="T2_2" clip-path="url(#T2_MASK_1_)" fill="none" stroke="#0000FF" stroke-width="10" stroke-miterlimit="10" d="
+        <path id="T2_2" clipPath="url(#T2_MASK_1_)" fill="none" stroke="#0000FF" strokeWidth="10" strokeMiterlimit="10" d="
           M523,144.8c-2.3,4.9-4.7,8.4-6.5,10.8c-1.9,2.5-3.5,4.3-6,8.2c-2.1,3.2-2.9,5.1-3.3,6.3c-0.4,0.9-1.3,3.6-1.7,7.2
           c-0.3,2.6-0.4,4,0.5,5.5c1.1,1.9,2.9,2.5,3.3,2.7c2.2,0.7,4.1,0,4.5-0.2"></path>
-        <path id="T2_1" clip-path="url(#T2_MASK_1_)" fill="none" stroke="#0000FF" stroke-width="12" stroke-miterlimit="10" d="
+        <path id="T2_1" clipPath="url(#T2_MASK_1_)" fill="none" stroke="#0000FF" strokeWidth="12" strokeMiterlimit="10" d="
           M515.2,149.8c1.7-0.4,4.2-1.3,6.5-3.3c1.9-1.7,2.7-3.3,4.8-6.8c1.7-2.9,3.6-5.7,5.3-8.5c2.7-4.3,3.3-5.1,7.5-11.5
           c4.2-6.4,7.2-11.3,10.2-16c5.6-9,5.3-8.9,9.8-16c4-6.3,7.2-11.2,9.8-15.2c3-4.6,5.6-8.3,9.2-13.7c2.6-3.8,4.8-7,6.3-9.3"></path>
       </g>
@@ -275,18 +275,18 @@ function RouletteSVG(){
         <clipPath id="E2_MASK_1_">
           <use xlinkHref="#E2_MASK" overflow="visible"></use>
         </clipPath>
-        <path id="E24" clip-path="url(#E2_MASK_1_)" fill="none" stroke="#0000FF" stroke-width="4" stroke-miterlimit="10" d="
+        <path id="E24" clipPath="url(#E2_MASK_1_)" fill="none" stroke="#0000FF" strokeWidth="4" strokeMiterlimit="10" d="
           M565.3,183.8c1.3,0.6,2.9,1.2,4.8,1.7c2.2,0.5,3.9,0.6,5.2,0.7c1.1,0.1,3,0.1,5.3-0.2c1.7-0.2,2.8-0.5,4.7-1
           c1.7-0.5,3.3-0.9,5.3-1.7c2.6-1,4.4-2.1,5.7-2.8c1.4-0.8,2.4-1.6,4.5-3c2.8-2,4.2-3,6-4.5c1.5-1.3,1.5-1.4,3.7-3.3
           c1.6-1.4,1.9-1.6,3.3-2.8c1-0.9,2.2-2,3.7-3.5c0.9-1,1.1-1.2,3-3.5c2-2.3,3.6-4.1,4.3-5c2.8-3.1,2.8-3,4-4.5
           c1.5-1.8,2.5-3.3,3.5-4.7c1.1-1.6,1.8-2.6,2.7-4c1-1.7,1.7-3.1,2.2-4.2"></path>
-        <path id="E2_3" clip-path="url(#E2_MASK_1_)" fill="none" stroke="#0000FF" stroke-width="13" stroke-miterlimit="10" d="
+        <path id="E2_3" clipPath="url(#E2_MASK_1_)" fill="none" stroke="#0000FF" strokeWidth="13" strokeMiterlimit="10" d="
           M593.7,115.5c-4.3,3.3-7.9,6.5-10.7,9.3c-4.1,4.1-6.9,7.6-9.2,10.5c-3.2,4.1-5.2,6.5-7.3,10.2c-2,3.3-5,8.4-6.7,15.7
           c-0.8,3.2-1.7,7.2-0.8,12.3c0.4,2.7,1,5.8,3.5,8.5c2.2,2.3,4.7,3.3,6.2,3.7"></path>
-        <path id="E2_2" clip-path="url(#E2_MASK_1_)" fill="none" stroke="#0000FF" stroke-width="6" stroke-miterlimit="10" d="
+        <path id="E2_2" clipPath="url(#E2_MASK_1_)" fill="none" stroke="#0000FF" strokeWidth="6" strokeMiterlimit="10" d="
           M608.3,132.8c2.8-2,4.7-4.1,6-5.7c1.4-1.8,3-3.6,4-6.5c0.8-2.4,0.8-4,0.8-4.7c0-1.4-0.1-2.8-1-4.2c-1.1-1.6-2.9-2.1-4.8-2.7
           c-1-0.3-2.9-0.7-5.5-0.5c-0.8,0.1-3,0.3-6.7,2c-1.3,0.6-3.8,1.8-7.7,4.8c-2.3,1.7-5.3,4.3-8.5,7.7"></path>
-        <path id="E2_1" clip-path="url(#E2_MASK_1_)" fill="none" stroke="#0000FF" stroke-width="4" stroke-miterlimit="10" d="
+        <path id="E2_1" clipPath="url(#E2_MASK_1_)" fill="none" stroke="#0000FF" strokeWidth="4" strokeMiterlimit="10" d="
           M554.2,155.8c1.1-0.4,2.8-0.9,4.8-1.5c2.5-0.7,3.4-0.9,6.5-1.7c2.5-0.7,4.3-1.1,6.5-1.8c2.7-0.9,4.6-1.6,7.2-2.7
           c3.2-1.3,5.5-2.3,7-3c3.2-1.4,5-2.2,7.3-3.5c2.4-1.3,4.2-2.4,7.8-4.7c3.5-2.2,5.3-3.3,6.8-4.5c2.1-1.6,4.2-3.3,6.3-6
           c2-2.5,3.1-4.9,3.8-6.7"></path>
