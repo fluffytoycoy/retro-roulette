@@ -170,6 +170,16 @@ svg{
     stroke-dashoffset: 330;
     animation: o3 .2s ease-in 3.7s forwards;
   }
+  #t_cross_1{
+    stroke-width: 5px;
+    stroke: #e7008f;
+  }
+  #t_cross_mask_1_{
+    stroke-width: 30px;
+    stroke-dasharray: 134;
+    stroke-dashoffset: 134;
+    animation: t-cross .3s ease-in 3.8s forwards;
+  }
 }
 
 
@@ -227,6 +237,15 @@ svg{
   to{
     stroke-dashoffset: 0;
     stroke-width: 20px;
+  }
+}
+
+@keyframes t-cross{
+  from{
+    stroke-dashoffset: 134;
+  }
+  to{
+    stroke-dashoffset: 0;
   }
 }
 
