@@ -17,54 +17,26 @@ class BetModal extends Component{
   }
 
   renderForm = (props) =>{
-    const options=[
-      {label: 'Gameboy', value: 'gameboy'},
-      {label: 'Snes', value: 'Snes'},
-      {label: 'Sega Genesis', value: 'sega genesis'},
-      {label: 'NES', value: 'nes'},
-      {label: 'sega master system', values: 'sega master system'},
-      {label: 'Gameboy Color', values: 'gameboy color'}
-    ]
-
-    const genreOptions = [
-      {label: 'action', value: 'action'},
-      {label: 'fps',  value: 'fps'},
-      {label: 'rpg', value: 'rpg'},
-      {label: 'action-rpg', value: 'action-rpg'},
-      {label: 'sports',  value: 'sports'},
-      {label: 'Platform', value: 'platform'},
-      {label: 'puzzle',  value: 'puzzle'},
-      {label: 'adventure', value: 'adventure'},
-      {label: 'gambling',  value: 'gambling'},
-      {label: 'action', value: 'action'},
-      {label: 'fps',  value: 'fps'},
-      {label: 'rpg', value: 'rpg'},
-      {label: 'action-rpg', value: 'action-rpg'},
-      {label: 'sports',  value: 'sports'},
-      {label: 'Platform', value: 'platform'},
-      {label: 'puzzle',  value: 'puzzle'},
-      {label: 'adventure', value: 'adventure'},
-      {label: 'gambling',  value: 'gambling'},
-    ]
     return(
       <Form>
         <h1>Pick Your Consoles</h1>
         <div className="divider"></div>
-        <Field checkboxes options={options} name='consoles'/>
+        <Field checkboxes options={this.props.filterOptions.consoles} name='consoles'/>
         <h1>Pick Your Genres</h1>
         <div className="divider"></div>
-        <Field checkboxes options={genreOptions} name='genres'/>
+        <Field checkboxes options={this.props.filterOptions.genres} name='genres'/>
         <Button type="submit"/>
       </Form>
 
     )
   }
 
-
-
   render(){
+    const consoles = this.props.filtersSelected.consoles.map(console=>(console.value))
+    const genres = this.props.filtersSelected.genres.map(genres=>(genres.value))
 
     return (
+      this.props.filterOptions ?
       <CSSTransition
         in={this.props.open}
         timeout={{exit:500}}
@@ -74,11 +46,12 @@ class BetModal extends Component{
             <div className="modal-wrapper">
               <div className="modal">
                 <div className="close-icon" onClick={this.props.toggleBetModal}>x</div>
-                <FormContainer onSubmit={this.test}  initialValues={{consoles: ['gameboy', 'nes'], genres: []}} render={this.renderForm}/>
+                <FormContainer onSubmit={this.test}  initialValues={{consoles: consoles, genres: genres}} render={this.renderForm}/>
               </div>
             </div>
           </div>
       </CSSTransition>
+      : <>loading...</>
     );
   }
 

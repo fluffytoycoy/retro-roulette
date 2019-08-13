@@ -40,8 +40,8 @@ class ApiController {
   async getFilters({request, response}){
     const filters = {}
     try{
-      filters.consoles = await Database.select('id as value','name').from('consoles')
-      filters.genres = await Database.select('id as value','name').from('genres')
+      filters.consoles = await Database.select('id as value','name as label').from('consoles')
+      filters.genres = await Database.select('id as value','name as label').from('genres')
       return filters
     } catch(e){
       console.log(e)

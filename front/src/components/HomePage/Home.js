@@ -17,7 +17,11 @@ class Home extends Component{
     super(props);
     this.state={
       isBetPlaced: false,
-      filters: {
+      filterOptions: {
+        consoles: [],
+        genres: [],
+      },
+      filtersSelected: {
         consoles: [],
         genres: [],
       },
@@ -34,7 +38,20 @@ class Home extends Component{
   }
 
   componentWillMount(){
-
+    let self = this;
+    axios.get('/api/filterInfo')
+    .then(response=>{
+      self.setState({
+        filterOptions:{
+          consoles: response.data.consoles,
+          genres: response.data.genres
+        },
+        filtersSelected:{
+          consoles: response.data.consoles,
+          genres: response.data.genres
+        }
+      }, ()=>{console.log(this.state)})
+    })
   }
 
   reset(){
@@ -153,7 +170,12 @@ class Home extends Component{
           </div>
         </div>
       </div>
-      <BetModal filters={this.state.filters} toggleBetModal={this.toggleBetModal} open={this.state.betModalOpen} toggleBetModal={this.toggleBetModal} updateFilters={this.updateFilters}/>
+      <BetModal filterOptions={this.state.filterOptions}
+                filtersSelected={this.state.filtersSelected}
+                toggleBetModal={this.toggleBetModal} 
+                open={this.state.betModalOpen}
+                toggleBetModal={this.toggleBetModal}
+                updateFilters={this.updateFilters}/>
       </>
     );
   }

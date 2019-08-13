@@ -59,9 +59,20 @@
           display: flex;
           flex-wrap: wrap;
           justify-content: center;
+          max-width: 500px;
+          margin: 0 auto;
           label{
-            margin: 10px 10px;
+            padding: 10px 10px 10px 0;
+            flex-basis: calc(50% - 10px);
             display: flex;
+            align-items: center;
+            margin-right: 10px;
+            justify-content: space-between;
+            flex-direction: row-reverse;
+
+            &:nth-child(odd){
+              border-right: solid #1b043f 1px;
+            }
           }
         }
       }
