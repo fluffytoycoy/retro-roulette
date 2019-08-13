@@ -3,7 +3,8 @@ svg{
   margin-bottom: -20%;
   filter: drop-shadow(0px 5px 1px black) drop-shadow(0px 0px 0px #e7008fb5) blur(1px);
   animation: roulette-glow 2s ease-in-out 4s forwards;
-
+  max-width: 800px;
+  width: 100%;
   path{
     stroke: #e7008f;
     box-shadow: black 0 0 20px;
