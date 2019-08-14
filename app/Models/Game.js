@@ -7,6 +7,9 @@ class Game extends Model {
   genre(){
     return this.belongsTo('App/Models/Genre');
   }
+  platform(){
+    return this.hasMany('App/Models/Console');
+  }
 }
 
 module.exports = Game

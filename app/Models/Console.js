@@ -4,6 +4,9 @@
 const Model = use('Model')
 
 class Console extends Model {
+  games(){
+      return this.hasMany('App/Models/Game');
+  }
 }
 
 module.exports = Console

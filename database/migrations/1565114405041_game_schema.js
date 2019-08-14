@@ -9,6 +9,8 @@ class GameSchema extends Schema {
       table.increments()
       table.string('title', 100).notNullable()
       table.integer('genre_id').notNullable().unsigned().references('id').inTable('genres')
+      table.integer('console_id').notNullable().unsigned().references('id').inTable('consoles')
+      table.string('img_url')
       table.timestamps()
     })
   }

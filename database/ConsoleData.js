@@ -1,22 +1,22 @@
 module.exports =
-  [
-      {
-          name: "SNES",
-      },
-      {
-          name: "genesis",
-      },
-      {
-          name: "NES",
-      },
-      {
-          name: "master system",
-      },
-      {
-          name: "gameboy",
-      },
-      {
-          name: "gameboy color",
-      },
-  ]
+[
+    {
+        name: "Game Boy"
+    },
+    {
+        name: "Game Boy Color"
+    },
+    {
+        name: "Genesis"
+    },
+    {
+        name: "Master System"
+    },
+    {
+        name: "NES"
+    },
+    {
+        name: "SNES"
+    }
+]
 
