@@ -1,6 +1,8 @@
 @import 'sass/reset';
 @import 'sass/variables';
 @import url('https://fonts.googleapis.com/css?family=Pinyon+Script&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
 body{
   &.modal{
     overflow: hidden;
@@ -12,7 +14,7 @@ html, body, #root {
 }
 
 #root{
-
+  font-family: 'Montserrat', sans-serif;
 }
 
 .container{

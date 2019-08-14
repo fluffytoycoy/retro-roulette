@@ -14,7 +14,7 @@ function Hero(){
         <RouletteSVG/>
       </div>
       <div className="btn-wrapper">
-        <Link to="bet-section" smooth={true} duration={700}>
+        <Link to="bets" smooth={true} duration={700}>
           <div className="hero-btn">
             Place your bets
           </div>

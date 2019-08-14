@@ -21,7 +21,7 @@ componentWillMount(){
         <p>Do you have the courage to go all in?</p>
       </div>
       <div onClick={this.props.AllIn} className="hero-btn all-in">
-        All In
+        All in
       </div>
       </>
     );

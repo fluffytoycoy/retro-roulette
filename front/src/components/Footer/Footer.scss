@@ -1,1 +1,35 @@
 @import '../../sass/variables';
+
+#footer{
+  background: #2e044c;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 50px;
+  h1{
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
+  .share-buttons{
+    font-size: 3rem;
+    margin: 25px;
+    li{
+      display: inline;
+      i{
+        margin: 0 20px;
+        color: #9a0328;
+        transition: all .3s ease-in-out;
+        &:hover{
+          text-shadow: #180227 0 0 5px;
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
+  .copy{
+    padding: 20px 0;
+    width: 100%;
+    background: #1f0c2f;
+    text-align: center;
+  }
+}
