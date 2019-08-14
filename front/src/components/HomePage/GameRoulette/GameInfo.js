@@ -40,7 +40,7 @@ class GameInfo extends Component{
     this.setState({
       style: {
         opacity: 1,
-        margin: '50px 0 0',
+        margin: '50px 20px 0',
         overflow: 'hidden',
         transition: 'all 1s ease',
       }

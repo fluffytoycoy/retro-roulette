@@ -108,11 +108,8 @@
         }
 
         .game-info {
-          margin: 0px 20px 0;
-          //padding: 50px 0;
           display: flex;
           flex-direction: column;
-          justify-content: center;
           text-align: center;
 
           h1 {
@@ -219,7 +216,7 @@
         }
 
         .game-info {
-          margin: 0 20px 0;
+          //margin: 50px 20px 0px 0px !important;
           text-align: center;
           width: 50%;
         }
@@ -267,6 +264,7 @@
     }
 
     .game-info {
+      //margin: 50px 20px 0px !important;
       width: 100% !important;
     }
   }

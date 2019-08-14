@@ -43,18 +43,35 @@
     }
 }
 
-@media only screen and (min-width: 768px){
-
-  .game-section{
-
-      h1{
-
+@media only screen and (min-width: 768px) {
+  #home {
+    .game-section {
+      > div {
+        margin: 0 0 0 20px;
       }
-      h2{
 
-      }
-      img{
+      h1 {}
 
-      }
+      h2 {}
+
+      img {}
+    }
   }
 }
+
+@media only screen and (min-width: 1200px) {
+  #home {
+    .game-section {
+      > div {
+        margin: 0 20px;
+      }
+
+      h1 {}
+
+      h2 {}
+
+      img {}
+    }
+  }
+}
+

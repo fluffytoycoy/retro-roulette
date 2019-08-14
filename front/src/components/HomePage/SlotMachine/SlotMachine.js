@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './SlotMachine.scss';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-
+import {consoleToSlotImg} from '../../Utils/SlotMachine/SlotMachineMapper';
 
 class SlotMachine extends Component{
   constructor(props){
@@ -49,7 +49,7 @@ class SlotMachine extends Component{
       if (newProps.game && newProps.rotationsCompleted) {
         this.setState({
           autoPlay: false,
-          selectedSystem: newProps.game.console,
+          selectedSystem: consoleToSlotImg(newProps.game.console),
         },()=>{
           this.props.setSlotFinished();
         })
@@ -89,8 +89,8 @@ class SlotMachine extends Component{
 
     const gameMap ={
       gameboyColor: 0,
-      nes: 1,
-      snes: 2,
+      NES: 1,
+      SNES: 2,
       sms: 3,
       gen: 4,
       gameboy: 4,

@@ -5,12 +5,12 @@ const Game = use('App/Models/Game')
 const User = use('App/Models/User')
 class ApiController {
   async getGame({response, request}){
-    console.log(JSON.parse(request.all().filters))
+    const {consoles, genres} = JSON.parse(request.all().filters)
   //  console.log(request)
     try{
       const game = await Database
         .from('games')
-        .whereIn('genre_id', [1]).whereIn('console_id', [1])
+        .whereIn('genre_id', genres).whereIn('console_id', consoles)
         .innerJoin('genres', 'games.genre_id', 'genres.id')
         .innerJoin('consoles', 'games.console_id', 'consoles.id')
         .select('title',"img_url", 'consoles.name as console', 'genres.name as genre')
