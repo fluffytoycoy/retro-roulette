@@ -52,14 +52,23 @@ class GameInfo extends Component{
   }
 
   render(){
-    return this.state.show &&
-    <div style={this.state.style} onTransitionEnd={this.transitionEnd} className="game-info">
-      <h1>The Revenge of Shinobi</h1>
-      <h2>Platform: Sega</h2>
-      <p>Genre: Action</p>
-    </div>
+    return this.state.show && <Info {...this.state} {...this.props}/>
+
   }
 
+}
+
+function Info(props){
+  return props.game ?
+      <div style={props.style} className="game-info">
+        <h1>{props.game.title}</h1>
+        <h2>Platform: {props.game.console}</h2>
+        <p>Genre: {props.game.genre}</p>
+      </div>
+    : <div style={props.style} className="game-info">
+          <h1>No game Matches found</h1>
+          <p>Change your bet</p>
+      </div>
 }
 
 export default GameInfo;

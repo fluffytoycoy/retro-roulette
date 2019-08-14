@@ -28,7 +28,8 @@ class Home extends Component{
       game: undefined,
       rotationsCompleted: false,
       slotFinished: false,
-      betModalOpen: false
+      betModalOpen: false,
+      validReturn: true
     }
     this.reset = this.reset.bind(this)
     this.setSlotSpin = this.setSlotSpin.bind(this)
@@ -66,18 +67,26 @@ class Home extends Component{
         isBetPlaced: true,
         game: undefined,
         rotationsCompleted: false,
-        slotFinished: false
+        slotFinished: false,
+        validReturn: true,
       }, () => {
         self.resetSlot()
-        axios.get('api/test')
+        console.log(self.state.filtersSelected)
+        axios.get('api/test', {
+          params:{
+            filters: self.state.filtersSelected
+          }
+        })
           .then(response => {
-            setTimeout(() => {
+            if(response.data){
               self.setState({
-                game: Object.assign(response.data, {
-                  console: 1
-                })
+                game: response.data,
               })
-            }, 60)
+            }else{
+              self.setState({
+                validReturn: !!response.data,
+              })
+            }
 
           }).catch(error => {
             console.log(error)
@@ -142,14 +151,20 @@ class Home extends Component{
             <div className="bet-row">
                 <div className="col">
                   {this.state.isBetPlaced ?
-                    <SlotMachine open={this.state.betModalOpen} slotFinished={this.state.slotFinished} setSlotFinished={this.setSlotFinished} game={this.state.game} rotationsCompleted={this.state.rotationsCompleted} setReset={e => this.resetSlot = e} />
+                    <SlotMachine open={this.state.betModalOpen}
+                      slotFinished={this.state.slotFinished}
+                      setSlotFinished={this.setSlotFinished}
+                      game={this.state.game}
+                      rotationsCompleted={this.state.rotationsCompleted}
+                      setReset={e => this.resetSlot = e}
+                      validReturn={this.state.validReturn}/>
                     : <AllInSection AllIn={this.reset}/>}
                 </div>
                 <div className="divider"></div>
                 <div className={`col ${this.state.isBetPlaced ? 'game' : ''}`}>
-                  {this.state.isBetPlaced ? <GameSection game={this.state.game} slotFinished={this.state.slotFinished}/> : <BettingSection toggleBetModal={this.toggleBetModal}/>}
+                  <GameColoumn {...this.state} />
                 </div>
-                {this.state.slotFinished ? <GameInfo mounted={this.state.slotFinished}/> : <></>}
+                <GameInfoBar {...this.state} {...this.toggleBetModal}/>
             </div>
             <BetBar slotFinished={this.state.slotFinished} toggleBetModal={this.toggleBetModal} spinAgain={this.reset}/>
           </div>
@@ -164,6 +179,19 @@ class Home extends Component{
     );
   }
 
+}
+
+function GameInfoBar(props){
+  return props.slotFinished ? <GameInfo game={props.game} mounted={props.slotFinished}/> : <></>
+}
+
+function GameColoumn(props){
+  return props.isBetPlaced ?
+      <GameSection game={props.game}
+        slotFinished={props.slotFinished}
+        validReturn={props.validReturn}/>
+    : <BettingSection
+        toggleBetModal={props.toggleBetModal}/>
 }
 
 
