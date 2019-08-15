@@ -1,148 +1,52 @@
-import React, {Component} from 'react';
-import './Home.scss';
-import SlotMachine from './SlotMachine/SlotMachine';
-import SlotTimer from './SlotTimer'
-import Hero from './Hero/Hero';
-import AllInSection from './BetSection/AllInSection';
-import BettingSection from './BetSection/BettingSection';
-import BetBar from './BetSection/BetBar';
-import './BetSection/BetModal.scss';
-import BetModal from './BetSection/BetModal';
-import GameSection from './GameRoulette/GameSection'
-import GameInfo from './GameRoulette/GameInfo'
-import axios from 'axios';
-
-class Home extends Component{
-  constructor(props){
-    super(props);
-    this.state={
-      isBetPlaced: false,
-      filterOptions: {
-        consoles: [],
-        genres: [],
-      },
-      filtersSelected: {
-        consoles: [],
-        genres: [],
-      },
-      game: undefined,
-      rotationsCompleted: false,
-      slotFinished: false,
-      betModalOpen: false,
-      validReturn: true
+#dashboard{
+  height: 100%;
+  .sideboard{
+    width: 300px;
+    background: #231c2b;
+    height: 100%;
+    position: fixed;
+    padding: 20px;
+    text-align: center;
+    background: linear-gradient(rgba(58, 1, 72, 0.9),rgba(9, 2, 62, 0.9)), url("/img/bg.png");
+    background-position: center;
+    box-shadow: #220445 0 0 10px 0px;
+    h2{
+      font-size: 1.5rem;
+      padding-bottom: 20px;
+      border-bottom: 1px white solid;
     }
-    this.reset = this.reset.bind(this)
-    this.setSlotSpin = this.setSlotSpin.bind(this)
-    this.setSlotFinished = this.setSlotFinished.bind(this)
-    this.toggleBetModal = this.toggleBetModal.bind(this)
-    this.updateFilters = this.updateFilters.bind(this)
-  }
-
-  componentWillMount(){
-    let self = this;
-    axios.get('/api/filterInfo')
-    .then(response=>{
-      self.setState({
-        filterOptions:{
-          consoles: response.data.consoles,
-          genres: response.data.genres
-        },
-        filtersSelected:{
-          consoles: response.data.consoles.map(console=>(console.value)),
-          genres: response.data.genres.map(genre=>(genre.value)),
+    ul{
+      margin: 20px 0px;
+      text-shadow: white 0 0 2px;
+      li{
+        padding: 15px 0px;
+        margin: 0 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background .5s ease-in-out;
+        -webkit-user-select: none; /* Safari */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* IE10+/Edge */
+        user-select: none; /* Standard */
+        outline: none;
+        &[aria-selected=true]{
+          background: red !important;
         }
-      })
-    })
-  }
-
-  reset(){
-    let self = this;
-    //axios call for new game
-    //reset and start Timer
-    getGame()
-    this.resetTimer()
-
-    function getGame() {
-      self.setState({
-        isBetPlaced: true,
-        game: undefined,
-        rotationsCompleted: false,
-        slotFinished: false,
-        validReturn: true,
-      }, () => {
-        self.resetSlot()
-        console.log(self.state.filtersSelected)
-        axios.get('api/test', {
-          params:{
-            filters: self.state.filtersSelected
-          }
-        })
-          .then(response => {
-            if(response.data){
-              self.setState({
-                game: response.data,
-              })
-            }else{
-              self.setState({
-                validReturn: !!response.data,
-              })
-            }
-
-          }).catch(error => {
-            console.log(error)
-          })
-      })
-    }
-  }
-
-  setSlotSpin(){
-    console.log('slot timer finished')
-    if(this.state.game){
-      this.setState({
-        rotationsCompleted: true
-      })
-    } else{
-      this.setState({
-        rotationsCompleted: true
-      })
-    }
-  }
-
-  setSlotFinished(){
-    this.setState({
-      slotFinished: true,
-    })
-  }
-
-  toggleBetModal(){
-    document.body.classList.toggle('modal')
-    this.setState({
-      betModalOpen: !this.state.betModalOpen
-    })
-  }
-
-  updateFilters(consoles, genres){
-    let self = this;
-    this.setState({
-      filtersSelected:{
-        consoles: consoles,
-        genres: genres
+        &:hover{
+          background: rgba(255, 255, 255, 0.1);
+        }
+        &:not(:last-child){
+          margin-bottom: 10px;
+        }
       }
-    }, ()=>{
-      self.reset()
-    })
+    }
   }
-
-  render(){
-    return (
-      <div id="dashboard">
-        <div className="sideboard"></div>
-        <div className="dash-body"></div>
-      </div>
-    );
+  .dash-body{
+    min-height: 100%;
+    background: #f1f0f0;
+    margin-left: 300px;
+    margin-left: 300px;
+    color: #555555;
+    padding: 40px 40px;
   }
-
 }
-
-
-export default Dashboard;
