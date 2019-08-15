@@ -22,7 +22,6 @@ class App extends Component {
   };
 
   handleAuth(status){
-    console.log(status)
     this.setState({
       isLoggedIn: status
     })

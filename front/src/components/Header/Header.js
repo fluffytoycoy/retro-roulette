@@ -26,7 +26,6 @@ function Header(props){
 }
 
 function isLoggedIn(){
-  console.log(localStorage.getItem('jwtToken'));
   return localStorage.getItem('jwtToken');
 }
 
