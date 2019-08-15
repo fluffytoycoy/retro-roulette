@@ -36,12 +36,14 @@ class Login extends Component{
         axios.post('/api/login', values)
           .then(function (response) {
             localStorage.setItem('jwtToken', response.data.token);
-            self.props.login(true)
             self.setState({
               submitSuccess: true,
               submitFailure: false,
               isSubmitting: false,
+            },()=>{
+              self.props.login(true)
             })
+
 
           })
           .catch(function (error) {

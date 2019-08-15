@@ -51,6 +51,13 @@ class ApiController {
     }
 
   }
+
+  async test({request, response, auth}){
+    if(auth.check()){
+      console.log('yes')
+    }
+    return 'test'
+  }
 }
 
 module.exports = ApiController;

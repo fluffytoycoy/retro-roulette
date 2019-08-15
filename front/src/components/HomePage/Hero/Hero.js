@@ -2,11 +2,12 @@ import React from 'react';
 import './Hero.scss';
 import RouletteSVG from './Roulette';
 import { Link } from 'react-scroll';
-
+import axios from 'axios';
 function Hero(){
 
 
   return(
+
     <div id="hero">
       <div className="sign-wrapper">
         <img alt="retro vegas sign with lights on" className="lights-on" src="/img/retro_sign.png"/>

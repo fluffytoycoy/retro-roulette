@@ -8226,7 +8226,7 @@ module.exports =
         console_id: 1
     },
     {
-        title: 5,
+        title: 'Baseball',
         genre_id: 5,
         console_id: 1
     },
@@ -8296,7 +8296,7 @@ module.exports =
         console_id: 5
     },
     {
-        title: 5,
+        title: 'Baseball',
         genre_id: 5,
         console_id: 5
     },
@@ -18775,412 +18775,412 @@ module.exports =
     },
     {
         title: "Advanced Busterhawk Gleylancer ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Adventurous Boy - Mao Xian Xiao Zi ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "After Burner II ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Air Buster ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Air Diver ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Arrow Flash ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Atomic Robo-Kid ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Atomic Runner ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Battle Mania Daiginjou ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Bio Hazard Battle ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Bloodshot",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Burning Force ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Caliber.50 ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Contra - Hard Corps ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Cross Fire ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Curse ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Dangerous Seed ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Darwin 4081 ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Dinosaur's Tale, A ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Divine Sealing ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Duke Nukem 3D",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Earth Defense ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Elemental Master ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Eliminate Down ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Final Zone ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Fire Mustang ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Foreman for Real ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Funny World & Balloon Boy ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Granada ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Grind Stormer ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Gunship ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Gunstar Heroes ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Heavy Unit - Mega Drive Special ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Hellfire",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Insector X ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Jim Power - The Arcade Game ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Lightening Force - Quest for the Darkstar ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Master of Weapon ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Mega SWIV ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Midnight Resistance ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "MUSHA - Metallic Uniframe Super Hybrid Armor ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Panorama Cotton ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Phelios ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Predator 2 ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Raiden Trad ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Ranger X ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "ResQ ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Revolution X ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Rolling Thunder 2 ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Rolling Thunder 3 ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Sagaia ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Slap Fight MD ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Sol-Deace",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Soldiers of Fortune ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Space Harrier II",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Space Invaders '91",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Steel Empire ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Steel Talons",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Sunset Riders ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Super Fantasy Zone ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Super Tank War ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Super Thunder Blade ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Task Force Harrier EX ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Thunder Force II",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Thunder Force III ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Trouble Shooter ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Truxton ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Twin Cobra - Desert Attack Helicopter ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Twinkle Tale ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Uchuu Senkan Gomora ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Undead Line ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Uzu Keobukseon ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Vapor Trail ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Verytex ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Viewpoint ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Whip Rush ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Wings of Wor ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Wonder Boy III - Monster Lair ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "XDR - X-Dazedly-Ray ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Xiao Monv - Magic Girl ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Zero Tolerance ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
         title: "Zero Wing ",
-        genre_id: "Shooter",
+        genre_id: 49,
         console_id: 3
     },
     {
@@ -21549,7 +21549,7 @@ module.exports =
         console_id: 6
     },
     {
-        title: 45,
+        title: 'Tennis',
         genre_id: 45,
         console_id: 1,
         img_url: "https://i.imgur.com/8qu8yGj.jpg"
@@ -21611,7 +21611,7 @@ module.exports =
         console_id: 5
     },
     {
-        title: 45,
+        title: 'Tennis',
         genre_id: 45,
         console_id: 5
     },
