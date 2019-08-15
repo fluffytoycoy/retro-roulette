@@ -18,7 +18,6 @@ import Tooltip from "@material-ui/core/Tooltip";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 
-
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
 }
@@ -68,8 +67,23 @@ const rows = [
     { id: 20,
       title: 'Adventure Island 3',
       img_url: null,
-      console: 'Game Boy',
-      genre: 'Action' }
+      console: 'SNES',
+      genre: 'Basketball' },
+      { id: 28,
+        title: 'b',
+        img_url: 'https://i.imgur.com/qWRyw7X.jpg',
+        console: 'Master System',
+        genre: 'Sports' },
+      { id: 29,
+        title: 'c',
+        img_url: 'https://i.imgur.com/VEwE9dn.jpg',
+        console: 'Game Boy Color',
+        genre: 'Action' },
+      { id: 30,
+        title: 'c',
+        img_url: null,
+        console: 'SNES',
+        genre: 'Action' }
 ];
 
 function desc(a, b, orderBy) {
@@ -164,7 +178,19 @@ const EnhancedTableToolbar = (props) => {
   return (
     <Toolbar className="toolbar-me">
           <Typography variant="h6" id="tableTitle">
-            Games
+            <div>Games</div>
+            <div className="toolbar">
+              <Tooltip title="Add Game">
+                  <IconButton aria-label="filter list">
+                      <i class="fas fa-plus"></i>
+                    </IconButton>
+              </Tooltip>
+              <Tooltip title="Filter list">
+                  <IconButton aria-label="filter list">
+                      <i class="fas fa-filter"></i>
+                    </IconButton>
+              </Tooltip>
+            </div>
           </Typography>
     </Toolbar>
   );
@@ -300,7 +326,7 @@ export default function EnhancedTable() {
                       <TableCell component="th" scope="row" padding="none">
                         {row.title}
                       </TableCell>
-                      <TableCell align="left">{row.img_url}</TableCell>
+                      <TableCell align="left">{row.img_url ? 'true' : 'false'}</TableCell>
                       <TableCell align="left">{row.console}</TableCell>
                       <TableCell align="left">{row.genre}</TableCell>
 
