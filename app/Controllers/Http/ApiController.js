@@ -54,9 +54,21 @@ class ApiController {
 
   async test({request, response, auth}){
     if(auth.check()){
-      console.log('yes')
+      const {page} = request.all().page || 1
+      try{
+        const game = await Database
+          .from('games')
+          .innerJoin('genres', 'games.genre_id', 'genres.id')
+          .innerJoin('consoles', 'games.console_id', 'consoles.id')
+          .select('games.id as id','title', "img_url", 'consoles.name as console', 'genres.name as genre')
+          .orderBy('console', 'title')
+          .paginate(page)
+        console.log(game)
+        return game
+      } catch (e){
+        console.log(e)
+      }
     }
-    return 'test'
   }
 }
 

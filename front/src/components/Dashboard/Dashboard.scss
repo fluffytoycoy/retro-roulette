@@ -135,64 +135,14 @@ class Home extends Component{
 
   render(){
     return (
-      <>
-      <div id="home" className={`${this.state.betModalOpen ? 'blur' : ''}`}>
-        <Hero/>
-        <div id="bets">
-          <div className="container">
-            <div>
-              <div className="ad">
-                <p>temp ad</p>
-              </div>
-            </div>
-          </div>
-          <SlotTimer setRotationsCompleted={this.setSlotSpin} setReset={e => this.resetTimer = e}/>
-          <div id="bet-section" className="container">
-            <div className="bet-row">
-                <div className="col">
-                  {this.state.isBetPlaced ?
-                    <SlotMachine open={this.state.betModalOpen}
-                      slotFinished={this.state.slotFinished}
-                      setSlotFinished={this.setSlotFinished}
-                      game={this.state.game}
-                      rotationsCompleted={this.state.rotationsCompleted}
-                      setReset={e => this.resetSlot = e}
-                      validReturn={this.state.validReturn}/>
-                    : <AllInSection AllIn={this.reset}/>}
-                </div>
-                <div className="divider"></div>
-                <div className={`col ${this.state.isBetPlaced ? 'game' : ''}`}>
-                  <GameColoumn {...this.state} toggleBetModal={this.toggleBetModal}/>
-                </div>
-                <GameInfoBar {...this.state} />
-            </div>
-            <BetBar slotFinished={this.state.slotFinished} toggleBetModal={this.toggleBetModal} spinAgain={this.reset}/>
-          </div>
-        </div>
+      <div id="dashboard">
+        <div className="sideboard"></div>
+        <div className="dash-body"></div>
       </div>
-      <BetModal filterOptions={this.state.filterOptions}
-                filtersSelected={this.state.filtersSelected}
-                toggleBetModal={this.toggleBetModal}
-                open={this.state.betModalOpen}
-                updateFilters={this.updateFilters}/>
-      </>
     );
   }
 
 }
 
-function GameInfoBar(props){
-  return props.slotFinished ? <GameInfo game={props.game} mounted={props.slotFinished}/> : <></>
-}
 
-function GameColoumn(props){
-  return props.isBetPlaced ?
-      <GameSection game={props.game}
-        slotFinished={props.slotFinished}
-        validReturn={props.validReturn}/>
-    : <BettingSection
-        toggleBetModal={props.toggleBetModal}/>
-}
-
-
-export default Home;
+export default Dashboard;
