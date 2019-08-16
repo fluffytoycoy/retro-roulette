@@ -13,7 +13,7 @@ class ApiController {
         .whereIn('genre_id', genres).whereIn('console_id', consoles)
         .innerJoin('genres', 'games.genre_id', 'genres.id')
         .innerJoin('consoles', 'games.console_id', 'consoles.id')
-        .select('title',"img_url", 'consoles.name as console', 'genres.name as genre')
+        .select('title', "img_url", 'consoles.name as console', 'genres.name as genre')
         .orderByRaw('RANDOM()')
         .limit(1)
       console.log(game[0])
@@ -60,7 +60,7 @@ class ApiController {
           .from('games')
           .innerJoin('genres', 'games.genre_id', 'genres.id')
           .innerJoin('consoles', 'games.console_id', 'consoles.id')
-          .select('games.id as id','title', "img_url", 'consoles.name as console', 'genres.name as genre')
+          .select('games.id as id',"console_id", "genre_id",'title', "img_url", 'consoles.name as console', 'genres.name as genre')
         console.log(game)
         return game
       } catch (e){

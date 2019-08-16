@@ -67,7 +67,7 @@ class BetModal extends Component{
             </div>
           </div>
       </CSSTransition>
-      : <>loading...</>
+      : <></>
     );
   }
 

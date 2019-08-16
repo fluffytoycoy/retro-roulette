@@ -142,7 +142,7 @@ export default function EnhancedTable(props) {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <EnhancedToolbar setModalOpen={setModalOpen}/>
+        <EnhancedToolbar setModalOpen={props.toggleMenu}/>
         <div className={classes.tableWrapper}>
           <Table
             className={classes.table}
@@ -198,7 +198,7 @@ export default function EnhancedTable(props) {
           onChangePage={handleChangePage}
           onChangeRowsPerPage={handleChangeRowsPerPage}
         />
-        <div onClick={()=>{props.toggleMenu()}}>test</div>
+        <div onClick={()=>{console.log('test')}}>test</div>
       </Paper>
     </div>
   );

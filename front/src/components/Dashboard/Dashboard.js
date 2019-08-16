@@ -56,10 +56,26 @@ class Dashboard extends Component{
     })
   }
 
-  filterList(){
-    const filteredList = this.props.gameList.filter(game=>{
-      return game.console === 'SNES';
-    })
+  filterList(consoles, genres){
+    console.log(consoles)
+    // console.log(genres.length)
+    let filteredList = this.props.gameList;
+    if(consoles.length){
+      filteredList = filteredList.filter(game=>{
+          return consoles.filter(consoleId=>{
+            return consoleId === game.console_id;
+          })[0]
+        });
+        console.log(filteredList)
+    }
+    if(genres.length){
+      filteredList = filteredList.filter(game=>{
+          return genres.filter(genreId=>{
+            return genreId === game.genre_id;
+          })[0]
+        });
+    }
+    this.props.history.push(`/Dashboard/Page/1`)
     this.setState({
       gameList: filteredList
     })
