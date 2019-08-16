@@ -48,8 +48,7 @@ class BetModal extends Component{
   }
 
   render(){
-    const consoles = this.props.filtersSelected.consoles
-    const genres = this.props.filtersSelected.genres
+    console.log(this.props)
     return (
       this.props.filterOptions ?
       <CSSTransition
@@ -61,9 +60,9 @@ class BetModal extends Component{
             <div className="modal-wrapper">
               <div className="modal">
                 <FormContainer onSubmit={this.submit}
-                initialValues={{consoles: consoles, genres: genres}}
+                initialValues={{consoles: this.props.filtersSelected.consoles, genres: this.props.filtersSelected.genres}}
                 render={this.renderForm}
-                validationSchema={schema}/>
+                validationSchema={this.props.noErrors ? '' : schema}/>
               </div>
             </div>
           </div>

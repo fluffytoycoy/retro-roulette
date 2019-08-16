@@ -1,100 +1,15 @@
-import React from "react";
-import PropTypes from "prop-types";
-import clsx from "clsx";
-import { lighten, makeStyles } from "@material-ui/core/styles";
+import React, { useEffect } from 'react';
+//import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
+import EnhancedTableHead from './Table/EnhancedTableHead';
+import EnhancedToolbar from './Table/EnhancedToolbar';
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
-import TableHead from "@material-ui/core/TableHead";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
-import TableSortLabel from "@material-ui/core/TableSortLabel";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
-import Checkbox from "@material-ui/core/Checkbox";
-import IconButton from "@material-ui/core/IconButton";
-import Tooltip from "@material-ui/core/Tooltip";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Switch from "@material-ui/core/Switch";
-
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  { id: 12,
-      title: 'Mega Man II',
-      img_url: 'https://i.imgur.com/KYDGiA1.jpg',
-      console: 'Game Boy',
-      genre: 'Action' },
-    { id: 13,
-      title: 'Burger Time Deluxe',
-      img_url: 'https://i.imgur.com/MuUFVIH.jpg',
-      console: 'Game Boy',
-      genre: 'Action' },
-    { id: 14,
-      title: 'Disney\'s DuckTales',
-      img_url: 'https://i.imgur.com/NHWAlC0.jpg',
-      console: 'Game Boy',
-      genre: 'Action' },
-
-    { id: 15,
-      title: 'Cool Spot',
-      img_url: 'https://i.imgur.com/ODJGofT.jpg',
-      console: 'Game Boy',
-      genre: 'Action' },
-    { id: 16,
-      title: 'Kirby\'s Pinball Land',
-      img_url: 'https://i.imgur.com/PIPcdDI.jpg',
-      console: 'Game Boy',
-      genre: 'Action' },
-    { id: 17,
-      title: 'Mega Man V',
-      img_url: 'https://i.imgur.com/qNn8Lre.jpg',
-      console: 'Game Boy',
-      genre: 'Action' },
-    { id: 18,
-      title: 'Animaniacs',
-      img_url: 'https://i.imgur.com/qWRyw7X.jpg',
-      console: 'Game Boy',
-      genre: 'Action' },
-    { id: 19,
-      title: 'Balloon Kid',
-      img_url: 'https://i.imgur.com/VEwE9dn.jpg',
-      console: 'Game Boy',
-      genre: 'Action' },
-    { id: 20,
-      title: 'Adventure Island 3',
-      img_url: null,
-      console: 'SNES',
-      genre: 'Basketball' },
-      { id: 28,
-        title: 'b',
-        img_url: 'https://i.imgur.com/qWRyw7X.jpg',
-        console: 'Master System',
-        genre: 'Sports' },
-      { id: 29,
-        title: 'c',
-        img_url: 'https://i.imgur.com/VEwE9dn.jpg',
-        console: 'Game Boy Color',
-        genre: 'Action' },
-      { id: 30,
-        title: 'c',
-        img_url: null,
-        console: 'SNES',
-        genre: 'Action' }
-];
-
-function desc(a, b, orderBy) {
-  if (b[orderBy] < a[orderBy]) {
-    return -1;
-  }
-  if (b[orderBy] > a[orderBy]) {
-    return 1;
-  }
-  return 0;
-}
+import Modal from '@material-ui/core/Modal';
 
 function stableSort(array, cmp) {
   const stabilizedThis = array.map((el, index) => [el, index]);
@@ -112,93 +27,15 @@ function getSorting(order, orderBy) {
     : (a, b) => -desc(a, b, orderBy);
 }
 
-const headRows = [
-  { id: "title", numeric: false, disablePadding: true, label: "Title" },
-  { id: "img_url", numeric: false, disablePadding: false, label: "Image" },
-  { id: "console", numeric: false, disablePadding: false, label: "Console" },
-  { id: "genre", numeric: false, disablePadding: false, label: "Genre" }
-];
-
-function EnhancedTableHead(props) {
-  const {
-    classes,
-    onSelectAllClick,
-    order,
-    orderBy,
-    numSelected,
-    rowCount,
-    onRequestSort
-  } = props;
-  const createSortHandler = property => event => {
-    onRequestSort(event, property);
-  };
-  return (
-    <TableHead>
-      <TableRow>
-        <TableCell padding="checkbox" />
-        {headRows.map(row => (
-          <TableCell
-            key={row.id}
-            align={row.numeric ? "right" : "left"}
-            padding={row.disablePadding ? "none" : "default"}
-            sortDirection={orderBy === row.id ? order : false}
-          >
-            <TableSortLabel
-              active={orderBy === row.id}
-              direction={order}
-              onClick={createSortHandler(row.id)}
-            >
-              {row.label}
-              {orderBy === row.id ? (
-                <span className={classes.visuallyHidden}>
-                  {order === "desc" ? "sorted descending" : "sorted ascending"}
-                </span>
-              ) : null}
-
-            </TableSortLabel>
-          </TableCell>
-        ))}
-      </TableRow>
-    </TableHead>
-  );
+function desc(a, b, orderBy) {
+  if (b[orderBy] < a[orderBy]) {
+    return -1;
+  }
+  if (b[orderBy] > a[orderBy]) {
+    return 1;
+  }
+  return 0;
 }
-
-EnhancedTableHead.propTypes = {
-  classes: PropTypes.object.isRequired,
-  numSelected: PropTypes.number.isRequired,
-  onRequestSort: PropTypes.func.isRequired,
-  onSelectAllClick: PropTypes.func.isRequired,
-  order: PropTypes.oneOf(["asc", "desc"]).isRequired,
-  orderBy: PropTypes.string.isRequired,
-  rowCount: PropTypes.number.isRequired
-};
-
-
-const EnhancedTableToolbar = (props) => {
-  return (
-    <Toolbar className="toolbar-me">
-          <Typography variant="h6" id="tableTitle">
-            <div>Games</div>
-            <div className="toolbar">
-              <Tooltip title="Add Game">
-                  <IconButton aria-label="filter list">
-                      <i class="fas fa-plus"></i>
-                    </IconButton>
-              </Tooltip>
-              <Tooltip title="Filter list">
-                  <IconButton aria-label="filter list">
-                      <i class="fas fa-filter"></i>
-                    </IconButton>
-              </Tooltip>
-            </div>
-          </Typography>
-    </Toolbar>
-  );
-};
-
-EnhancedTableToolbar.propTypes = {
-  numSelected: PropTypes.number.isRequired
-};
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -228,28 +65,44 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function EnhancedTable() {
+
+
+
+export default function EnhancedTable(props) {
   const classes = useStyles();
   const [order, setOrder] = React.useState("asc");
-  const [orderBy, setOrderBy] = React.useState("calories");
+  const [orderBy, setOrderBy] = React.useState("title");
   const [selected, setSelected] = React.useState([]);
-  const [page, setPage] = React.useState(0);
-  const [dense, setDense] = React.useState(false);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [modalOpen, setModalOpen] = React.useState(false)
+  let gameList = props.gameList;
+  const [page, setPage] = React.useState(getSelectedPage(props.match.params.number));
+
+
+
+
+  function getSelectedPage(number){
+    let pageNumber = parseInt(number);
+    let maxPages = getMaxPages();
+    console.log(pageNumber)
+    if(pageNumber <= 0 || !pageNumber){
+      pageNumber = 0;
+    } else if(number > maxPages){
+      pageNumber = getMaxPages() - 1;
+    } else {
+        pageNumber -= 1;
+    }
+    return pageNumber;
+
+    function getMaxPages(){
+      return Math.floor(gameList.length / rowsPerPage);
+    }
+  }
 
   function handleRequestSort(event, property) {
     const isDesc = orderBy === property && order === "desc";
     setOrder(isDesc ? "asc" : "desc");
     setOrderBy(property);
-  }
-
-  function handleSelectAllClick(event) {
-    if (event.target.checked) {
-      const newSelecteds = rows.map(n => n.name);
-      setSelected(newSelecteds);
-      return;
-    }
-    setSelected([]);
   }
 
   function handleClick(event, name) {
@@ -273,7 +126,9 @@ export default function EnhancedTable() {
   }
 
   function handleChangePage(event, newPage) {
-    setPage(newPage);
+    console.log(newPage)
+    props.history.push(`/Dashboard/Page/${newPage}`)
+    setPage(newPage)
   }
 
   function handleChangeRowsPerPage(event) {
@@ -281,55 +136,42 @@ export default function EnhancedTable() {
     setPage(0);
   }
 
-  function handleChangeDense(event) {
-    setDense(event.target.checked);
-  }
-
-  const isSelected = name => selected.indexOf(name) !== -1;
-
   const emptyRows =
-    rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+    rowsPerPage - Math.min(rowsPerPage, gameList.length - page * rowsPerPage);
 
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <EnhancedTableToolbar numSelected={selected.length} />
+        <EnhancedToolbar setModalOpen={setModalOpen}/>
         <div className={classes.tableWrapper}>
           <Table
             className={classes.table}
             aria-labelledby="tableTitle"
-            size={dense ? "small" : "medium"}
           >
             <EnhancedTableHead
               classes={classes}
               numSelected={selected.length}
               order={order}
               orderBy={orderBy}
-              onSelectAllClick={handleSelectAllClick}
               onRequestSort={handleRequestSort}
-              rowCount={rows.length}
+              rowCount={gameList.length}
             />
             <TableBody>
-              {stableSort(rows, getSorting(order, orderBy))
+              {stableSort(gameList, getSorting(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  const isItemSelected = isSelected(row.name);
-
                   return (
                     <TableRow
                       hover
                       tabIndex={-1}
-                      key={row.name}
-                      selected={isItemSelected}
+                      key={row.id}
                     >
-                      <TableCell padding="checkbox" />
-                      <TableCell component="th" scope="row" padding="none">
+                      <TableCell component="th" scope="row" padding="default">
                         {row.title}
                       </TableCell>
                       <TableCell align="left">{row.img_url ? 'true' : 'false'}</TableCell>
                       <TableCell align="left">{row.console}</TableCell>
                       <TableCell align="left">{row.genre}</TableCell>
-
                     </TableRow>
                   );
                 })}
@@ -344,7 +186,7 @@ export default function EnhancedTable() {
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
-          count={rows.length}
+          count={gameList.length}
           rowsPerPage={rowsPerPage}
           page={page}
           backIconButtonProps={{
@@ -356,11 +198,8 @@ export default function EnhancedTable() {
           onChangePage={handleChangePage}
           onChangeRowsPerPage={handleChangeRowsPerPage}
         />
+        <div onClick={()=>{props.toggleMenu()}}>test</div>
       </Paper>
-      <FormControlLabel
-        control={<Switch checked={dense} onChange={handleChangeDense} />}
-        label="Dense padding"
-      />
     </div>
   );
 }

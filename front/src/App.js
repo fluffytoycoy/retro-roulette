@@ -12,13 +12,16 @@ import NotFound from './components/NotFound/NotFound';
 import ScrollToTop from './components/Utils/Scroll/ScrollToTop';
 import Footer from './components/Footer/Footer';
 
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoggedIn: !!localStorage.getItem('jwtToken')
+      isLoggedIn: !!localStorage.getItem('jwtToken'),
+      gameList: undefined
     };
     this.handleAuth = this.handleAuth.bind(this);
+    this.setGameList = this.setGameList.bind(this);
   };
 
   handleAuth(status){
@@ -27,18 +30,23 @@ class App extends Component {
     })
   }
 
+  setGameList(gameList){
+    this.setState({
+      gameList: gameList
+    })
+  }
+
   render() {
     return (
       <Router>
-      <ScrollToTop >
 					<Switch>
 						      <Route exact  path="/" render={props => <Layout><Home {...props} /></Layout>} />
                   <Route exact path="/login" render={(props) => <Login {...props} isLoggedIn={this.state.isLoggedIn} login={this.handleAuth} />}/>
                   <Route exact path="/logout" render={(props) => <Logout {...props} isLoggedIn={this.state.isLoggedIn} logout={this.handleAuth} />}/>
-                  <PrivateRoute path="/dashboard" component={Dashboard}/>
+                  <PrivateRoute exact path="/dashboard/" component={Dashboard} {...this.props} setGameList={this.setGameList} gameList={this.state.gameList}/>
+                  <PrivateRoute exact path="/dashboard/Page/:number" component={Dashboard} {...this.props} setGameList={this.setGameList} gameList={this.state.gameList}/>
             <Route component={NotFound}/>
 				</Switch>
-        </ScrollToTop>
       </Router>
     );
   }

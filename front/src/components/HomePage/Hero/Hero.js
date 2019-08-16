@@ -2,7 +2,6 @@ import React from 'react';
 import './Hero.scss';
 import RouletteSVG from './Roulette';
 import { Link } from 'react-scroll';
-import axios from 'axios';
 function Hero(){
 
 

@@ -87,15 +87,6 @@ class SlotMachine extends Component{
       selectedItem: this.state.selectedSystem
     }
 
-    const gameMap ={
-      gameboyColor: 0,
-      NES: 1,
-      SNES: 2,
-      sms: 3,
-      gen: 4,
-      gameboy: 4,
-    }
-
     return (
       <>
         <div className={`slot-machine  ${this.state._isMounted ? 'fade-in': ''}`}>

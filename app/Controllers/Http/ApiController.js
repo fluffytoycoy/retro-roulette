@@ -61,7 +61,6 @@ class ApiController {
           .innerJoin('genres', 'games.genre_id', 'genres.id')
           .innerJoin('consoles', 'games.console_id', 'consoles.id')
           .select('games.id as id','title', "img_url", 'consoles.name as console', 'genres.name as genre')
-          .limit(20)
         console.log(game)
         return game
       } catch (e){
