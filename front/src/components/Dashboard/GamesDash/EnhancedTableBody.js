@@ -68,7 +68,7 @@ const useStyles = makeStyles(theme => ({
 
 
 
-export default function EnhancedTable(props) {
+function EnhancedTableBody(props) {
   const classes = useStyles();
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("title");
@@ -113,6 +113,11 @@ export default function EnhancedTable(props) {
   const emptyRows =
     rowsPerPage - Math.min(rowsPerPage, gameList.length - page * rowsPerPage);
 
+  function editGame(game){
+    props.setSelectedGame(game);
+    props.history.push(`/Dashboard/Edit/${game.id}`)
+  }
+
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
@@ -145,7 +150,7 @@ export default function EnhancedTable(props) {
                       <TableCell align="left">{row.img_url ? 'true' : 'false'}</TableCell>
                       <TableCell align="left">{row.console}</TableCell>
                       <TableCell align="left">{row.genre}</TableCell>
-                      <TableCell align="center"><Button variant="outlined" color="primary">EDIT</Button></TableCell>
+                      <TableCell align="center"><Button onClick={()=>{editGame(row)}} variant="outlined" color="primary">EDIT</Button></TableCell>
                     </TableRow>
                   );
                 })}
@@ -177,3 +182,5 @@ export default function EnhancedTable(props) {
     </div>
   );
 }
+
+export default EnhancedTableBody;
