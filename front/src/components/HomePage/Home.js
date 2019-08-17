@@ -99,17 +99,8 @@ class Home extends Component{
   }
 
   updateFilters(consoles, genres){
-    let self = this;
     this.props.updateFilters(consoles, genres)
     this.reset();
-    // this.setState({
-    //   filtersSelected:{
-    //     consoles: consoles,
-    //     genres: genres
-    //   }
-    // }, ()=>{
-    //   self.reset()
-    // })
   }
 
   render(){

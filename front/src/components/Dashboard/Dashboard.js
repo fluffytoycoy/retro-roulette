@@ -15,11 +15,7 @@ class Dashboard extends Component{
       gameList: this.props.gameList,
       betModalOpen: false,
       page: 1,
-      filters: {
-        consoles: undefined,
-        genres: undefined
-      }
-
+      filters: '',
     }
     this.filterList = this.filterList.bind(this)
     this.toggleMenu = this.toggleMenu.bind(this)
@@ -29,6 +25,7 @@ class Dashboard extends Component{
   componentWillMount(){
     if(!this.props.gameList){
       var self = this
+      const newFilters = self.props.match.params.filter;
       const filters = this.state.filters;
       axios.get('/api/testAuth',{
         headers: {
@@ -37,11 +34,10 @@ class Dashboard extends Component{
       })
       .then(response=>{
         self.props.setGameList(response.data)
-        const newFilters = self.props.match.params.filter;
         self.setState({
-          filters: newFilters ?  queryString.parse(newFilters, {arrayFormat: 'bracket', parseNumbers: true}) : filters
+          filters: newFilters ?  newFilters : filters
         },()=>{
-          self.filterQS(self.state.filters);
+          self.filterQS(queryString.parse(self.state.filters, {arrayFormat: 'bracket', parseNumbers: true}));
         })
       })
     }
@@ -54,15 +50,11 @@ class Dashboard extends Component{
   }
 
   filterList(consoles, genres){
-    // console.log(genres.length)
-    this.filterQS({consoles, genres})
     const filters = queryString.stringify({consoles, genres}, {arrayFormat: 'bracket', parseNumbers: true});
     this.props.history.push(`/dashboard/Page/0/${filters}`)
-
   }
 
   filterQS(filter) {
-    console.log('everytime')
     const consoles = filter.consoles ? filter.consoles : [];
     const genres = filter.genres ? filter.genres : [];
     let filteredList = this.props.gameList;
@@ -95,16 +87,21 @@ class Dashboard extends Component{
 
   componentWillReceiveProps(newProps){
     const newPage = newProps.computedMatch.params.number;
-    const newFilters = queryString.parse(newProps.match.params.filter, {arrayFormat: 'bracket', parseNumbers: true});
-    const {consoles, genres} = newFilters;
-    if(newPage != this.state.page){
-      console.log(newPage)
+    const newFilters = newProps.match.params.filter;
+    if(newPage !== this.state.page){
       this.setState({
         page: newPage
       })
     }
     if(this.props.gameList){
-      this.filterQS(newFilters)
+      if(this.state.filters !== newFilters){
+        this.setState({
+          filters: newFilters
+        },()=>{
+          this.filterQS(queryString.parse(newFilters, {arrayFormat: 'bracket', parseNumbers: true}));
+        })
+      }
+
     }
   }
 
@@ -113,7 +110,7 @@ class Dashboard extends Component{
     return (
       <Tabs id="dashboard">
       <BetModal filterOptions={this.props.filterOptions}
-                filtersSelected={{}}
+                filtersSelected={{consoles: [], genres: []}}
                 toggleBetModal={this.toggleBetModal}
                 open={this.state.betModalOpen}
                 updateFilters={this.filterList}

@@ -8,8 +8,6 @@ import Logout from './components/Auth/Logout';
 import Dashboard from './components/Dashboard/Dashboard';
 import PrivateRoute from './components/Routes/PrivateRoute';
 import NotFound from './components/NotFound/NotFound';
-//import SingleProduct from './components/SingleProductPage/SingleProduct';
-import ScrollToTop from './components/Utils/Scroll/ScrollToTop';
 import Footer from './components/Footer/Footer';
 import axios from 'axios';
 
