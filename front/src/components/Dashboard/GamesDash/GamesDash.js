@@ -83,11 +83,11 @@ export default function EnhancedTable(props) {
     let pageNumber = parseInt(number);
     let maxPages = getMaxPages();
     if(pageNumber <= 0 || !pageNumber){
-      pageNumber = 0;
+      pageNumber = 1;
     } else if(number > maxPages){
       pageNumber = getMaxPages();
     }
-    return pageNumber;
+    return pageNumber -1;
 
     function getMaxPages(){
       return Math.floor(gameList.length / rowsPerPage);
@@ -102,7 +102,7 @@ export default function EnhancedTable(props) {
 
   function handleChangePage(event, newPage) {
     console.log(newPage)
-    props.history.push(`/Dashboard/Page/${newPage}/${props.match.params.filter ? props.match.params.filter : ''}`)
+    props.history.push(`/Dashboard/Page/${newPage+1}/${props.match.params.filter ? props.match.params.filter : ''}`)
   }
 
   function handleChangeRowsPerPage(event) {
