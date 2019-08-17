@@ -33,7 +33,6 @@ class Dashboard extends Component{
         }
       })
       .then(response=>{
-        console.log('setting game list')
         self.props.setGameList(response.data)
         self.setState({
           filters: newFilters ?  newFilters : filters
@@ -121,7 +120,7 @@ class Dashboard extends Component{
           <h2>Retro Roulette</h2>
           <TabList>
             <Tab ><p>Games</p></Tab>
-            <Tab defaultFocus={true}><p>Genres</p></Tab>
+            <Tab ><p>Genres</p></Tab>
             <Tab><p>Consoles</p></Tab>
             <a alt="logout" href="/logout"><li><i className="fas fa-sign-out-alt logout"></i>Logout</li></a>
           </TabList>
@@ -136,7 +135,7 @@ class Dashboard extends Component{
                     filter={this.filterList}
                     page={this.state.page}
                     gameList={this.state.gameList}/>
-                    : <>loading this</>}
+                    : <>loading</>}
                 </div>
             </TabPanel>
             <TabPanel>

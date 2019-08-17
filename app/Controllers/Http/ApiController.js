@@ -3,7 +3,9 @@ const axios = use('axios');
 const Database = use('Database')
 const Game = use('App/Models/Game')
 const User = use('App/Models/User')
+
 class ApiController {
+
   async getGame({response, request}){
     const {consoles, genres} = JSON.parse(request.all().filters)
   //  console.log(request)
@@ -22,6 +24,26 @@ class ApiController {
       console.log(e)
     }
   }
+
+  async getGameById({response, request}){
+    const {id} = JSON.parse(request.all())
+  //  console.log(request)
+  if(auth.check()){
+    try{
+      const game = await Database
+        .from('games')
+        .where('id', id)
+        .innerJoin('genres', 'games.genre_id', 'genres.id')
+        .innerJoin('consoles', 'games.console_id', 'consoles.id')
+        .select('games.id as id',"console_id", "genre_id",'title', "img_url", 'consoles.name as console', 'genres.name as genre')
+      console.log(game)
+      return game
+    } catch (e){
+      console.log(e)
+    }
+  }
+  }
+
 
   async login({response, auth, request}){
 
@@ -54,7 +76,6 @@ class ApiController {
 
   async test({request, response, auth}){
     if(auth.check()){
-      const {page} = request.all().page || 1
       try{
         const game = await Database
           .from('games')
