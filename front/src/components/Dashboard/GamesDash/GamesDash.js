@@ -90,7 +90,7 @@ export default function EnhancedTable(props) {
     return pageNumber -1;
 
     function getMaxPages(){
-      return Math.floor(gameList.length / rowsPerPage);
+      return Math.ceil(gameList.length / rowsPerPage);
     }
   }
 
