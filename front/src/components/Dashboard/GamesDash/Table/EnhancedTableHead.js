@@ -11,7 +11,7 @@ const headRows = [
   { id: "title", numeric: false, disablePadding: false, label: "Title" },
   { id: "img_url", numeric: false, disablePadding: false, label: "Image" },
   { id: "console", numeric: false, disablePadding: false, label: "Console" },
-  { id: "genre", numeric: false, disablePadding: false, label: "Genre" }
+  { id: "genre", numeric: false, disablePadding: false, label: "Genre" },
 ];
 
 function EnhancedTableHead(props) {
@@ -47,6 +47,9 @@ function EnhancedTableHead(props) {
             </TableSortLabel>
           </TableCell>
         ))}
+        <TableCell align="center">
+          Info
+        </TableCell>
       </TableRow>
     </TableHead>
   );

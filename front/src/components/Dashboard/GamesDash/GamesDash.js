@@ -9,6 +9,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import Button from "@material-ui/core/Button";
 import Modal from '@material-ui/core/Modal';
 
 function stableSort(array, cmp) {
@@ -76,7 +77,7 @@ export default function EnhancedTable(props) {
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [modalOpen, setModalOpen] = React.useState(false)
   let gameList = props.gameList;
-  const [page, setPage] = React.useState(getSelectedPage(props.match.params.number));
+  const page = getSelectedPage(props.page);
 
 
 
@@ -84,13 +85,10 @@ export default function EnhancedTable(props) {
   function getSelectedPage(number){
     let pageNumber = parseInt(number);
     let maxPages = getMaxPages();
-    console.log(pageNumber)
     if(pageNumber <= 0 || !pageNumber){
       pageNumber = 0;
     } else if(number > maxPages){
-      pageNumber = getMaxPages() - 1;
-    } else {
-        pageNumber -= 1;
+      pageNumber = getMaxPages();
     }
     return pageNumber;
 
@@ -127,13 +125,12 @@ export default function EnhancedTable(props) {
 
   function handleChangePage(event, newPage) {
     console.log(newPage)
-    props.history.push(`/Dashboard/Page/${newPage}`)
-    setPage(newPage)
+    props.history.push(`/Dashboard/Page/${newPage}/${props.match.params.filter ? props.match.params.filter : ''}`)
   }
 
   function handleChangeRowsPerPage(event) {
     setRowsPerPage(+event.target.value);
-    setPage(0);
+    props.history.push(`/Dashboard/Page/1`)
   }
 
   const emptyRows =
@@ -158,7 +155,7 @@ export default function EnhancedTable(props) {
             />
             <TableBody>
               {stableSort(gameList, getSorting(order, orderBy))
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .slice(page  * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
                   return (
                     <TableRow
@@ -166,12 +163,13 @@ export default function EnhancedTable(props) {
                       tabIndex={-1}
                       key={row.id}
                     >
-                      <TableCell component="th" scope="row" padding="default">
+                      <TableCell component="th">
                         {row.title}
                       </TableCell>
                       <TableCell align="left">{row.img_url ? 'true' : 'false'}</TableCell>
                       <TableCell align="left">{row.console}</TableCell>
                       <TableCell align="left">{row.genre}</TableCell>
+                      <TableCell align="center"><Button variant="outlined" color="primary">EDIT</Button></TableCell>
                     </TableRow>
                   );
                 })}
@@ -188,7 +186,7 @@ export default function EnhancedTable(props) {
           component="div"
           count={gameList.length}
           rowsPerPage={rowsPerPage}
-          page={page}
+          page={(page)}
           backIconButtonProps={{
             "aria-label": "previous page"
           }}

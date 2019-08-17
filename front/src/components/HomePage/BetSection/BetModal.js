@@ -48,7 +48,6 @@ class BetModal extends Component{
   }
 
   render(){
-    console.log(this.props)
     return (
       this.props.filterOptions ?
       <CSSTransition

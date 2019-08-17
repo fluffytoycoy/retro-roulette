@@ -17,14 +17,6 @@ class Home extends Component{
     super(props);
     this.state={
       isBetPlaced: false,
-      filterOptions: {
-        consoles: [],
-        genres: [],
-      },
-      filtersSelected: {
-        consoles: [],
-        genres: [],
-      },
       game: undefined,
       rotationsCompleted: false,
       slotFinished: false,
@@ -38,22 +30,7 @@ class Home extends Component{
     this.updateFilters = this.updateFilters.bind(this)
   }
 
-  componentWillMount(){
-    let self = this;
-    axios.get('/api/filterInfo')
-    .then(response=>{
-      self.setState({
-        filterOptions:{
-          consoles: response.data.consoles,
-          genres: response.data.genres
-        },
-        filtersSelected:{
-          consoles: response.data.consoles.map(console=>(console.value)),
-          genres: response.data.genres.map(genre=>(genre.value)),
-        }
-      })
-    })
-  }
+
 
   reset(){
     let self = this;
@@ -71,10 +48,10 @@ class Home extends Component{
         validReturn: true,
       }, () => {
         self.resetSlot()
-        console.log(self.state.filtersSelected)
+        console.log(self.props.filtersSelected)
         axios.get('api/test', {
           params:{
-            filters: self.state.filtersSelected
+            filters: self.props.filtersSelected
           }
         })
           .then(response => {
@@ -123,14 +100,16 @@ class Home extends Component{
 
   updateFilters(consoles, genres){
     let self = this;
-    this.setState({
-      filtersSelected:{
-        consoles: consoles,
-        genres: genres
-      }
-    }, ()=>{
-      self.reset()
-    })
+    this.props.updateFilters(consoles, genres)
+    this.reset();
+    // this.setState({
+    //   filtersSelected:{
+    //     consoles: consoles,
+    //     genres: genres
+    //   }
+    // }, ()=>{
+    //   self.reset()
+    // })
   }
 
   render(){
@@ -170,8 +149,8 @@ class Home extends Component{
           </div>
         </div>
       </div>
-      <BetModal filterOptions={this.state.filterOptions}
-                filtersSelected={this.state.filtersSelected}
+      <BetModal filterOptions={this.props.filterOptions}
+                filtersSelected={this.props.filtersSelected}
                 toggleBetModal={this.toggleBetModal}
                 open={this.state.betModalOpen}
                 updateFilters={this.updateFilters}/>
