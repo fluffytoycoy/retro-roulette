@@ -104,6 +104,9 @@ class Dashboard extends Component{
       }
 
     }
+    this.setState({
+      gameList: this.props.gameList
+    })
   }
 
   render(){

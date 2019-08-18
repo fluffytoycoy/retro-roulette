@@ -75,9 +75,8 @@ class App extends Component {
     const gameIndex = this.state.gameList.findIndex(list=> list.id === game.id);
     game.genre = this.state.filterOptions.genres.filter(genre=> genre.value == game.genre_id)[0].label
     game.console = this.state.filterOptions.consoles.filter(genre=> genre.value == game.console_id)[0].label
-    game.console_id = parseInt(game.console_id);
-    game.genre_id = parseInt(game.genre_id);
-
+    game.console_id = game.console_id;
+    game.genre_id = game.genre_id;
     this.setState({
       gameList: [
         ...this.state.gameList.slice(0, gameIndex),

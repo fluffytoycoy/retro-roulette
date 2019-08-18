@@ -67,6 +67,8 @@ class GameDash extends React.Component{
     }
     submit(game){
       game.id = this.state.selectedGame.id;
+      game.img_url = this.state.altImg
+      console.log(game)
       axios.post('/api/updateGame', game,{
         headers: {
           "Authorization" : `Bearer ${localStorage.getItem('jwtToken')}`,
