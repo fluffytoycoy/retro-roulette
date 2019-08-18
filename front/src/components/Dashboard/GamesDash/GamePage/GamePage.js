@@ -1,6 +1,7 @@
 import React from 'react';
 import './GamePage.scss';
-import { FormContainer, Form, Field, Button } from 'ui-form-field';
+import { FormContainer, Form, Field} from 'ui-form-field';
+import Button from "@material-ui/core/Button";
 import axios from 'axios';
 //import PropTypes from "prop-types";
 
@@ -91,7 +92,7 @@ class GameDash extends React.Component{
     }
     delete(){
       this.props.deleteSingleGame(this.state.selectedGame);
-      this.props.history.goBack()
+      this.props.history.goBack();
     }
     test = (props) =>{
       return(
@@ -102,8 +103,8 @@ class GameDash extends React.Component{
           <label>Image Url</label>
           <input type="text" value={this.state.altImg} onChange={this.toggleAltImg}/>
           <div className='btn-bar'>
-            <Button className='cancel' onClick={this.cancel}>Cancel</Button>
-            <Button className='submit' type="submit">SAVE</Button>
+            <Button variant="contained" className='cancel' onClick={this.cancel}>Cancel</Button>
+            <Button variant="contained" color="primary" className='submit' type="submit">SAVE</Button>
           </div>
         </Form>
       )
@@ -127,7 +128,7 @@ class GameDash extends React.Component{
                 onSubmit={this.submit}
                 initialValues={{title: game.title, console_id: game.console_id, genre_id: this.state.selectedGame.genre_id, img_url: game.img_url}}
                 render={this.test}/>
-                <Button onClick={this.delete} className="delete">Delete</Button>
+                <Button variant="contained" color="secondary" onClick={this.delete} className="delete">Delete</Button>
             </div>
 
           </div>
