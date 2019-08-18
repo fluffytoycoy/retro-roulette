@@ -139,6 +139,7 @@ class Dashboard extends Component{
                     filter={this.filterList}
                     page={this.state.page}
                     updateGameList={this.props.updateGameList}
+                    deleteSingleGame={this.props.deleteSingleGame}
                     gameList={this.state.gameList}/>
 
                     : <>loading</>}

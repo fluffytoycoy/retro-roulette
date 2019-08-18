@@ -16,6 +16,7 @@ class GameDash extends React.Component{
     this.toggleAltImg = this.toggleAltImg.bind(this)
     this.submit = this.submit.bind(this)
     this.cancel = this.cancel.bind(this)
+    this.delete = this.delete.bind(this)
   }
 
   componentDidMount() {
@@ -88,7 +89,10 @@ class GameDash extends React.Component{
         selectedGame: this.state.selectedGame
       })
     }
-
+    delete(){
+      this.props.deleteSingleGame(this.state.selectedGame);
+      this.props.history.goBack()
+    }
     test = (props) =>{
       return(
         <Form await onUpdate={()=>{this.toggleAltImg(props.values.img_url)}}>
@@ -123,6 +127,7 @@ class GameDash extends React.Component{
                 onSubmit={this.submit}
                 initialValues={{title: game.title, console_id: game.console_id, genre_id: this.state.selectedGame.genre_id, img_url: game.img_url}}
                 render={this.test}/>
+                <Button onClick={this.delete} className="delete">Delete</Button>
             </div>
 
           </div>
