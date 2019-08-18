@@ -10,6 +10,7 @@ import axios from 'axios';
 class Dashboard extends Component{
   constructor(props){
     super(props);
+
     this.state={
       menuOpen: false,
       gameList: this.props.gameList,
@@ -27,7 +28,7 @@ class Dashboard extends Component{
       var self = this
       const newFilters = self.props.match.params.filter;
       const filters = this.state.filters;
-      axios.get('/api/testAuth',{
+      axios.get('/api/getAllGames',{
         headers: {
           "Authorization" : `Bearer ${localStorage.getItem('jwtToken')}`
         }
@@ -134,7 +135,9 @@ class Dashboard extends Component{
                     toggleMenu={this.toggleBetModal}
                     filter={this.filterList}
                     page={this.state.page}
+                    updateGameList={this.props.updateGameList}
                     gameList={this.state.gameList}/>
+
                     : <>loading</>}
                 </div>
             </TabPanel>

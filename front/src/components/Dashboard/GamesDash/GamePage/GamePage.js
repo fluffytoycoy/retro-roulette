@@ -1,6 +1,7 @@
 import React from 'react';
 import './GamePage.scss';
 import { FormContainer, Form, Field, Button } from 'ui-form-field';
+import axios from 'axios';
 //import PropTypes from "prop-types";
 
 
@@ -16,6 +17,7 @@ class GameDash extends React.Component{
     this.submit = this.submit.bind(this)
     this.cancel = this.cancel.bind(this)
   }
+
   componentDidMount() {
       if (!this.state.selectedGame) {
         const game = gameListBS(this.props.gameList, parseInt(this.props.match.params.gameId), 0, this.props.gameList.length-1);
@@ -63,8 +65,20 @@ class GameDash extends React.Component{
         altImg: e.target.value,
       })
     }
-    submit(e){
-      console.log(e)
+    submit(game){
+      game.id = this.state.selectedGame.id;
+      axios.post('/api/updateGame', game,{
+        headers: {
+          "Authorization" : `Bearer ${localStorage.getItem('jwtToken')}`,
+        }
+      }).then(response=>{
+        console.log(response)
+        if(response.status == "204"){
+          this.props.updateGameList(game)
+        }
+      }).catch(error=>{
+        console.log(error)
+      })
     }
 
     cancel(e){
@@ -77,8 +91,8 @@ class GameDash extends React.Component{
       return(
         <Form await onUpdate={()=>{this.toggleAltImg(props.values.img_url)}}>
           <Field input name='title'/>
-          <Field select options={this.props.filterOptions.consoles} name='console'/>
-          <Field select options={this.props.filterOptions.genres} name="genres"/>
+          <Field select options={this.props.filterOptions.consoles} name='console_id'/>
+          <Field select options={this.props.filterOptions.genres} name="genre_id"/>
           <label>Image Url</label>
           <input type="text" value={this.state.altImg} onChange={this.toggleAltImg}/>
           <div className='btn-bar'>
@@ -88,10 +102,6 @@ class GameDash extends React.Component{
         </Form>
       )
     }
-
-  displayImgOrAlt(){
-    return this.state.displayAltImg ?  this.state.selectedGame.img_url : this.state.altImg;
-  }
 
   render(){
     const game = this.state.selectedGame
@@ -109,7 +119,7 @@ class GameDash extends React.Component{
               <p>{game.genre}</p>
               <FormContainer
                 onSubmit={this.submit}
-                initialValues={{title: game.title, console: game.console_id, genres: this.state.selectedGame.genre_id, img_url: game.img_url}}
+                initialValues={{title: game.title, console_id: game.console_id, genre_id: this.state.selectedGame.genre_id, img_url: game.img_url}}
                 render={this.test}/>
             </div>
 

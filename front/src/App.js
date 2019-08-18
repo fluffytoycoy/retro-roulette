@@ -29,7 +29,8 @@ class App extends Component {
     };
     this.handleAuth = this.handleAuth.bind(this);
     this.setGameList = this.setGameList.bind(this);
-    this.updateFilters = this.updateFilters.bind(this)
+    this.updateFilters = this.updateFilters.bind(this);
+    this.updateGameList = this.updateGameList.bind(this);
   };
 
   componentWillMount(){
@@ -70,6 +71,22 @@ class App extends Component {
     })
   }
 
+  updateGameList(game){
+    const gameIndex = this.state.gameList.findIndex(list=> list.id === game.id);
+    game.genre = this.state.filterOptions.genres.filter(genre=> genre.value == game.genre_id)[0].label
+    game.console = this.state.filterOptions.consoles.filter(genre=> genre.value == game.console_id)[0].label
+    game.console_id = parseInt(game.console_id);
+    game.genre_id = parseInt(game.genre_id);
+
+    this.setState({
+      gameList: [
+        ...this.state.gameList.slice(0, gameIndex),
+        Object.assign({}, this.state.gameList[gameIndex], game),
+        ...this.state.gameList.slice(gameIndex+1)
+      ]
+    });
+  }
+
   render() {
     return (
       <Router>
@@ -80,7 +97,7 @@ class App extends Component {
                   <PrivateRoute exact path="/dashboard/" component={Dashboard} {...this.props} setGameList={this.setGameList} filterOptions={this.state.filterOptions} gameList={this.state.gameList}/>
                   <PrivateRoute exact path="/dashboard/Page/:number" component={Dashboard} {...this.props} setGameList={this.setGameList} filterOptions={this.state.filterOptions} gameList={this.state.gameList}/>
                   <PrivateRoute exact path="/dashboard/Page/:number/:filter" component={Dashboard} {...this.props} setGameList={this.setGameList} filterOptions={this.state.filterOptions} gameList={this.state.gameList}/>
-                  <PrivateRoute exact path="/dashboard/Edit/:gameId" component={Dashboard} {...this.props} setGameList={this.setGameList} filterOptions={this.state.filterOptions} gameList={this.state.gameList}/>
+                  <PrivateRoute exact path="/dashboard/Edit/:gameId" component={Dashboard} {...this.props} updateGameList={this.updateGameList} setGameList={this.setGameList} filterOptions={this.state.filterOptions} gameList={this.state.gameList}/>
             <Route component={NotFound}/>
 				</Switch>
       </Router>

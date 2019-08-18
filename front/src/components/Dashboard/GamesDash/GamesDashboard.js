@@ -7,7 +7,7 @@ import GamePage from './GamePage/GamePage';
 function GameDash(props){
   const [selectedGame, setSelectedGame] = React.useState(undefined);
   return (<>
-    {!props.match.params.gameId ? <EnhancedTableBody setSelectedGame={setSelectedGame}{...props}/> : <GamePage {...props} selectedGame={selectedGame}/>}
+    {!props.match.params.gameId ? <EnhancedTableBody setSelectedGame={setSelectedGame}{...props}/> : <GamePage {...props} updateGameList={props.updateGameList} selectedGame={selectedGame}/>}
     </>
   );
 }

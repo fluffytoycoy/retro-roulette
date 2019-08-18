@@ -44,7 +44,6 @@ class ApiController {
   }
   }
 
-
   async login({response, auth, request}){
 
     const {username, password} = request.all();
@@ -74,7 +73,7 @@ class ApiController {
 
   }
 
-  async test({request, response, auth}){
+  async getAllGames({request, response, auth}){
     if(auth.check()){
       try{
         const game = await Database
@@ -82,13 +81,39 @@ class ApiController {
           .innerJoin('genres', 'games.genre_id', 'genres.id')
           .innerJoin('consoles', 'games.console_id', 'consoles.id')
           .select('games.id as id',"console_id", "genre_id",'title', "img_url", 'consoles.name as console', 'genres.name as genre')
-        console.log(game)
         return game
       } catch (e){
         console.log(e)
       }
     }
   }
+
+async updateGame({request, response, auth}){
+  if(auth.check()){
+    try{
+      const game = request.all()
+      console.log(game)
+      await Game
+        .query()
+        .where('id', game.id)
+        .update({title: game.title, console_id: game.console_id, genre_id: game.genre_id, img_url: game.img_url })
+    }catch(e){
+      console.log(e)
+      return response.status(405).send()
+    }
+  }
+}
+
+async deleteGame({request, response, auth}){
+    if(auth.check()){
+      try{
+
+      }catch(e){
+
+      }
+    }
+  }
+
 }
 
 module.exports = ApiController;
