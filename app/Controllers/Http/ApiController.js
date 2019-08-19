@@ -83,7 +83,7 @@ class ApiController {
           .select('games.id as id',"console_id", "genre_id",'title', "img_url", 'consoles.name as console', 'genres.name as genre')
         return game
       } catch (e){
-        console.log(e)
+        return response.status(500).send()
       }
     }
   }
@@ -99,7 +99,7 @@ async updateGame({request, response, auth}){
         .update({title: game.title, console_id: game.console_id, genre_id: game.genre_id, img_url: game.img_url })
     }catch(e){
       console.log(e)
-      return response.status(405).send()
+      return response.status(500).send()
     }
   }
 }
@@ -107,13 +107,20 @@ async updateGame({request, response, auth}){
 async deleteGame({request, response, auth}){
     if(auth.check()){
       try{
-
+        const { id } = request.all()
+        console.log(id)
+        const game = await Game.find(id)
+        await game.delete()
+        return response.status(204).send()
       }catch(e){
-
+        return response.status(500).send()
       }
     }
   }
 
+  async error({response}){
+    return response.status(405).send()
+  }
 }
 
 module.exports = ApiController;

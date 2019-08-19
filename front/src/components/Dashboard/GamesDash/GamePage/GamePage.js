@@ -76,23 +76,37 @@ class GameDash extends React.Component{
           "Authorization" : `Bearer ${localStorage.getItem('jwtToken')}`,
         }
       }).then(response=>{
-        console.log(response)
+
         if(response.status == "204"){
+          this.props.setDatabasePopup(true, 'success')
           this.props.updateGameList(game)
+          this.props.history.goBack();
         }
       }).catch(error=>{
-        console.log(error)
+        console.log('error')
+        this.props.setDatabasePopup(true, 'error')
       })
     }
 
     cancel(e){
-      this.setState({
-        selectedGame: this.state.selectedGame
-      })
-    }
-    delete(){
-      this.props.deleteSingleGame(this.state.selectedGame);
       this.props.history.goBack();
+    }
+
+    delete(){
+      axios.post('/api/deleteGame', {id: this.state.selectedGame.id},{
+        headers: {
+          "Authorization" : `Bearer ${localStorage.getItem('jwtToken')}`,
+        }
+      }).then(response=>{
+        if(response.status == "204"){
+          this.props.setDatabasePopup(true, 'success')
+          this.props.deleteSingleGame(this.state.selectedGame);
+          this.props.history.goBack();
+        }
+      }).catch(error=>{
+        console.log('error')
+        this.props.setDatabasePopup(true, 'error')
+      })
     }
     test = (props) =>{
       return(

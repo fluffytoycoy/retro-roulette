@@ -17,7 +17,7 @@ const EnhancedToolbar = (props) => {
                       <i className="fas fa-plus"></i>
                     </IconButton>
               </Tooltip>
-              <Tooltip title="Filter list">
+              <Tooltip title="Filter">
                   <IconButton onClick={()=>props.setModalOpen(true)} aria-label="filter list">
                       <i className="fas fa-filter"></i>
                     </IconButton>

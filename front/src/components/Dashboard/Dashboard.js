@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import './Dashboard.scss';
 import GamesDashboard from './GamesDash/GamesDashboard'
+import Popups from './Popups/Popups'
 import BetModal from '../HomePage/BetSection/BetModal'
 import { withRouter } from 'react-router-dom';
 import queryString from 'query-string';
@@ -17,10 +18,13 @@ class Dashboard extends Component{
       betModalOpen: false,
       page: 1,
       filters: '',
+      databasePopup: false,
+      popupStatus: ''
     }
     this.filterList = this.filterList.bind(this)
     this.toggleMenu = this.toggleMenu.bind(this)
     this.toggleBetModal = this.toggleBetModal.bind(this)
+    this.setDatabasePopup = this.setDatabasePopup.bind(this)
   }
 
   componentWillMount(){
@@ -109,6 +113,13 @@ class Dashboard extends Component{
     })
   }
 
+  setDatabasePopup(value, status){
+    this.setState({
+        popupStatus: status,
+        databasePopup: value
+    }, ()=>console.log(this.state.databasePopup))
+  }
+
   render(){
     const gameList = this.state.gameList;
     return (
@@ -119,6 +130,7 @@ class Dashboard extends Component{
                 open={this.state.betModalOpen}
                 updateFilters={this.filterList}
                 noErrors/>
+        <Popups popupStatus={this.state.popupStatus} open={this.state.databasePopup} setPopup={this.setDatabasePopup}/>
         <i onClick={this.toggleMenu}className="fas fa-bars menu-btn"></i>
         <div className={`sideboard ${this.state.menuOpen ? 'show' : ''}`}>
           <h2>Retro Roulette</h2>
@@ -140,6 +152,7 @@ class Dashboard extends Component{
                     page={this.state.page}
                     updateGameList={this.props.updateGameList}
                     deleteSingleGame={this.props.deleteSingleGame}
+                    setDatabasePopup={this.setDatabasePopup}
                     gameList={this.state.gameList}/>
 
                     : <>loading</>}
