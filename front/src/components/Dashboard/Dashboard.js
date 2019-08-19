@@ -167,7 +167,7 @@ class Dashboard extends Component{
             </TabPanel>
             <TabPanel>
               <div className="grid-wrapper">
-              {this.props.filterOptions ?
+              {this.props.filterOptions.consoles.length ?
                 <ConsoleDashboard
                 {...this.props}
                 toggleMenu={this.toggleBetModal}

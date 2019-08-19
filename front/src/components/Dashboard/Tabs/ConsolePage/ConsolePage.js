@@ -1,5 +1,4 @@
 import React from 'react';
-import './GamePage.scss';
 import { FormContainer, Form, Field} from 'ui-form-field';
 import Button from "@material-ui/core/Button";
 import axios from 'axios';
@@ -11,11 +10,9 @@ class GameDash extends React.Component{
   constructor(props){
     super(props);
     this.state={
-      selectedGame: this.props.selectedGame,
-      gameExists: false,
-      altImg: '',
+      selectedConsole: this.props.selectedConsole,
+      consoleExists: false,
     }
-    this.toggleAltImg = this.toggleAltImg.bind(this)
     this.updateGame = this.updateGame.bind(this)
     this.cancel = this.cancel.bind(this)
     this.delete = this.delete.bind(this)
@@ -23,15 +20,13 @@ class GameDash extends React.Component{
   }
 
     componentDidMount() {
-      console.log(this.state.selectedGame)
+      console.log(this.props.consoles)
       if (!this.state.selectedGame) {
-
-        const game = gameListBS(this.props.gameList, parseInt(this.props.match.params.id), 0, this.props.gameList.length-1);
-        if(game){
+        const gameConsole = gameListBS(this.props.consoles, parseInt(this.props.match.params.id), 0, this.props.consoles.length-1);
+        if(gameConsole){
           this.setState({
-            selectedGame: game,
+            selectedGame: gameConsole,
             gameExists: true,
-            altImg: game.img_url
           })
         }
       }else{
@@ -49,13 +44,13 @@ class GameDash extends React.Component{
         let mid = Math.floor((start + end) / 2);
 
         // Compare mid with given key x
-        if (arr[mid].id === gameId) {
+        if (arr[mid].value === gameId) {
           return arr[mid];
         }
 
         // If element at mid is greater than x,
         // search in the left half of mid
-        if (arr[mid].id > gameId)
+        if (arr[mid].value > gameId)
           return gameListBS(arr, gameId, start, mid - 1);
         else
           // If element at mid is smaller than x,

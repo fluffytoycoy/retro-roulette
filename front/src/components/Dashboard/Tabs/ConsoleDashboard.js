@@ -2,17 +2,17 @@ import React from 'react';
 //import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import EnhancedTableBody from './ConsolePage/Table/EnhancedTableBody';
-import GamePage from './GamePage/GamePage';
+import ConsolePage from './ConsolePage/ConsolePage';
 
 function ConsoleDash(props){
-  const [selectedGame, setSelectedGame] = React.useState(undefined);
+  const [selectedConsole, setSelectedConsole] = React.useState(undefined);
   return (<>
     <GameTabHandler  {...props}
       updateGameList={props.updateGameList}
       deleteSingleGame={props.deleteSingleGame}
       setDatabasePopup={props.setDatabasePopup}
-      selectedGame={selectedGame}
-      setSelectedGame={setSelectedGame}
+      selectedConsole={selectedConsole}
+      setSelectedConsole={setSelectedConsole}
       consoles={props.filterOptions.consoles}
       />
     </>
@@ -20,12 +20,11 @@ function ConsoleDash(props){
 }
 
 function GameTabHandler(props){
-  console.log(props.match.path)
   switch (props.match.path){
     case '/Dashboard/:Tab/Edit/:id':
-    return <GamePage {...props} />
+    return <ConsolePage {...props} />
     case '/Dashboard/:Tab/AddConsole':
-    return <GamePage {...props} addGame />
+    return <ConsolePage {...props} addGame />
     default:
     return <EnhancedTableBody {...props}/>;
   }
