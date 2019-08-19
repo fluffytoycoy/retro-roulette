@@ -19,9 +19,9 @@ function GameDash(props){
 
 function GameTabHandler(props){
   switch (props.match.path){
-    case '/Dashboard/Edit/:gameId':
+    case '/Dashboard/:Tab/Edit/:gameId':
     return <GamePage {...props} />
-    case '/Dashboard/AddGame':
+    case '/Dashboard/:Tab/AddGame':
     return <GamePage {...props} addGame />
     default:
     return <EnhancedTableBody {...props}/>;

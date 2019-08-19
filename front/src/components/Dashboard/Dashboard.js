@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import './Dashboard.scss';
-import GamesDashboard from './GamesDash/GamesDashboard'
+import GamesDashboard from './Tabs/GamesDashboard'
+import ConsoleDashboard from './Tabs/ConsoleDashboard'
 import Popups from './Popups/Popups'
 import BetModal from '../HomePage/BetSection/BetModal'
+import findTabIndex from './Tabs/Utils/TabMap';
+
 import { withRouter } from 'react-router-dom';
 import queryString from 'query-string';
 import axios from 'axios';
@@ -19,7 +22,8 @@ class Dashboard extends Component{
       page: 1,
       filters: '',
       databasePopup: false,
-      popupStatus: 'success'
+      popupStatus: 'success',
+      tabIndex: findTabIndex(this.props.match.params.Tab)
     }
     this.filterList = this.filterList.bind(this)
     this.toggleMenu = this.toggleMenu.bind(this)
@@ -28,7 +32,7 @@ class Dashboard extends Component{
   }
 
   componentWillMount(){
-    console.log(this.props.match.path)
+    console.log()
     if(!this.props.gameList){
       var self = this
       const newFilters = self.props.match.params.filter;
@@ -57,7 +61,7 @@ class Dashboard extends Component{
 
   filterList(consoles, genres){
     const filters = queryString.stringify({consoles, genres}, {arrayFormat: 'bracket', parseNumbers: true});
-    this.props.history.push(`/dashboard/Page/1/${filters}`)
+    this.props.history.push(`/dashboard/Game/Page/1/${filters}`)
   }
 
   filterQS(filter) {
@@ -122,7 +126,7 @@ class Dashboard extends Component{
   render(){
     const gameList = this.state.gameList;
     return (
-      <Tabs id="dashboard">
+      <Tabs defaultIndex={this.state.tabIndex} onSelect={index => console.log(index)} id="dashboard">
       <BetModal filterOptions={this.props.filterOptions}
                 filtersSelected={{consoles: [], genres: []}}
                 toggleBetModal={this.toggleBetModal}
@@ -133,10 +137,10 @@ class Dashboard extends Component{
         <i onClick={this.toggleMenu}className="fas fa-bars menu-btn"></i>
         <div className={`sideboard ${this.state.menuOpen ? 'show' : ''}`}>
           <h2>Retro Roulette</h2>
-          <TabList>
-            <Tab ><p>Games</p></Tab>
-            <Tab ><p>Genres</p></Tab>
-            <Tab><p>Consoles</p></Tab>
+          <TabList  >
+            <Tab onClick={()=>this.props.history.push('/Dashboard/Game')}><p>Games</p></Tab>
+            <Tab onClick={()=>this.props.history.push('/Dashboard/Genre')}><p>Genres</p></Tab>
+            <Tab onClick={()=>this.props.history.push('/Dashboard/Console')}><p>Consoles</p></Tab>
             <a alt="logout" href="/logout"><li><i className="fas fa-sign-out-alt logout"></i>Logout</li></a>
           </TabList>
         </div>
@@ -163,6 +167,15 @@ class Dashboard extends Component{
             </TabPanel>
             <TabPanel>
               <div className="grid-wrapper">
+              {this.props.filterOptions ?
+                <ConsoleDashboard
+                {...this.props}
+                toggleMenu={this.toggleBetModal}
+                filter={this.filterList}
+                page={this.state.page}
+                />
+
+                : <>loading</>}
               </div>
             </TabPanel>
         </div>

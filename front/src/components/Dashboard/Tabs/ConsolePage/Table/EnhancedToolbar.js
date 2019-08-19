@@ -11,16 +11,11 @@ const EnhancedToolbar = (props) => {
   return (
     <Toolbar className="toolbar-me">
           <Typography variant="h6" id="tableTitle">
-            Games
+            Consoles
             <div className="toolbar">
-              <Tooltip title="Add Game">
-                  <IconButton onClick={()=>props.history.push('/Dashboard/AddGame')}aria-label="filter list">
+              <Tooltip title="Add Console">
+                  <IconButton onClick={()=>props.history.push('/Dashboard/Console/AddConsole')}aria-label="filter list">
                       <i className="fas fa-plus"></i>
-                    </IconButton>
-              </Tooltip>
-              <Tooltip title="Filter">
-                  <IconButton onClick={()=>props.setModalOpen(true)} aria-label="filter list">
-                      <i className="fas fa-filter"></i>
                     </IconButton>
               </Tooltip>
             </div>

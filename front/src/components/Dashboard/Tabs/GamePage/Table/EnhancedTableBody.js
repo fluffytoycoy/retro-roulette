@@ -102,12 +102,12 @@ function EnhancedTableBody(props) {
 
   function handleChangePage(event, newPage) {
     console.log(newPage)
-    props.history.push(`/Dashboard/Page/${newPage+1}/${props.match.params.filter ? props.match.params.filter : ''}`)
+    props.history.push(`/Dashboard/Game/Page/${newPage+1}/${props.match.params.filter ? props.match.params.filter : ''}`)
   }
 
   function handleChangeRowsPerPage(event) {
     setRowsPerPage(+event.target.value);
-    props.history.push(`/Dashboard/Page/1`)
+    props.history.push(`/Dashboard/Game/Page/1`)
   }
 
   const emptyRows =
@@ -115,7 +115,7 @@ function EnhancedTableBody(props) {
 
   function editGame(game){
     props.setSelectedGame(game);
-    props.history.push(`/Dashboard/Edit/${game.id}`)
+    props.history.push(`/Dashboard/Game/Edit/${game.id}`)
   }
 
   return (
