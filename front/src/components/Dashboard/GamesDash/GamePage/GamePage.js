@@ -15,12 +15,13 @@ class GameDash extends React.Component{
       altImg: undefined,
     }
     this.toggleAltImg = this.toggleAltImg.bind(this)
-    this.submit = this.submit.bind(this)
+    this.updateGame = this.updateGame.bind(this)
     this.cancel = this.cancel.bind(this)
     this.delete = this.delete.bind(this)
   }
 
   componentDidMount() {
+    console.log(this.props.addGame)
       if (!this.state.selectedGame) {
         const game = gameListBS(this.props.gameList, parseInt(this.props.match.params.gameId), 0, this.props.gameList.length-1);
         if(game){
@@ -67,7 +68,8 @@ class GameDash extends React.Component{
         altImg: e.target.value,
       })
     }
-    submit(game){
+
+    updateGame(game){
       game.id = this.state.selectedGame.id;
       game.img_url = this.state.altImg
       console.log(game)
@@ -108,14 +110,21 @@ class GameDash extends React.Component{
         this.props.setDatabasePopup(true, 'error')
       })
     }
-    test = (props) =>{
+
+    submitNewGame(game){
+
+    }
+
+    gameForm = (props) =>{
       return(
         <Form await onUpdate={()=>{this.toggleAltImg(props.values.img_url)}}>
-          <Field input name='title'/>
-          <Field select options={this.props.filterOptions.consoles} name='console_id'/>
-          <Field select options={this.props.filterOptions.genres} name="genre_id"/>
-          <label>Image Url</label>
-          <input type="text" value={this.state.altImg} onChange={this.toggleAltImg}/>
+          <Field required input name='title'/>
+          <Field requried select options={this.props.filterOptions.consoles} name='console_id'/>
+          <Field required select options={this.props.filterOptions.genres} name="genre_id"/>
+          <div>
+            <label>Image Url</label>
+            <input type="text" value={this.state.altImg} onChange={this.toggleAltImg}/>
+          </div>
           <div className='btn-bar'>
             <Button variant="contained" className='cancel' onClick={this.cancel}>Cancel</Button>
             <Button variant="contained" color="primary" className='submit' type="submit">SAVE</Button>
@@ -124,32 +133,23 @@ class GameDash extends React.Component{
       )
     }
 
+
   render(){
-    const game = this.state.selectedGame
+    var imgStyle = {
+      backgroundImage: 'url(' + this.state.altImg+ ')',
+      backgroundSize: 'contain',
+      height: '100%',
+      width: '100%',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center',
+      backgroundSize: 'contain',
+    }
     return(
       <>
-        {this.state.gameExists ?
-        <section id="game-page">
-          <div>
-            <div className="col">
-              <img src={this.state.altImg}/>
-            </div>
-            <div className="col info">
-              <h2>{game.title}</h2>
-              <p>{game.console}</p>
-              <p>{game.genre}</p>
-              <FormContainer
-                onSubmit={this.submit}
-                initialValues={{title: game.title, console_id: game.console_id, genre_id: this.state.selectedGame.genre_id, img_url: game.img_url}}
-                render={this.test}/>
-                <Button variant="contained" color="secondary" onClick={this.delete} className="delete">Delete</Button>
-            </div>
-
-          </div>
-        </section>
+        {this.props.addGame ?
+          <AddGame imgStyle={imgStyle} altImg={this.state.altImg} gameForm={this.gameForm} submit={this.submitNewGame}/>
           :
-          <div style={{textAlign: 'center'}}>no game exist with that id</div>}
-
+          <EditGame altImg={this.state.altImg} gameForm={this.gameForm} gameExists={this.state.gameExists} delete={this.delete} submit={this.updateGame} selectedGame={this.state.selectedGame}/>}
       </>
     );
   }
@@ -160,6 +160,56 @@ function ImageUpdater(props){
       props.toggleAltImg(props.imageUrl)
   }
   return(null)
+}
+
+
+function AddGame(props){
+  return(
+    <section id="game-page">
+      <div>
+        <div className="col">
+          <img src={props.altImg}/>
+        </div>
+        <div className="col">
+          <FormContainer
+            onSubmit={props.submit}
+            render={props.gameForm}/>
+        </div>
+      </div>
+    </section>
+  )
+
+}
+
+function EditGame(props){
+  const game = props.selectedGame
+  return(
+    <>
+      {props.gameExists  ?
+      <section id="game-page">
+        <div>
+          <div className="col">
+            <img src={props.altImg}/>
+          </div>
+          <div className="col info">
+            <h2><b>{game.title}</b></h2>
+            <div>
+              <p><b>Console</b>: {game.console}</p>
+              <p><b>Genre</b>: {game.genre}</p>
+            </div>
+            <FormContainer
+              onSubmit={props.submit}
+              initialValues={{title: game.title, console_id: game.console_id, genre_id: game.genre_id, img_url: game.img_url}}
+              render={props.gameForm}/>
+              <Button variant="contained" color="secondary" onClick={props.delete} className="delete">Delete</Button>
+          </div>
+
+        </div>
+      </section>
+        :
+        <div style={{textAlign: 'center'}}>no game exist with that id</div>}
+    </>
+  )
 }
 
 export default GameDash;

@@ -19,7 +19,7 @@ class Dashboard extends Component{
       page: 1,
       filters: '',
       databasePopup: false,
-      popupStatus: ''
+      popupStatus: 'success'
     }
     this.filterList = this.filterList.bind(this)
     this.toggleMenu = this.toggleMenu.bind(this)
@@ -28,6 +28,7 @@ class Dashboard extends Component{
   }
 
   componentWillMount(){
+    console.log(this.props.match.path)
     if(!this.props.gameList){
       var self = this
       const newFilters = self.props.match.params.filter;

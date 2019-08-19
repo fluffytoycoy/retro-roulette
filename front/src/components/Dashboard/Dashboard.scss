@@ -108,7 +108,8 @@
     min-height: 100%;
     background: #f1f0f0;
     color: #555555;
-    padding: 20px 40px;
+    padding: 20px 20px;
+
     h2{
       display: inline-block;
       padding: 20px 0;
@@ -156,7 +157,7 @@
   }
 }
 
-@media only screen and (min-width: 768px){
+@media only screen and (min-width: 769px){
   #dashboard{
     .menu-btn{
       display: none;
@@ -172,6 +173,7 @@
     .dash-body{
       margin-left: 300px;
       min-height: 100%;
+      padding: 20px 40px;
     }
   }
 }

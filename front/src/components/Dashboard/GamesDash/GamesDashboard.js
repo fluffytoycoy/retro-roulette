@@ -7,10 +7,24 @@ import GamePage from './GamePage/GamePage';
 function GameDash(props){
   const [selectedGame, setSelectedGame] = React.useState(undefined);
   return (<>
-    {!props.match.params.gameId ? <EnhancedTableBody setSelectedGame={setSelectedGame}{...props}/> : <GamePage {...props} updateGameList={props.updateGameList} deleteSingleGame={props.deleteSingleGame} setDatabasePopup={props.setDatabasePopup} selectedGame={selectedGame}/>}
+    <GameTabHandler  {...props}
+      updateGameList={props.updateGameList}
+      deleteSingleGame={props.deleteSingleGame}
+      setDatabasePopup={props.setDatabasePopup}
+      selectedGame={selectedGame}
+      setSelectedGame={setSelectedGame}/>
     </>
   );
 }
 
-
+function GameTabHandler(props){
+  switch (props.match.path){
+    case '/Dashboard/Edit/:gameId':
+    return <GamePage {...props} />
+    case '/Dashboard/AddGame':
+    return <GamePage {...props} addGame />
+    default:
+    return <EnhancedTableBody {...props}/>;
+  }
+}
 export default GameDash;
