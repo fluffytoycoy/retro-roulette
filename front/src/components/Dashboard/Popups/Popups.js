@@ -16,16 +16,10 @@ const variantIcon = {
 
 const useStyles1 = makeStyles(theme => ({
   success: {
-    backgroundColor: 'green',
+    backgroundColor: 'rgb(0, 189, 0)',
   },
   error: {
     backgroundColor: theme.palette.error.dark,
-  },
-  info: {
-    backgroundColor: theme.palette.primary.main,
-  },
-  warning: {
-    backgroundColor: amber[700],
   },
   icon: {
     fontSize: 16,
@@ -82,7 +76,6 @@ const useStyles2 = makeStyles(theme => ({
 
 export default function CustomizedSnackbars(props) {
   const classes = useStyles2();
-  const [open, setOpen] = React.useState(props.open);
   const variantMessage = {
     success: "Changes submited successfully!",
     error: 'There was an error submiting your changes!',
@@ -105,7 +98,7 @@ export default function CustomizedSnackbars(props) {
           horizontal: 'right',
         }}
         open={props.open}
-        autoHideDuration={6000}
+        autoHideDuration={3000}
         onClose={handleClose}
       >
         <MySnackbarContentWrapper
