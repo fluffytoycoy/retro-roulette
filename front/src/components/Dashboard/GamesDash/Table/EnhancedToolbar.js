@@ -7,13 +7,14 @@ import Tooltip from "@material-ui/core/Tooltip";
 
 
 const EnhancedToolbar = (props) => {
+
   return (
     <Toolbar className="toolbar-me">
           <Typography variant="h6" id="tableTitle">
             Games
             <div className="toolbar">
               <Tooltip title="Add Game">
-                  <IconButton aria-label="filter list">
+                  <IconButton onClick={()=>props.history.push('/Dashboard/AddGame')}aria-label="filter list">
                       <i className="fas fa-plus"></i>
                     </IconButton>
               </Tooltip>

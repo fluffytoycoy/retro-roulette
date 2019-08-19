@@ -32,6 +32,7 @@ class App extends Component {
     this.updateFilters = this.updateFilters.bind(this);
     this.updateGameList = this.updateGameList.bind(this);
     this.deleteSingleGame = this.deleteSingleGame.bind(this);
+    this.creatNewGame = this.creatNewGame.bind(this);
   };
 
   componentWillMount(){
@@ -74,17 +75,13 @@ class App extends Component {
 
   updateGameList(game) {
     const gameIndex = this.findGameIndex(game);
-    game.genre = this.state.filterOptions.genres.filter(genre => genre.value == game.genre_id)[0].label
-    game.console = this.state.filterOptions.consoles.filter(genre => genre.value == game.console_id)[0].label
-    game.console_id = game.console_id;
-    game.genre_id = game.genre_id;
     this.setState({
       gameList: [
         ...this.state.gameList.slice(0, gameIndex),
-        Object.assign({}, this.state.gameList[gameIndex], game),
+        Object.assign({}, this.state.gameList[gameIndex], this.normalizeGameData(game)),
         ...this.state.gameList.slice(gameIndex + 1)
       ]
-    });
+    },()=> console.log(this.state.gameList))
   }
 
   deleteSingleGame(game){
@@ -98,6 +95,20 @@ class App extends Component {
     return this.state.gameList.findIndex(list=> list.id === game.id);
   }
 
+  creatNewGame(game){
+    this.setState({
+      gameList: [...this.state.gameList, this.normalizeGameData(game)]
+    })
+  }
+
+  normalizeGameData(game){
+    game.genre = this.state.filterOptions.genres.filter(genre => genre.value == game.genre_id)[0].label
+    game.console = this.state.filterOptions.consoles.filter(genre => genre.value == game.console_id)[0].label
+    game.console_id = parseInt(game.console_id);
+    game.genre_id = parseInt(game.genre_id);
+    return game;
+  }
+
   render() {
     return (
       <Router>
@@ -109,7 +120,7 @@ class App extends Component {
                   <PrivateRoute exact path="/Dashboard/Page/:number" component={Dashboard} {...this.props} setGameList={this.setGameList} filterOptions={this.state.filterOptions} gameList={this.state.gameList}/>
                   <PrivateRoute exact path="/Dashboard/Page/:number/:filter" component={Dashboard} {...this.props} setGameList={this.setGameList} filterOptions={this.state.filterOptions} gameList={this.state.gameList}/>
                   <PrivateRoute exact path="/Dashboard/Edit/:gameId" component={Dashboard} {...this.props} deleteSingleGame={this.deleteSingleGame} updateGameList={this.updateGameList} setGameList={this.setGameList} filterOptions={this.state.filterOptions} gameList={this.state.gameList}/>
-                  <PrivateRoute exact path="/Dashboard/AddGame" component={Dashboard} {...this.props} setGameList={this.setGameList} filterOptions={this.state.filterOptions} gameList={this.state.gameList}/>
+                  <PrivateRoute exact path="/Dashboard/AddGame" component={Dashboard} {...this.props} creatNewGame={this.creatNewGame} setGameList={this.setGameList} filterOptions={this.state.filterOptions} gameList={this.state.gameList}/>
             <Route component={NotFound}/>
 				</Switch>
       </Router>

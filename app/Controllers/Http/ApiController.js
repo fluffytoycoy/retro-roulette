@@ -88,31 +88,44 @@ class ApiController {
     }
   }
 
-async updateGame({request, response, auth}){
-  if(auth.check()){
-    try{
-      const game = request.all()
-      console.log(game)
-      await Game
-        .query()
-        .where('id', game.id)
-        .update({title: game.title, console_id: game.console_id, genre_id: game.genre_id, img_url: game.img_url })
-    }catch(e){
-      console.log(e)
-      return response.status(500).send()
-    }
-  }
-}
-
-async deleteGame({request, response, auth}){
+  async updateGame({request, response, auth}){
     if(auth.check()){
       try{
-        const { id } = request.all()
-        console.log(id)
-        const game = await Game.find(id)
-        await game.delete()
-        return response.status(204).send()
+        const game = request.all()
+        await Game
+          .query()
+          .where('id', game.id)
+          .update({title: game.title, console_id: game.console_id, genre_id: game.genre_id, img_url: game.img_url })
       }catch(e){
+        console.log(e)
+        return response.status(500).send()
+      }
+    }
+  }
+
+  async deleteGame({request, response, auth}){
+      if(auth.check()){
+        try{
+          const { id } = request.all()
+          console.log(id)
+          const game = await Game.find(id)
+          await game.delete()
+          return response.status(204).send()
+        }catch(e){
+          return response.status(500).send()
+        }
+      }
+    }
+
+  async createGame({request, response, auth}){
+    if(auth.check()){
+      try{
+        const game = await Game.create(request.all())
+        console.log(game)
+        response.send(game)
+
+      }catch(e){
+        console.log(e)
         return response.status(500).send()
       }
     }

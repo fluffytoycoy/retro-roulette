@@ -121,7 +121,7 @@ function EnhancedTableBody(props) {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <EnhancedToolbar setModalOpen={props.toggleMenu}/>
+        <EnhancedToolbar {...props} setModalOpen={props.toggleMenu}/>
         <div className={classes.tableWrapper}>
           <Table
             className={classes.table}

@@ -3,6 +3,7 @@ import './GamePage.scss';
 import { FormContainer, Form, Field} from 'ui-form-field';
 import Button from "@material-ui/core/Button";
 import axios from 'axios';
+import * as Yup from "yup";
 //import PropTypes from "prop-types";
 
 
@@ -12,15 +13,16 @@ class GameDash extends React.Component{
     this.state={
       selectedGame: this.props.selectedGame,
       gameExists: false,
-      altImg: undefined,
+      altImg: '',
     }
     this.toggleAltImg = this.toggleAltImg.bind(this)
     this.updateGame = this.updateGame.bind(this)
     this.cancel = this.cancel.bind(this)
     this.delete = this.delete.bind(this)
+    this.submitNewGame = this.submitNewGame.bind(this)
   }
 
-  componentDidMount() {
+    componentDidMount() {
     console.log(this.props.addGame)
       if (!this.state.selectedGame) {
         const game = gameListBS(this.props.gameList, parseInt(this.props.match.params.gameId), 0, this.props.gameList.length-1);
@@ -112,18 +114,37 @@ class GameDash extends React.Component{
     }
 
     submitNewGame(game){
+      axios.post('/api/createGame', game,{
+        headers: {
+          "Authorization" : `Bearer ${localStorage.getItem('jwtToken')}`,
+        }
+      }).then(response=>{
+        if(response.status === 200){
+          this.props.setDatabasePopup(true, 'success')
+          console.log(response.data)
+          this.props.creatNewGame(response.data)
+          //this.props.deleteSingleGame(this.state.selectedGame);
+          //this.props.history.goBack();
+        }
+      }).catch(error=>{
+        console.log('error')
+        this.props.setDatabasePopup(true, 'error')
+      })
 
     }
 
+
     gameForm = (props) =>{
+      const consoleOptions = [{value: '', label: 'Select a console'}, ...this.props.filterOptions.consoles]
+      const genreOptions = [{value: '', label: 'Select a genre'}, ...this.props.filterOptions.genres]
       return(
-        <Form await onUpdate={()=>{this.toggleAltImg(props.values.img_url)}}>
-          <Field required input name='title'/>
-          <Field requried select options={this.props.filterOptions.consoles} name='console_id'/>
-          <Field required select options={this.props.filterOptions.genres} name="genre_id"/>
+        <Form>
+          <Field required  name='title'/>
+          <Field required select  options={consoleOptions} name='console_id'/>
+          <Field required select options={genreOptions} name="genre_id"/>
           <div>
             <label>Image Url</label>
-            <input type="text" value={this.state.altImg} onChange={this.toggleAltImg}/>
+            <input type="text" value={this.state.altImg ? this.state.altImg : ''} onChange={this.toggleAltImg}/>
           </div>
           <div className='btn-bar'>
             <Button variant="contained" className='cancel' onClick={this.cancel}>Cancel</Button>
@@ -155,14 +176,6 @@ class GameDash extends React.Component{
   }
 }
 
-function ImageUpdater(props){
-  if(props.imageUrl){
-      props.toggleAltImg(props.imageUrl)
-  }
-  return(null)
-}
-
-
 function AddGame(props){
   return(
     <section id="game-page">
@@ -172,6 +185,7 @@ function AddGame(props){
         </div>
         <div className="col">
           <FormContainer
+
             onSubmit={props.submit}
             render={props.gameForm}/>
         </div>

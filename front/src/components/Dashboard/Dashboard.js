@@ -57,7 +57,7 @@ class Dashboard extends Component{
 
   filterList(consoles, genres){
     const filters = queryString.stringify({consoles, genres}, {arrayFormat: 'bracket', parseNumbers: true});
-    this.props.history.push(`/dashboard/Page/0/${filters}`)
+    this.props.history.push(`/dashboard/Page/1/${filters}`)
   }
 
   filterQS(filter) {
@@ -101,17 +101,15 @@ class Dashboard extends Component{
     }
     if(this.props.gameList){
       if(this.state.filters !== newFilters){
+        console.log('here')
         this.setState({
           filters: newFilters
         },()=>{
           this.filterQS(queryString.parse(newFilters, {arrayFormat: 'bracket', parseNumbers: true}));
         })
       }
-
     }
-    this.setState({
-      gameList: this.props.gameList
-    })
+
   }
 
   setDatabasePopup(value, status){
