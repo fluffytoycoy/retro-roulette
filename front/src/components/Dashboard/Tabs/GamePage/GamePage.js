@@ -71,6 +71,7 @@ class GameDash extends React.Component{
     updateGame(game){
       game.id = this.state.selectedGame.id;
       game.img_url = this.state.altImg
+      console.log(game)
       axios.post('/api/updateGame', game,{
         headers: {
           "Authorization" : `Bearer ${localStorage.getItem('jwtToken')}`,
@@ -80,6 +81,7 @@ class GameDash extends React.Component{
         if(response.status === 204){
           this.props.setDatabasePopup(true, 'success')
           this.props.updateGameList(game)
+          this.props.updateList();
           this.props.history.goBack();
         }
       }).catch(error=>{
@@ -100,6 +102,7 @@ class GameDash extends React.Component{
         if(response.status === 200){
           this.props.setDatabasePopup(true, 'success')
           this.props.deleteSingleGame(this.state.selectedGame);
+          this.props.updateList();
           this.props.history.goBack();
         }
       }).catch(error=>{
@@ -117,6 +120,7 @@ class GameDash extends React.Component{
         if(response.status === 200){
           this.props.setDatabasePopup(true, 'success')
           this.props.creatNewGame(response.data)
+          this.props.updateList();
           //this.props.deleteSingleGame(this.state.selectedGame);
           this.props.history.goBack();
         }
@@ -191,6 +195,7 @@ function AddGame(props){
 
 function EditGame(props){
   const game = props.selectedGame
+  console.log(game)
   return(
     <>
       {props.gameExists  ?
@@ -207,7 +212,7 @@ function EditGame(props){
             </div>
             <FormContainer
               onSubmit={props.submit}
-              initialValues={{title: game.title, console_id: game.console_id, genre_id: game.genre_id, img_url: game.img_url}}
+              initialValues={{title: game.title, genre: game.genre, console_id: game.console_id, genre_id: game.genre_id, img_url: game.img_url}}
               render={props.gameForm}/>
               <Button variant="contained" color="secondary" onClick={props.delete} className="delete">Delete</Button>
           </div>

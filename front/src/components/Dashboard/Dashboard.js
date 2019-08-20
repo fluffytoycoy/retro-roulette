@@ -30,6 +30,7 @@ class Dashboard extends Component{
     this.toggleMenu = this.toggleMenu.bind(this)
     this.toggleBetModal = this.toggleBetModal.bind(this)
     this.setDatabasePopup = this.setDatabasePopup.bind(this)
+    this.updateList = this.updateList.bind(this)
   }
 
   componentWillMount(){
@@ -112,10 +113,17 @@ class Dashboard extends Component{
         })
       }
     }
+  }
 
+  updateList(){
+    console.log('here')
+    this.setState({
+      gameList: this.props.gameList
+    })
   }
 
   setDatabasePopup(value, status){
+
     this.setState({
         popupStatus: status,
         databasePopup: value
@@ -150,6 +158,7 @@ class Dashboard extends Component{
                   {gameList ?
                     <GamesDashboard   {...this.props}
                     toggleMenu={this.toggleBetModal}
+                    updateList={this.updateList}
                     filter={this.filterList}
                     page={this.state.page}
                     updateGameList={this.props.updateGameList}

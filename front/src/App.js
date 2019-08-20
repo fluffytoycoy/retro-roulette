@@ -75,13 +75,14 @@ class App extends Component {
 
   updateGameList(game) {
     const gameIndex = this.findGameIndex(game);
+    console.log(game)
     this.setState({
       gameList: [
         ...this.state.gameList.slice(0, gameIndex),
         Object.assign({}, this.state.gameList[gameIndex], this.normalizeGameData(game)),
         ...this.state.gameList.slice(gameIndex + 1)
       ]
-    },()=> console.log(this.state.gameList))
+    })
   }
 
   deleteSingleGame(game){
@@ -102,11 +103,9 @@ class App extends Component {
   }
 
   normalizeGameData(game){
-    console.log(game)
     game.console_id = parseInt(game.console_id);
     game.genre_id = parseInt(game.genre_id);
-    game.genre = this.state.filterOptions.genres.filter(genre => genre.value === game.genre_id)[0]
-    console.log(game.genre)
+    game.genre = this.state.filterOptions.genres.filter(genre => genre.value === game.genre_id)[0].label
     game.console = this.state.filterOptions.consoles.filter(genre => genre.value === game.console_id)[0].label
 
     return game;
