@@ -7,7 +7,6 @@ function Header(props){
       isLoggedIn() ?
       <div id="header">
         <a href="/logout">Logout</a>
-        <div>test</div>
       </div>
       : <></>
     );

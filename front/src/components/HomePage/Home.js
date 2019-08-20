@@ -48,7 +48,6 @@ class Home extends Component{
         validReturn: true,
       }, () => {
         self.resetSlot()
-        console.log(self.props.filtersSelected)
         axios.get('api/test', {
           params:{
             filters: self.props.filtersSelected
@@ -73,7 +72,6 @@ class Home extends Component{
   }
 
   setSlotSpin(){
-    console.log('slot timer finished')
     if(this.state.game){
       this.setState({
         rotationsCompleted: true

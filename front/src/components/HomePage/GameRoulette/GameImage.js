@@ -30,13 +30,10 @@ class GameSection extends Component{
     setTimeout(this.mountStyle, 500) // call the into animation
   }
 
-  getImg(){
-    return this.props.gameImg ?  this.props.gameImg : 'https://z7v6x4c5.stackpathcdn.com/storage/attachments/monthly_2017_02/58abe801b40ed_FatalFury(USA).png.2031ba08b6e2988e926aa14848b45f73.png'
-  }
   render(){
     return this.state.show &&
     <div style={this.state.style} onTransitionEnd={this.transitionEnd}>
-      <img  alt="game cover" src={this.getImg()}/>
+    {  this.props.gameImg ? <img  alt="game cover" src={this.props.gameImg}/> : <>no img for this game</>}
     </div>
   }
 

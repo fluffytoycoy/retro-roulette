@@ -3,7 +3,6 @@ import './GamePage.scss';
 import { FormContainer, Form, Field} from 'ui-form-field';
 import Button from "@material-ui/core/Button";
 import axios from 'axios';
-import * as Yup from "yup";
 //import PropTypes from "prop-types";
 
 
@@ -23,7 +22,6 @@ class GameDash extends React.Component{
   }
 
     componentDidMount() {
-      console.log(this.state.selectedGame)
       if (!this.state.selectedGame) {
 
         const game = gameListBS(this.props.gameList, parseInt(this.props.match.params.id), 0, this.props.gameList.length-1);
@@ -79,7 +77,7 @@ class GameDash extends React.Component{
         }
       }).then(response=>{
 
-        if(response.status == "204"){
+        if(response.status === 204){
           this.props.setDatabasePopup(true, 'success')
           this.props.updateGameList(game)
           this.props.history.goBack();
@@ -99,7 +97,7 @@ class GameDash extends React.Component{
           "Authorization" : `Bearer ${localStorage.getItem('jwtToken')}`,
         }
       }).then(response=>{
-        if(response.status == "204"){
+        if(response.status === 204){
           this.props.setDatabasePopup(true, 'success')
           this.props.deleteSingleGame(this.state.selectedGame);
           this.props.history.goBack();
@@ -157,7 +155,6 @@ class GameDash extends React.Component{
       width: '100%',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center',
-      backgroundSize: 'contain',
     }
     return(
       <>
@@ -175,7 +172,7 @@ function AddGame(props){
     <section id="game-page">
       <div>
         <div className="col">
-          <img src={props.altImg}/>
+          <img alt="game cover" src={props.altImg}/>
         </div>
         <div className="col">
           <FormContainer
@@ -197,7 +194,7 @@ function EditGame(props){
       <section id="game-page">
         <div>
           <div className="col">
-            <img src={props.altImg}/>
+            <img alt="game cover" src={props.altImg}/>
           </div>
           <div className="col info">
             <h2><b>{game.title}</b></h2>

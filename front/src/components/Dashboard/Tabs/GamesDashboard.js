@@ -1,6 +1,5 @@
 import React from 'react';
 //import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/core/styles";
 import EnhancedTableBody from './GamePage/Table/EnhancedTableBody';
 import GamePage from './GamePage/GamePage';
 

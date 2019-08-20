@@ -3,6 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import './Dashboard.scss';
 import GamesDashboard from './Tabs/GamesDashboard'
 import ConsoleDashboard from './Tabs/ConsoleDashboard'
+import GenreDashboard from './Tabs/GenreDashboard'
 import Popups from './Popups/Popups'
 import BetModal from '../HomePage/BetSection/BetModal'
 import findTabIndex from './Tabs/Utils/TabMap';
@@ -32,7 +33,6 @@ class Dashboard extends Component{
   }
 
   componentWillMount(){
-    console.log()
     if(!this.props.gameList){
       var self = this
       const newFilters = self.props.match.params.filter;
@@ -105,7 +105,6 @@ class Dashboard extends Component{
     }
     if(this.props.gameList){
       if(this.state.filters !== newFilters){
-        console.log('here')
         this.setState({
           filters: newFilters
         },()=>{
@@ -120,13 +119,13 @@ class Dashboard extends Component{
     this.setState({
         popupStatus: status,
         databasePopup: value
-    }, ()=>console.log(this.state.databasePopup))
+    })
   }
 
   render(){
     const gameList = this.state.gameList;
     return (
-      <Tabs defaultIndex={this.state.tabIndex} onSelect={index => console.log(index)} id="dashboard">
+      <Tabs defaultIndex={this.state.tabIndex} id="dashboard">
       <BetModal filterOptions={this.props.filterOptions}
                 filtersSelected={{consoles: [], genres: []}}
                 toggleBetModal={this.toggleBetModal}
@@ -163,6 +162,14 @@ class Dashboard extends Component{
             </TabPanel>
             <TabPanel>
               <div className="grid-wrapper">
+              {this.props.filterOptions.genres.length ?
+                <GenreDashboard
+                {...this.props}
+                toggleMenu={this.toggleBetModal}
+                page={this.state.page}
+                />
+
+                : <>loading</>}
               </div>
             </TabPanel>
             <TabPanel>
@@ -171,7 +178,6 @@ class Dashboard extends Component{
                 <ConsoleDashboard
                 {...this.props}
                 toggleMenu={this.toggleBetModal}
-                filter={this.filterList}
                 page={this.state.page}
                 />
 

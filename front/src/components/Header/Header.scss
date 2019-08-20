@@ -2,9 +2,15 @@
 
 #header{
   position: fixed;
-  color: white;
   z-index: 1;
   height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   background: rgba(255,255,255,.1);
   width: 100%;
+  a{
+    color: white;
+    margin-right: 20px;
+  }
 }

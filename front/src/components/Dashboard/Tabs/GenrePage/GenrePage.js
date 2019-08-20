@@ -8,8 +8,8 @@ class GameDash extends React.Component{
   constructor(props){
     super(props);
     this.state={
-      selectedConsole: this.props.selectedConsole,
-      consoleExists: false,
+      selectedGenre: this.props.selectedGenre,
+      genreExists: false,
     }
     this.updateGame = this.updateGame.bind(this)
     this.cancel = this.cancel.bind(this)
@@ -18,19 +18,18 @@ class GameDash extends React.Component{
   }
 
     componentDidMount() {
-      if (!this.state.selectedConsole) {
-        const gameConsole = gameListBS(this.props.consoles, parseInt(this.props.match.params.id), 0, this.props.consoles.length-1);
-        console.log(gameConsole)
-        if(gameConsole){
+      if (!this.state.selectedGenre) {
+        const gameGenre = gameListBS(this.props.genres, parseInt(this.props.match.params.id), 0, this.props.genres.length-1);
+        if(gameGenre){
           this.setState({
-            selectedConsole: gameConsole,
-            consoleExists: true,
+            selectedGenre: gameGenre,
+            genreExists: true,
           })
         }
       }else{
         this.setState({
-          consoleExists: true,
-          altImg: this.props.selectedConsole.img
+          genreExists: true,
+          altImg: this.props.selectedGenre.img
         })
       }
 
@@ -119,12 +118,11 @@ class GameDash extends React.Component{
     }
 
 
-    consoleForm = (props) =>{
-      //const consoleOptions = [{value: '', label: 'Select a console'}, ...this.props.filterOptions.consoles]
-
+    genreForm = (props) =>{
+      //const genreOptions = [{value: '', label: 'Select a genre'}, ...this.props.filterOptions.genres]
       return(
         <Form>
-          <Field required name='console'/>
+          <Field required name='genre'/>
           <div>
             <label>Image Url</label>
             <input type="text" value={this.state.altImg ? this.state.altImg : ''} onChange={this.toggleAltImg}/>
@@ -147,25 +145,24 @@ class GameDash extends React.Component{
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center',
     }
-
     return(
       <>
         {this.props.addGame ?
           <AddGame
-            filterOptions={this.props.filterOptions.consoles}
+            filterOptions={this.props.filterOptions.genres}
             imgStyle={imgStyle}
             altImg={this.state.altImg}
-            consoleForm={this.consoleForm}
+            genreForm={this.genreForm}
             submit={this.submitNewGame}/>
           :
           <EditGame
-            filterOptions={this.props.filterOptions.consoles}
+            filterOptions={this.props.filterOptions.genres}
             altImg={this.state.altImg}
-            consoleForm={this.consoleForm}
-            consoleExists={this.state.consoleExists}
+            genreForm={this.genreForm}
+            genreExists={this.state.genreExists}
             delete={this.delete}
             submit={this.updateGame}
-            selectedConsole={this.state.selectedConsole}/>}
+            selectedGenre={this.state.selectedGenre}/>}
       </>
     );
   }
@@ -174,15 +171,12 @@ class GameDash extends React.Component{
 function AddGame(props){
   return(
     <section id="game-page">
-      <div>
-        <div className="col">
-          <img alt="console"src={props.altImg}/>
-        </div>
+      <div className="genre">
         <div className="col">
           <FormContainer
-            initialValues={{console: ''}}
+            initialValues={{genre: ''}}
             onSubmit={props.submit}
-            render={props.consoleForm}/>
+            render={props.genreForm}/>
         </div>
       </div>
     </section>
@@ -191,24 +185,21 @@ function AddGame(props){
 }
 
 function EditGame(props){
-  const gameConsole = props.selectedConsole
+  const gameGenre = props.selectedGenre
   return(
     <>
-      {props.consoleExists  ?
+      {props.genreExists  ?
       <section id="game-page">
-        <div>
+        <div className="genre">
           <div className="col">
-            <img alt="console" src={props.altImg}/>
-          </div>
-          <div className="col info">
-            <h2><b>{gameConsole.label}</b></h2>
+            <h2><b>{gameGenre.label}</b></h2>
             <div>
               <p></p>
             </div>
             <FormContainer
               onSubmit={props.submit}
-              initialValues={{console: gameConsole.label}}
-              render={props.consoleForm}/>
+              initialValues={{genre: gameGenre.label}}
+              render={props.genreForm}/>
               <Button variant="contained" color="secondary" onClick={props.delete} className="delete">Delete</Button>
           </div>
         </div>

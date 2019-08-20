@@ -19,7 +19,6 @@ class BetModal extends Component{
 
   submit(filters){
     this.props.toggleBetModal();
-    console.log(filters)
     this.props.updateFilters(filters.consoles, filters.genres)
   }
 

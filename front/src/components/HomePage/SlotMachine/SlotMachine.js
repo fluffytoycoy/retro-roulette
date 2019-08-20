@@ -44,7 +44,6 @@ class SlotMachine extends Component{
     //if slot is finished do nothing
     //else if game exists && rotationsCompleted
     //stop the rotation on selected game and set slot to finished
-    console.log(newProps)
     if(!newProps.slotFinished){
       if (newProps.game && newProps.rotationsCompleted) {
         this.setState({

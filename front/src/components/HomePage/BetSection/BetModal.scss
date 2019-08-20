@@ -16,7 +16,7 @@
   display: flex;
   transition: opacity 0.5s ease-in-out;
   z-index: 2;
-
+  color: #ffffff !important;
   &.bet-modal-enter {
     opacity: 0;
   }
@@ -68,6 +68,7 @@
       }
 
       form {
+        color: white !important;
         .ui-error,
         .ui-label {
           display: none;

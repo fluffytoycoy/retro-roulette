@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import Button from '@material-ui/core/Button';
 import './Popups.scss';
-import { amber, green } from '@material-ui/core/colors';
 import IconButton from '@material-ui/core/IconButton';
 import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
@@ -68,14 +66,8 @@ MySnackbarContentWrapper.propTypes = {
   variant: PropTypes.oneOf(['error', 'success']).isRequired,
 };
 
-const useStyles2 = makeStyles(theme => ({
-  margin: {
-    margin: theme.spacing(1),
-  },
-}));
 
 export default function CustomizedSnackbars(props) {
-  const classes = useStyles2();
   const variantMessage = {
     success: "Changes submited successfully!",
     error: 'There was an error submiting your changes!',

@@ -59,19 +59,19 @@ class Login extends Component{
 
   renderForm = (props) => {
     return(
-      <Form >
-        <Field name="username" placeholder="Username" />
-        <Field type="password" name="password" placeholder="Email"/>
-        <Button type="submit" disabled={this.state.isSubmitting} />
-      </Form>
+        <Form >
+          <Field name="username" placeholder="Username" />
+          <Field type="password" name="password" placeholder="Email"/>
+          <Button type="submit" disabled={this.state.isSubmitting} />
+        </Form>
     );
   }
 
   form = () => {
     return (
       <>
-        <h1>Contact Us</h1>
-          <FormContainer validationSchema={schema} onSubmit={this.onSubmit} render={this.renderForm}/>
+        <h2>Log in</h2>
+          <FormContainer validationSchema={schema} onSubmit={this.onSubmit} render={this.renderForm} initialValues={{username: '', password: ''}}/>
           <div className={`error ${this.state.submitFailure ? 'show' : ''}`}><p >Failure Submiting Contact Info</p><span>x</span></div>
       </>
     )
@@ -83,8 +83,10 @@ class Login extends Component{
       <Redirect to="/dashboard"/>
       :
       <div id="home">
-        <div className={`form-card ${this.state.submitFailure ? '' : 'no-flex'}`}>
-          {this.state.submitSuccess ? <Redirect to="/dashboard"/> : this.form()}
+        <div className="login">
+          <div className={`form-card ${this.state.submitFailure ? '' : 'no-flex'}`}>
+            {this.state.submitSuccess ? <Redirect to="/dashboard"/> : this.form()}
+          </div>
         </div>
       </div>
     );
