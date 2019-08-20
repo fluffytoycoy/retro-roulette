@@ -2,6 +2,7 @@
   "name": "adonis-react-front",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3333",
   "homepage": "./react",
   "dependencies": {
     "@material-ui/core": "^4.3.2",

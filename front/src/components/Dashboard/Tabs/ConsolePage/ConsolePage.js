@@ -72,7 +72,7 @@ class GameDash extends React.Component{
         }
       }).then(response=>{
 
-        if(response.status === 204){
+        if(response.status === 200){
           this.props.setDatabasePopup(true, 'success')
           this.props.updateGameList(game)
           this.props.history.goBack();
@@ -92,7 +92,7 @@ class GameDash extends React.Component{
           "Authorization" : `Bearer ${localStorage.getItem('jwtToken')}`,
         }
       }).then(response=>{
-        if(response.status === 204){
+        if(response.status === 200){
           this.props.setDatabasePopup(true, 'success')
           this.props.deleteSingleGame(this.state.selectedGame);
           this.props.history.goBack();
