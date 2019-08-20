@@ -8,7 +8,7 @@ class SlotMachine extends Component{
   constructor(props){
     super(props);
     this.state={
-      selectedSystem: undefined,
+      selectedSystemId: undefined,
       _isMounted: false,
       autoPlay: false,
       noMacthingData: false
@@ -48,7 +48,7 @@ class SlotMachine extends Component{
       if (newProps.game && newProps.rotationsCompleted) {
         this.setState({
           autoPlay: false,
-          selectedSystem: consoleToSlotImg(newProps.game.console),
+          selectedSystemId: consoleToSlotImg(newProps.game.console),
         },()=>{
           this.props.setSlotFinished();
         })
@@ -58,7 +58,7 @@ class SlotMachine extends Component{
         this.setState({
           autoPlay: false,
           noMacthingData: true,
-          selectedSystem: 0,
+          selectedSystemId: 0,
         })
         this.props.setSlotFinished();
       }
@@ -83,7 +83,7 @@ class SlotMachine extends Component{
       infiniteLoop: true,
       axis: "vertical",
       stopOnHover: false,
-      selectedItem: this.state.selectedSystem
+      selectedItem: this.state.selectedSystemId
     }
 
     return (
@@ -91,13 +91,13 @@ class SlotMachine extends Component{
         <div className={`slot-machine  ${this.state._isMounted ? 'fade-in': ''}`}>
           <div className={`scroll`}>
             <Carousel {...settings} >
-              <img alt="gameboy" src="https://www.stickpng.com/assets/images/5a6a3c53ab538104d4a30e32.png"/>
-              <img alt="roulette logo" src="https://i.imgur.com/BNF73pY.png"/>
-              <img alt="gameboy color" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Game_Boy_Color_logo.svg/1280px-Game_Boy_Color_logo.svg.png"/>
-              <img alt="nes"src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/NES_logo.svg/1280px-NES_logo.svg.png"/>
-              <img alt="snes" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/SNES_logo.svg/1280px-SNES_logo.svg.png"/>
-              <img alt="master system" src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Sega-master-system-logo.png"/>
-              <img alt="genesis" src="https://pikointeractive.com/wp-content/uploads/2014/03/sega_genesis_logo_by_overxbound-d5r5d1q.png"/>
+              <img alt="gameboy" src="/img/game_boy.png"/>
+              <img alt="roulette logo" src="/img/retro_logo.png"/>
+              <img alt="gameboy color" src="/img/game_boy_color.png"/>
+              <img alt="nes"src="/img/nes.png"/>
+              <img alt="snes" src="/img/snes.png"/>
+              <img alt="master system" src="/img/master_system.png"/>
+              <img alt="genesis" src="/img/genesis.png"/>
             </Carousel>
           </div>
         </div>

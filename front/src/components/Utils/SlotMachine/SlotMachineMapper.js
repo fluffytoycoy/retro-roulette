@@ -1,3 +1,17 @@
+class ConsoleMapper{
+  constructor(consoleList){
+    this.consoleList = consoleList
+  }
+
+  findIdFromName(consoleName){
+    return this.consoleList.filter(console => console.label === consoleName)[0].id
+  }
+
+  findNameFromId(consoleId){
+    return this.consoleList.filter(console => console.id === consoleId)[0].label
+  }
+}
+
 export function consoleToSlotImg(consoleName) {
   switch (consoleName){
     case 'Game Boy Color':

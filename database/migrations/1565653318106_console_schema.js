@@ -8,6 +8,7 @@ class ConsoleSchema extends Schema {
     this.create('consoles', (table) => {
       table.increments()
       table.string('name', 100).notNullable().unique()
+      table.string('img_url')
       table.timestamps()
     })
   }
