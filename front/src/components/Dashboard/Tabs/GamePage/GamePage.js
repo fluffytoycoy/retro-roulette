@@ -97,7 +97,7 @@ class GameDash extends React.Component{
           "Authorization" : `Bearer ${localStorage.getItem('jwtToken')}`,
         }
       }).then(response=>{
-        if(response.status === 204){
+        if(response.status === 200){
           this.props.setDatabasePopup(true, 'success')
           this.props.deleteSingleGame(this.state.selectedGame);
           this.props.history.goBack();
@@ -108,6 +108,7 @@ class GameDash extends React.Component{
     }
 
     submitNewGame(game){
+      console.log(game)
       axios.post('/api/createGame', game,{
         headers: {
           "Authorization" : `Bearer ${localStorage.getItem('jwtToken')}`,
@@ -117,10 +118,12 @@ class GameDash extends React.Component{
           this.props.setDatabasePopup(true, 'success')
           this.props.creatNewGame(response.data)
           //this.props.deleteSingleGame(this.state.selectedGame);
-          //this.props.history.goBack();
+          this.props.history.goBack();
         }
-      }).catch(error=>{
+        console.log(response)
+      }).catch((response, error)=>{
         this.props.setDatabasePopup(true, 'error')
+        console.log(response)
       })
 
     }
@@ -176,7 +179,7 @@ function AddGame(props){
         </div>
         <div className="col">
           <FormContainer
-
+            initialValues={{title: '', console_id: '', genre_id: '', img_url: ''}}
             onSubmit={props.submit}
             render={props.gameForm}/>
         </div>

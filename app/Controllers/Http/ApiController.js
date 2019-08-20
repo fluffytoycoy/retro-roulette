@@ -110,7 +110,7 @@ class ApiController {
           console.log(id)
           const game = await Game.find(id)
           await game.delete()
-          return response.status(204).send()
+          return response.status(200).send()
         }catch(e){
           return response.status(500).send()
         }

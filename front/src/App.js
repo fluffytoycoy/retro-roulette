@@ -102,10 +102,13 @@ class App extends Component {
   }
 
   normalizeGameData(game){
-    game.genre = this.state.filterOptions.genres.filter(genre => genre.value === game.genre_id)[0].label
-    game.console = this.state.filterOptions.consoles.filter(genre => genre.value === game.console_id)[0].label
+    console.log(game)
     game.console_id = parseInt(game.console_id);
     game.genre_id = parseInt(game.genre_id);
+    game.genre = this.state.filterOptions.genres.filter(genre => genre.value === game.genre_id)[0]
+    console.log(game.genre)
+    game.console = this.state.filterOptions.consoles.filter(genre => genre.value === game.console_id)[0].label
+
     return game;
   }
 
