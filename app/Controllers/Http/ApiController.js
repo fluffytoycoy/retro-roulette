@@ -47,7 +47,7 @@ class ApiController {
   async login({response, auth, request}){
 
     const {username, password} = request.all();
-
+    return response.json(username);
     try{
       let token = await auth.attempt(username, password);
       let user = await User.findBy('username', username)
