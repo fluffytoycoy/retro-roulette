@@ -149,6 +149,20 @@ class ApiController {
     }
   }
 
+  async createConsole({request, response, auth}){
+    if(auth.check()){
+      try{
+        const gameConsole = await Console.create(request.all())
+        console.log(gameConsole)
+        response.send(gameConsole)
+
+      }catch(e){
+        console.log(e)
+        return response.status(500).send()
+      }
+    }
+  }
+
   async error({response}){
     return response.status(405).send()
   }

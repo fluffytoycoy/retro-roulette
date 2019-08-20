@@ -16,7 +16,7 @@ class GameDash extends React.Component{
     this.updateConsole = this.updateConsole.bind(this)
     this.cancel = this.cancel.bind(this)
     this.delete = this.delete.bind(this)
-    this.submitNewGame = this.submitNewGame.bind(this)
+    this.submitNewConsole = this.submitNewConsole.bind(this)
   }
 
     componentDidMount() {
@@ -59,28 +59,22 @@ class GameDash extends React.Component{
       }
     }
 
-    toggleAltImg(e){
-      this.setState({
-        altImg: e.target.value,
-      })
-    }
-
-    updateConsole(gameConsole){
+    updateConsole(gameConsole) {
       const newFilter = getOptionObject(this.state.selectedConsole.value, gameConsole.console, gameConsole.img_url);
       const newGameConsole = getDataBaseObject(this.state.selectedConsole.value, gameConsole.console, gameConsole.img_url);
-      axios.post('/api/updateConsole', newGameConsole,{
+      axios.post('/api/updateConsole', newGameConsole, {
         headers: {
-          "Authorization" : `Bearer ${localStorage.getItem('jwtToken')}`,
+          "Authorization": `Bearer ${localStorage.getItem('jwtToken')}`,
         }
-      }).then(response=>{
+      }).then(response => {
         console.log(response)
-        if(response.status === 204){
+        if (response.status === 204) {
           this.props.setDatabasePopup(true, 'success')
           this.props.updateConsoleList(newFilter)
           this.props.updateList();
           this.props.history.goBack();
         }
-      }).catch(error=>{
+      }).catch(error => {
         this.props.setDatabasePopup(true, 'error')
       })
     }
@@ -105,22 +99,31 @@ class GameDash extends React.Component{
       })
     }
 
-    submitNewGame(game){
-      axios.post('/api/createGame', game,{
+    submitNewConsole(gameConsole){
+      const newGameConsole = getDataBaseObject(null, gameConsole.console, gameConsole.img_url);
+      axios.post('/api/createConsole', newGameConsole,{
         headers: {
           "Authorization" : `Bearer ${localStorage.getItem('jwtToken')}`,
         }
       }).then(response=>{
         if(response.status === 200){
+          const newFilter = getOptionObject(response.data.id, response.data.name, response.data.img_url);
           this.props.setDatabasePopup(true, 'success')
-          this.props.creatNewGame(response.data)
+          this.props.creatNewConsole(newFilter)
+          this.props.history.goBack();
         }
       }).catch(error=>{
+        console.log(error)
         this.props.setDatabasePopup(true, 'error')
       })
 
     }
 
+    toggleAltImg(e){
+      this.setState({
+        altImg: e.target.value,
+      })
+    }
 
     consoleForm = (props) =>{
       //const consoleOptions = [{value: '', label: 'Select a console'}, ...this.props.filterOptions.consoles]
@@ -149,7 +152,7 @@ class GameDash extends React.Component{
             filterOptions={this.props.filterOptions.consoles}
             altImg={this.state.altImg}
             consoleForm={this.consoleForm}
-            submit={this.submitNewGame}/>
+            submit={this.submitNewConsole}/>
           :
           <EditGame
             filterOptions={this.props.filterOptions.consoles}

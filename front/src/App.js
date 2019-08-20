@@ -33,6 +33,7 @@ class App extends Component {
     this.updateGameList = this.updateGameList.bind(this);
     this.deleteSingleGame = this.deleteSingleGame.bind(this);
     this.creatNewGame = this.creatNewGame.bind(this);
+    this.creatNewConsole = this.creatNewConsole.bind(this);
     this.updateConsoleList = this.updateConsoleList.bind(this)
   };
 
@@ -111,10 +112,17 @@ class App extends Component {
       Object.assign({}, consoleList[index], gameConsole),
       ...consoleList.slice(index + 1)
     ];
-    this.setState({
-      filterOptions: filterOptions
-    })
+    this.updateSelectedFilters(filterOptions.consoles, filterOptions.genres);
   }
+
+  creatNewConsole(gameConsole){
+    const consoleList = this.state.filterOptions.consoles;
+    let filterOptions = this.state.filterOptions;
+    console.log(filterOptions)
+    filterOptions.consoles = [...consoleList, gameConsole]
+    this.updateSelectedFilters(filterOptions.consoles, filterOptions.genres);
+  }
+
 
   normalizeGameData(game){
     game.console_id = parseInt(game.console_id);
@@ -139,7 +147,7 @@ class App extends Component {
                   <PrivateRoute exact path="/Dashboard/:Tab/Edit/:id" component={Dashboard} {...this.props} updateConsoleList={this.updateConsoleList} deleteSingleGame={this.deleteSingleGame} updateGameList={this.updateGameList} setGameList={this.setGameList} filterOptions={this.state.filterOptions} gameList={this.state.gameList}/>
                   <PrivateRoute exact path="/Dashboard/:Tab/AddGame" component={Dashboard} {...this.props} creatNewGame={this.creatNewGame} setGameList={this.setGameList} filterOptions={this.state.filterOptions} gameList={this.state.gameList}/>
 
-                  <PrivateRoute exact path="/Dashboard/:Tab/AddConsole" component={Dashboard} {...this.props}setGameList={this.setGameList} filterOptions={this.state.filterOptions} gameList={this.state.gameList}   />
+                  <PrivateRoute exact path="/Dashboard/:Tab/AddConsole" component={Dashboard} {...this.props} creatNewConsole={this.creatNewConsole} setGameList={this.setGameList} filterOptions={this.state.filterOptions} gameList={this.state.gameList}   />
                   <PrivateRoute exact path="/Dashboard/:Tab/AddGenre" component={Dashboard} {...this.props}setGameList={this.setGameList} filterOptions={this.state.filterOptions} gameList={this.state.gameList} />
             <Route component={NotFound}/>
 				</Switch>
