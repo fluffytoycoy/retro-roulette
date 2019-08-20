@@ -11,7 +11,7 @@ class GameDash extends React.Component{
       selectedConsole: this.props.selectedConsole,
       consoleExists: false,
     }
-    this.updateGame = this.updateGame.bind(this)
+    this.updateConsole = this.updateConsole.bind(this)
     this.cancel = this.cancel.bind(this)
     this.delete = this.delete.bind(this)
     this.submitNewGame = this.submitNewGame.bind(this)
@@ -20,7 +20,6 @@ class GameDash extends React.Component{
     componentDidMount() {
       if (!this.state.selectedConsole) {
         const gameConsole = gameListBS(this.props.consoles, parseInt(this.props.match.params.id), 0, this.props.consoles.length-1);
-        console.log(gameConsole)
         if(gameConsole){
           this.setState({
             selectedConsole: gameConsole,
@@ -63,23 +62,25 @@ class GameDash extends React.Component{
       })
     }
 
-    updateGame(game){
-      game.id = this.state.selectedGame.id;
-      game.img_url = this.state.altImg
-      axios.post('/api/updateGame', game,{
-        headers: {
-          "Authorization" : `Bearer ${localStorage.getItem('jwtToken')}`,
-        }
-      }).then(response=>{
-
-        if(response.status === 200){
-          this.props.setDatabasePopup(true, 'success')
-          this.props.updateGameList(game)
-          this.props.history.goBack();
-        }
-      }).catch(error=>{
-        this.props.setDatabasePopup(true, 'error')
-      })
+    updateConsole(gameConsole){
+      console.log(gameConsole)
+      console.log(this.state.selectedConsole)
+      // game.id = this.state.selectedConsole
+      // game.img_url = this.state.altImg
+      // axios.post('/api/updateGame', game,{
+      //   headers: {
+      //     "Authorization" : `Bearer ${localStorage.getItem('jwtToken')}`,
+      //   }
+      // }).then(response=>{
+      //
+      //   if(response.status === 200){
+      //     this.props.setDatabasePopup(true, 'success')
+      //     this.props.updateGameList(game)
+      //     this.props.history.goBack();
+      //   }
+      // }).catch(error=>{
+      //   this.props.setDatabasePopup(true, 'error')
+      // })
     }
 
     cancel(e){
@@ -164,7 +165,7 @@ class GameDash extends React.Component{
             consoleForm={this.consoleForm}
             consoleExists={this.state.consoleExists}
             delete={this.delete}
-            submit={this.updateGame}
+            submit={this.updateConsole}
             selectedConsole={this.state.selectedConsole}/>}
       </>
     );

@@ -35,7 +35,7 @@ class ApiController {
         .where('id', id)
         .innerJoin('genres', 'games.genre_id', 'genres.id')
         .innerJoin('consoles', 'games.console_id', 'consoles.id')
-        .select('games.id as id',"console_id", "genre_id",'title', "img_url", 'consoles.name as console', 'genres.name as genre')
+        .select('games.id as id',"console_id", "genre_id",'title', "games.img_url", 'consoles.name as console', 'genres.name as genre')
       console.log(game)
       return game
     } catch (e){
@@ -80,7 +80,8 @@ class ApiController {
           .from('games')
           .innerJoin('genres', 'games.genre_id', 'genres.id')
           .innerJoin('consoles', 'games.console_id', 'consoles.id')
-          .select('games.id as id',"console_id", "genre_id",'title', "img_url", 'consoles.name as console', 'genres.name as genre')
+          .select('games.id as id',"console_id", "genre_id",'title', "games.img_url", 'consoles.name as console', 'genres.name as genre')
+
         return game
       } catch (e){
         return response.status(500).send()
