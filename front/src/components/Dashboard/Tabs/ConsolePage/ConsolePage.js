@@ -1,6 +1,7 @@
 import React from 'react';
 import { FormContainer, Form, Field} from 'ui-form-field';
 import Button from "@material-ui/core/Button";
+import {getOptionObject, getDataBaseObject} from '../Utils/GameConsole';
 import axios from 'axios';
 
 
@@ -10,6 +11,7 @@ class GameDash extends React.Component{
     this.state={
       selectedConsole: this.props.selectedConsole,
       consoleExists: false,
+      altImg: ''
     }
     this.updateConsole = this.updateConsole.bind(this)
     this.cancel = this.cancel.bind(this)
@@ -24,12 +26,13 @@ class GameDash extends React.Component{
           this.setState({
             selectedConsole: gameConsole,
             consoleExists: true,
+            altImg: gameConsole.img_url
           })
         }
       }else{
         this.setState({
           consoleExists: true,
-          altImg: this.props.selectedConsole.img
+          altImg: this.props.selectedConsole.img_url
         })
       }
 
@@ -63,24 +66,23 @@ class GameDash extends React.Component{
     }
 
     updateConsole(gameConsole){
-      console.log(gameConsole)
-      console.log(this.state.selectedConsole)
-      // game.id = this.state.selectedConsole
-      // game.img_url = this.state.altImg
-      // axios.post('/api/updateGame', game,{
-      //   headers: {
-      //     "Authorization" : `Bearer ${localStorage.getItem('jwtToken')}`,
-      //   }
-      // }).then(response=>{
-      //
-      //   if(response.status === 200){
-      //     this.props.setDatabasePopup(true, 'success')
-      //     this.props.updateGameList(game)
-      //     this.props.history.goBack();
-      //   }
-      // }).catch(error=>{
-      //   this.props.setDatabasePopup(true, 'error')
-      // })
+      const newFilter = getOptionObject(this.state.selectedConsole.value, gameConsole.console, gameConsole.img_url);
+      const newGameConsole = getDataBaseObject(this.state.selectedConsole.value, gameConsole.console, gameConsole.img_url);
+      axios.post('/api/updateConsole', newGameConsole,{
+        headers: {
+          "Authorization" : `Bearer ${localStorage.getItem('jwtToken')}`,
+        }
+      }).then(response=>{
+        console.log(response)
+        if(response.status === 204){
+          this.props.setDatabasePopup(true, 'success')
+          this.props.updateConsoleList(newFilter)
+          this.props.updateList();
+          this.props.history.goBack();
+        }
+      }).catch(error=>{
+        this.props.setDatabasePopup(true, 'error')
+      })
     }
 
     cancel(e){
@@ -140,21 +142,11 @@ class GameDash extends React.Component{
 
 
   render(){
-    var imgStyle = {
-      backgroundImage: 'url(' + this.state.altImg+ ')',
-      backgroundSize: 'contain',
-      height: '100%',
-      width: '100%',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center',
-    }
-
     return(
       <>
         {this.props.addGame ?
           <AddGame
             filterOptions={this.props.filterOptions.consoles}
-            imgStyle={imgStyle}
             altImg={this.state.altImg}
             consoleForm={this.consoleForm}
             submit={this.submitNewGame}/>
@@ -181,7 +173,7 @@ function AddGame(props){
         </div>
         <div className="col">
           <FormContainer
-            initialValues={{console: ''}}
+            initialValues={{console: '', img_url: ''}}
             onSubmit={props.submit}
             render={props.consoleForm}/>
         </div>
@@ -208,7 +200,7 @@ function EditGame(props){
             </div>
             <FormContainer
               onSubmit={props.submit}
-              initialValues={{console: gameConsole.label}}
+              initialValues={{console: gameConsole.label, img_url: gameConsole.img_url}}
               render={props.consoleForm}/>
               <Button variant="contained" color="secondary" onClick={props.delete} className="delete">Delete</Button>
           </div>

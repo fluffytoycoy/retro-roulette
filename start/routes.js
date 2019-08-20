@@ -27,6 +27,7 @@ Route.group(() => {
     Route.post('/updateGame', 'ApiController.updateGame').middleware('auth')
     Route.post('/deleteGame', 'ApiController.deleteGame').middleware('auth')
     Route.post('/createGame', 'ApiController.createGame').middleware('auth')
+    Route.post('/updateConsole', 'ApiController.updateConsole').middleware('auth')
     Route.any('*', 'ApiController.error')
 }).prefix('api/');
 

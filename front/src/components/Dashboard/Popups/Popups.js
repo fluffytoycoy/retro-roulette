@@ -63,7 +63,7 @@ MySnackbarContentWrapper.propTypes = {
   className: PropTypes.string,
   message: PropTypes.string,
   onClose: PropTypes.func,
-  variant: PropTypes.oneOf(['error', 'success']).isRequired,
+  variant: PropTypes.oneOf(['error', 'success'])
 };
 
 

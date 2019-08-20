@@ -2,6 +2,7 @@
 const axios = use('axios');
 const Database = use('Database')
 const Game = use('App/Models/Game')
+const Console = use('App/Models/Console')
 const User = use('App/Models/User')
 
 class ApiController {
@@ -63,7 +64,7 @@ class ApiController {
   async getFilters({request, response}){
     const filters = {}
     try{
-      filters.consoles = await Database.select('id as value','name as label').from('consoles')
+      filters.consoles = await Database.select('id as value','name as label', 'img_url').from('consoles')
       filters.genres = await Database.select('id as value','name as label').from('genres')
       return filters
     } catch(e){
@@ -125,6 +126,22 @@ class ApiController {
         console.log(game)
         response.send(game)
 
+      }catch(e){
+        console.log(e)
+        return response.status(500).send()
+      }
+    }
+  }
+
+  async updateConsole({request, response, auth}){
+    if(auth.check()){
+      try{
+        const gameConsole = request.all()
+        console.log(gameConsole)
+        await Console
+          .query()
+          .where('id', gameConsole.id)
+          .update({name: gameConsole.name, img_url: gameConsole.img_url })
       }catch(e){
         console.log(e)
         return response.status(500).send()

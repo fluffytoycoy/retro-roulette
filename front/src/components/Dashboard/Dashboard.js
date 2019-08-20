@@ -116,7 +116,6 @@ class Dashboard extends Component{
   }
 
   updateList(){
-    console.log('here')
     this.setState({
       gameList: this.props.gameList
     })
@@ -186,6 +185,8 @@ class Dashboard extends Component{
               {this.props.filterOptions.consoles.length ?
                 <ConsoleDashboard
                 {...this.props}
+                updateList={this.updateList}
+                setDatabasePopup={this.setDatabasePopup}
                 toggleMenu={this.toggleBetModal}
                 page={this.state.page}
                 />
