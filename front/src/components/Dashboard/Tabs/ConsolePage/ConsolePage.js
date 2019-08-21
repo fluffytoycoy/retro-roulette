@@ -91,10 +91,11 @@ class GameDash extends React.Component{
       }).then(response=>{
         if(response.status === 200){
           this.props.setDatabasePopup(true, 'success')
-          this.props.deleteSingleConsole(this.state.selectedConsole.value);
+          this.props.deleteSingleConsole(this.state.selectedConsole);
           this.props.history.goBack();
         }
       }).catch(error=>{
+        console.log(error)
         this.props.setDatabasePopup(true, 'error')
       })
     }

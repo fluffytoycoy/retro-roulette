@@ -34,7 +34,8 @@ class App extends Component {
     this.deleteSingleGame = this.deleteSingleGame.bind(this);
     this.creatNewGame = this.creatNewGame.bind(this);
     this.creatNewConsole = this.creatNewConsole.bind(this);
-    this.updateConsoleList = this.updateConsoleList.bind(this)
+    this.updateConsoleList = this.updateConsoleList.bind(this);
+    this.deleteSingleConsole = this.deleteSingleConsole.bind(this);
   };
 
   componentWillMount(){
@@ -127,7 +128,7 @@ class App extends Component {
     const index = this.findConsoleIndex(gameConsole);
     const consoleList = this.state.filterOptions.consoles;
     let filterOptions = this.state.filterOptions;
-    filterOptions.consoles = [...this.consoleList.slice(0, index), ...this.state.gameList.slice(index + 1)];
+    filterOptions.consoles = [...consoleList.slice(0, index), ...consoleList.slice(index + 1)];
     this.updateSelectedFilters(filterOptions.consoles, filterOptions.genres);
   }
 
@@ -146,7 +147,7 @@ class App extends Component {
                   <PrivateRoute exact path="/Dashboard/:Tab" component={Dashboard} {...this.props} setGameList={this.setGameList} filterOptions={this.state.filterOptions} gameList={this.state.gameList}/>
                   <PrivateRoute exact path="/Dashboard/:Tab/Page/:number" component={Dashboard} {...this.props} setGameList={this.setGameList} filterOptions={this.state.filterOptions} gameList={this.state.gameList}/>
                   <PrivateRoute exact path="/Dashboard/:Tab/Page/:number/:filter" component={Dashboard} {...this.props} setGameList={this.setGameList} filterOptions={this.state.filterOptions} gameList={this.state.gameList}/>
-                  <PrivateRoute exact path="/Dashboard/:Tab/Edit/:id" component={Dashboard} {...this.props} updateConsoleList={this.updateConsoleList} deleteSingleGame={this.deleteSingleGame} updateGameList={this.updateGameList} setGameList={this.setGameList} filterOptions={this.state.filterOptions} gameList={this.state.gameList}/>
+                  <PrivateRoute exact path="/Dashboard/:Tab/Edit/:id" component={Dashboard} deleteSingleConsole={this.deleteSingleConsole} {...this.props} updateConsoleList={this.updateConsoleList} deleteSingleGame={this.deleteSingleGame} updateGameList={this.updateGameList} setGameList={this.setGameList} filterOptions={this.state.filterOptions} gameList={this.state.gameList}/>
                   <PrivateRoute exact path="/Dashboard/:Tab/AddGame" component={Dashboard} {...this.props} creatNewGame={this.creatNewGame} setGameList={this.setGameList} filterOptions={this.state.filterOptions} gameList={this.state.gameList}/>
 
                   <PrivateRoute exact path="/Dashboard/:Tab/AddConsole" component={Dashboard} {...this.props} creatNewConsole={this.creatNewConsole} setGameList={this.setGameList} filterOptions={this.state.filterOptions} gameList={this.state.gameList}   />
