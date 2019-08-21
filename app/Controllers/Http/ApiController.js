@@ -123,9 +123,7 @@ class ApiController {
     if(auth.check()){
       try{
         const game = await Game.create(request.all())
-        console.log(game)
         response.send(game)
-
       }catch(e){
         console.log(e)
         return response.status(500).send()

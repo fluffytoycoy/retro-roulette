@@ -108,6 +108,7 @@ class GameDash extends React.Component{
         }
       }).then(response=>{
         if(response.status === 200){
+  
           this.props.setDatabasePopup(true, 'success')
           this.props.creatNewGame(response.data)
         }

@@ -3,7 +3,6 @@ import './GamePage.scss';
 import { FormContainer, Form, Field} from 'ui-form-field';
 import Button from "@material-ui/core/Button";
 import axios from 'axios';
-//import PropTypes from "prop-types";
 
 
 class GameDash extends React.Component{
@@ -71,6 +70,7 @@ class GameDash extends React.Component{
     updateGame(game){
       game.id = this.state.selectedGame.id;
       game.img_url = this.state.altImg
+
       console.log(game)
       axios.post('/api/updateGame', game,{
         headers: {
@@ -79,6 +79,7 @@ class GameDash extends React.Component{
       }).then(response=>{
 
         if(response.status === 204){
+
           this.props.setDatabasePopup(true, 'success')
           this.props.updateGameList(game)
           this.props.updateList();
@@ -111,7 +112,6 @@ class GameDash extends React.Component{
     }
 
     submitNewGame(game){
-      console.log(game)
       axios.post('/api/createGame', game,{
         headers: {
           "Authorization" : `Bearer ${localStorage.getItem('jwtToken')}`,
@@ -121,10 +121,8 @@ class GameDash extends React.Component{
           this.props.setDatabasePopup(true, 'success')
           this.props.creatNewGame(response.data)
           this.props.updateList();
-          //this.props.deleteSingleGame(this.state.selectedGame);
           this.props.history.goBack();
         }
-        console.log(response)
       }).catch((response, error)=>{
         this.props.setDatabasePopup(true, 'error')
         console.log(response)
@@ -155,18 +153,10 @@ class GameDash extends React.Component{
 
 
   render(){
-    var imgStyle = {
-      backgroundImage: 'url(' + this.state.altImg+ ')',
-      backgroundSize: 'contain',
-      height: '100%',
-      width: '100%',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center',
-    }
     return(
       <>
         {this.props.addGame ?
-          <AddGame imgStyle={imgStyle} altImg={this.state.altImg} gameForm={this.gameForm} submit={this.submitNewGame}/>
+          <AddGame altImg={this.state.altImg} gameForm={this.gameForm} submit={this.submitNewGame}/>
           :
           <EditGame altImg={this.state.altImg} gameForm={this.gameForm} gameExists={this.state.gameExists} delete={this.delete} submit={this.updateGame} selectedGame={this.state.selectedGame}/>}
       </>
@@ -195,7 +185,6 @@ function AddGame(props){
 
 function EditGame(props){
   const game = props.selectedGame
-  console.log(game)
   return(
     <>
       {props.gameExists  ?

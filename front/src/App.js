@@ -123,7 +123,6 @@ class App extends Component {
     this.updateSelectedFilters(filterOptions.consoles, filterOptions.genres);
   }
 
-
   normalizeGameData(game){
     game.console_id = parseInt(game.console_id);
     game.genre_id = parseInt(game.genre_id);
