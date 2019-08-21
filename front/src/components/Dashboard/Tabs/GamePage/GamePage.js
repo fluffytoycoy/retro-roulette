@@ -3,6 +3,7 @@ import './GamePage.scss';
 import { FormContainer, Form, Field} from 'ui-form-field';
 import Button from "@material-ui/core/Button";
 import { buildGameListItem} from '../Utils/ObjectMapper';
+import checkRoles from '../Utils/CheckRoles';
 import axios from 'axios';
 
 
@@ -69,23 +70,23 @@ class GameDash extends React.Component{
       })
     }
 
-    updateGame(game){
+    updateGame(game) {
       game.id = this.state.selectedGame.id;
       game.img_url = this.state.altImg
       console.log(game)
-      axios.post('/api/updateGame', game,{
+      axios.post('/api/updateGame', game, {
         headers: {
-          "Authorization" : `Bearer ${localStorage.getItem('jwtToken')}`,
+          "Authorization": `Bearer ${localStorage.getItem('jwtToken')}`,
         }
-      }).then(response=>{
-        if(response.status === 204){
+      }).then(response => {
+        if (response.status === 204) {
           console.log(response)
           this.props.setDatabasePopup(true, 'success')
           this.props.updateGameList(buildGameListItem(game, this.props.filterOptions))
           this.props.updateList();
           this.props.history.goBack();
         }
-      }).catch(error=>{
+      }).catch(error => {
         this.props.setDatabasePopup(true, 'error')
       })
     }
@@ -174,7 +175,7 @@ function AddGame(props){
         <div className="col">
           <FormContainer
             initialValues={{title: '', console_id: '', genre_id: '', img_url: ''}}
-            onSubmit={props.submit}
+            onSubmit={()=>{checkRoles(props.submit)}}
             render={props.gameForm}/>
         </div>
       </div>
@@ -200,10 +201,10 @@ function EditGame(props){
               <p><b>Genre</b>: {game.genre}</p>
             </div>
             <FormContainer
-              onSubmit={props.submit}
+              onSubmit={()=>{checkRoles(props.submit)}}
               initialValues={{title: game.title, genre: game.genre, console_id: game.console_id, genre_id: game.genre_id, img_url: game.img_url}}
               render={props.gameForm}/>
-              <Button variant="contained" color="secondary" onClick={props.delete} className="delete">Delete</Button>
+              <Button variant="contained" color="secondary" onClick={()=>{checkRoles(props.delete)}} className="delete">Delete</Button>
           </div>
 
         </div>

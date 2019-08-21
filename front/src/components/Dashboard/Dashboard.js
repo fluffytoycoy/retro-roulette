@@ -24,7 +24,8 @@ class Dashboard extends Component{
       filters: '',
       databasePopup: false,
       popupStatus: 'success',
-      tabIndex: findTabIndex(this.props.match.params.Tab)
+      tabIndex: findTabIndex(this.props.match.params.Tab),
+      role: localStorage.getItem('role')
     }
     this.filterList = this.filterList.bind(this)
     this.toggleMenu = this.toggleMenu.bind(this)
@@ -156,6 +157,7 @@ class Dashboard extends Component{
                 <div className="grid-wrapper">
                   {gameList ?
                     <GamesDashboard   {...this.props}
+                    role={this.state.role}
                     toggleMenu={this.toggleBetModal}
                     updateList={this.updateList}
                     filter={this.filterList}
@@ -173,6 +175,7 @@ class Dashboard extends Component{
               {this.props.filterOptions.genres.length ?
                 <GenreDashboard
                 {...this.props}
+                role={this.state.role}
                 toggleMenu={this.toggleBetModal}
                 page={this.state.page}
                 />
@@ -185,6 +188,7 @@ class Dashboard extends Component{
               {this.props.filterOptions.consoles.length ?
                 <ConsoleDashboard
                 {...this.props}
+                role={this.state.role}
                 updateList={this.updateList}
                 setDatabasePopup={this.setDatabasePopup}
                 toggleMenu={this.toggleBetModal}

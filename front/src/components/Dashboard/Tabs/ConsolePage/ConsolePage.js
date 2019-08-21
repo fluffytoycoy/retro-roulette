@@ -2,6 +2,7 @@ import React from 'react';
 import { FormContainer, Form, Field} from 'ui-form-field';
 import Button from "@material-ui/core/Button";
 import {buildConsoleFilterItem, buildDbConsoleObj} from '../Utils/ObjectMapper';
+import checkRoles from '../Utils/CheckRoles';
 import axios from 'axios';
 
 
@@ -178,7 +179,7 @@ function AddGame(props){
         <div className="col">
           <FormContainer
             initialValues={{console: '', img_url: ''}}
-            onSubmit={props.submit}
+            onSubmit={()=>{checkRoles(props.submit)}}
             render={props.consoleForm}/>
         </div>
       </div>
@@ -203,10 +204,10 @@ function EditGame(props){
               <p></p>
             </div>
             <FormContainer
-              onSubmit={props.submit}
+              onSubmit={()=>{checkRoles(props.submit)}}
               initialValues={{console: gameConsole.label, img_url: gameConsole.img_url}}
               render={props.consoleForm}/>
-              <Button variant="contained" color="secondary" onClick={props.delete} className="delete">Delete</Button>
+              <Button variant="contained" color="secondary" onClick={()=>{checkRoles(props.delete)}} className="delete">Delete</Button>
           </div>
         </div>
       </section>

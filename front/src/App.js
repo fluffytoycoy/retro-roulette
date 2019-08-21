@@ -135,6 +135,7 @@ class App extends Component {
   findConsoleIndex(gameConsole){
     return this.state.filterOptions.consoles.findIndex(list=> list.value === gameConsole.value);
   }
+
   render() {
     return (
       <Router>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { FormContainer, Form, Field} from 'ui-form-field';
 import Button from "@material-ui/core/Button";
+import checkRoles from '../Utils/CheckRoles';
 import axios from 'axios';
 
 
@@ -108,7 +109,7 @@ class GameDash extends React.Component{
         }
       }).then(response=>{
         if(response.status === 200){
-  
+
           this.props.setDatabasePopup(true, 'success')
           this.props.creatNewGame(response.data)
         }
@@ -176,7 +177,7 @@ function AddGame(props){
         <div className="col">
           <FormContainer
             initialValues={{genre: ''}}
-            onSubmit={props.submit}
+            onSubmit={()=>{checkRoles(props.submit)}}
             render={props.genreForm}/>
         </div>
       </div>
@@ -198,10 +199,10 @@ function EditGame(props){
               <p></p>
             </div>
             <FormContainer
-              onSubmit={props.submit}
+              onSubmit={()=>{checkRoles(props.submit)}}
               initialValues={{genre: gameGenre.label}}
               render={props.genreForm}/>
-              <Button variant="contained" color="secondary" onClick={props.delete} className="delete">Delete</Button>
+              <Button variant="contained" color="secondary" onClick={()=>{checkRoles(props.delete)}} className="delete">Delete</Button>
           </div>
         </div>
       </section>
