@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormContainer, Form, Field} from 'ui-form-field';
 import Button from "@material-ui/core/Button";
-import {getOptionObject, getDataBaseObject} from '../Utils/GameConsole';
+import {buildConsoleFilterItem, buildDbConsoleObj} from '../Utils/ObjectMapper';
 import axios from 'axios';
 
 
@@ -60,8 +60,8 @@ class GameDash extends React.Component{
     }
 
     updateConsole(gameConsole) {
-      const newFilter = getOptionObject(this.state.selectedConsole.value, gameConsole.console, gameConsole.img_url);
-      const newGameConsole = getDataBaseObject(this.state.selectedConsole.value, gameConsole.console, gameConsole.img_url);
+      const newFilter = buildConsoleFilterItem(this.state.selectedConsole.value, gameConsole.console, gameConsole.img_url);
+      const newGameConsole = buildDbConsoleObj(this.state.selectedConsole.value, gameConsole.console, gameConsole.img_url);
       axios.post('/api/updateConsole', newGameConsole, {
         headers: {
           "Authorization": `Bearer ${localStorage.getItem('jwtToken')}`,
@@ -84,14 +84,14 @@ class GameDash extends React.Component{
     }
 
     delete(){
-      axios.post('/api/deleteGame', {id: this.state.selectedGame.id},{
+      axios.post('/api/deleteConsole', {id: this.state.selectedConsole.value},{
         headers: {
           "Authorization" : `Bearer ${localStorage.getItem('jwtToken')}`,
         }
       }).then(response=>{
         if(response.status === 200){
           this.props.setDatabasePopup(true, 'success')
-          this.props.deleteSingleGame(this.state.selectedGame);
+          this.props.deleteSingleConsole(this.state.selectedConsole.value);
           this.props.history.goBack();
         }
       }).catch(error=>{
@@ -100,14 +100,14 @@ class GameDash extends React.Component{
     }
 
     submitNewConsole(gameConsole){
-      const newGameConsole = getDataBaseObject(null, gameConsole.console, gameConsole.img_url);
+      const newGameConsole = buildDbConsoleObj(null, gameConsole.console, gameConsole.img_url);
       axios.post('/api/createConsole', newGameConsole,{
         headers: {
           "Authorization" : `Bearer ${localStorage.getItem('jwtToken')}`,
         }
       }).then(response=>{
         if(response.status === 200){
-          const newFilter = getOptionObject(response.data.id, response.data.name, response.data.img_url);
+          const newFilter = buildConsoleFilterItem(response.data.id, response.data.name, response.data.img_url);
           this.props.setDatabasePopup(true, 'success')
           this.props.creatNewConsole(newFilter)
           this.props.history.goBack();

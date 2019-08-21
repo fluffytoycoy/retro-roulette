@@ -151,9 +151,29 @@ class ApiController {
     if(auth.check()){
       try{
         const gameConsole = await Console.create(request.all())
-        console.log(gameConsole)
         response.send(gameConsole)
+      }catch(e){
+        console.log(e)
+        return response.status(500).send()
+      }
+    }
+  }
 
+  async deleteConsole({request, response, auth}){
+    if(auth.check()){
+      try{
+        const { id } = request.all()
+        const gameExists = await Game
+        .query()
+        .where('console_id', id)
+        .first()
+        if(gameExists){
+          return response.status(500).send()
+        } else{
+          const gameConsole = await Console.find(id)
+          await gameConsole.delete()
+        }
+        return response.status(200).send()
       }catch(e){
         console.log(e)
         return response.status(500).send()

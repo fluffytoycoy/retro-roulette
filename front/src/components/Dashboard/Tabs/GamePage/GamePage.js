@@ -2,7 +2,9 @@ import React from 'react';
 import './GamePage.scss';
 import { FormContainer, Form, Field} from 'ui-form-field';
 import Button from "@material-ui/core/Button";
+import { buildGameListItem} from '../Utils/ObjectMapper';
 import axios from 'axios';
+
 
 
 class GameDash extends React.Component{
@@ -70,18 +72,16 @@ class GameDash extends React.Component{
     updateGame(game){
       game.id = this.state.selectedGame.id;
       game.img_url = this.state.altImg
-
       console.log(game)
       axios.post('/api/updateGame', game,{
         headers: {
           "Authorization" : `Bearer ${localStorage.getItem('jwtToken')}`,
         }
       }).then(response=>{
-
         if(response.status === 204){
-
+          console.log(response)
           this.props.setDatabasePopup(true, 'success')
-          this.props.updateGameList(game)
+          this.props.updateGameList(buildGameListItem(game, this.props.filterOptions))
           this.props.updateList();
           this.props.history.goBack();
         }
@@ -119,7 +119,7 @@ class GameDash extends React.Component{
       }).then(response=>{
         if(response.status === 200){
           this.props.setDatabasePopup(true, 'success')
-          this.props.creatNewGame(response.data)
+          this.props.creatNewGame(buildGameListItem(response.data, this.props.filterOptions))
           this.props.updateList();
           this.props.history.goBack();
         }

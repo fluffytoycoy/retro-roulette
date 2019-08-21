@@ -80,7 +80,7 @@ class App extends Component {
     this.setState({
       gameList: [
         ...this.state.gameList.slice(0, gameIndex),
-        Object.assign({}, this.state.gameList[gameIndex], this.normalizeGameData(game)),
+        Object.assign({}, this.state.gameList[gameIndex], game),
         ...this.state.gameList.slice(gameIndex + 1)
       ]
     })
@@ -99,12 +99,12 @@ class App extends Component {
 
   creatNewGame(game) {
     this.setState({
-      gameList: [...this.state.gameList, this.normalizeGameData(game)]
+      gameList: [...this.state.gameList, game]
     })
   }
 
   updateConsoleList(gameConsole){
-    const index = this.state.filterOptions.consoles.findIndex(list=> list.value === gameConsole.value);
+    const index = this.findConsoleIndex(gameConsole);
     const consoleList = this.state.filterOptions.consoles;
     let filterOptions = this.state.filterOptions;
     filterOptions.consoles = [
@@ -123,14 +123,17 @@ class App extends Component {
     this.updateSelectedFilters(filterOptions.consoles, filterOptions.genres);
   }
 
-  normalizeGameData(game){
-    game.console_id = parseInt(game.console_id);
-    game.genre_id = parseInt(game.genre_id);
-    game.genre = this.state.filterOptions.genres.filter(genre => genre.value === game.genre_id)[0].label
-    game.console = this.state.filterOptions.consoles.filter(genre => genre.value === game.console_id)[0].label
-    return game;
+  deleteSingleConsole(gameConsole){
+    const index = this.findConsoleIndex(gameConsole);
+    const consoleList = this.state.filterOptions.consoles;
+    let filterOptions = this.state.filterOptions;
+    filterOptions.consoles = [...this.consoleList.slice(0, index), ...this.state.gameList.slice(index + 1)];
+    this.updateSelectedFilters(filterOptions.consoles, filterOptions.genres);
   }
 
+  findConsoleIndex(gameConsole){
+    return this.state.filterOptions.consoles.findIndex(list=> list.value === gameConsole.value);
+  }
   render() {
     return (
       <Router>
