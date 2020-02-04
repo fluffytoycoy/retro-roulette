@@ -70,7 +70,6 @@ class SlotMachine extends Component{
   }
 
   render(){
-
     const settings = {
       showArrows: false,
       showThumbs: false,
